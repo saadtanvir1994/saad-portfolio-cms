@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ClientLayoutWrapper from "@/components/client/client-layout-wrapper";
+import MainMenu from "@/components/client/main-menu";
+import { getMenuContent } from "@/lib/actions";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,21 +12,33 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://saadtanvir.com"),
   title: "Web Designer, Front End Developer, SEO Expert | Saad Tanvir",
   description:
     "Crafting seamless user experiences, stunning designs, and powerful SEO solutions to help your brand shine. Your all-in-one expert for digital success.",
+  alternates: {
+    canonical: '/',
+  },
+  other: {
+    seobility: 'a266dca5342da97d7f48374d8961496e',
+  },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const menuContent = await getMenuContent();
+
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
         <ClientLayoutWrapper>
-          {children}
+          <div className="overflow-hidden">
+            <MainMenu menuContent={menuContent} />
+            {children}
+          </div>
         </ClientLayoutWrapper>
       </body>
     </html>

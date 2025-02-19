@@ -5,7 +5,6 @@ import ClientLayoutWrapper from "@/components/client/client-layout-wrapper";
 import MainMenu from "@/components/client/main-menu";
 import { getMenuContent } from "@/lib/actions";
 import Footer from "@/components/sections/footer";
-import { getMediaUrl } from "@/utils/all";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,7 +39,7 @@ export default async function RootLayout({
           <div className="overflow-hidden">
             <MainMenu menuContent={menuContent} />
             {children}
-            <Footer logoUrl={getMediaUrl(menuContent["logo-light"])} />
+            <Footer />
           </div>
         </ClientLayoutWrapper>
       </body>

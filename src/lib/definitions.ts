@@ -53,3 +53,13 @@ export interface AboutContent extends Content {
   headline: string;
   paragraphs: string[];
 }
+
+export interface FooterContent extends Content {
+  heading: string;
+  "action-buttons": ActionButton[];
+  logo: MediaContent;
+  "social-links": {
+    label: string;
+    url: string;
+  }[];
+}

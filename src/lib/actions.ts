@@ -2,10 +2,11 @@
 
 import {
   AboutContent,
+  FooterContent,
   HeroContent,
   LogosContent,
   MainMenuContent,
-} from "./definitions";
+} from "@/lib/definitions";
 
 const apiUrl = process.env.NEXT_PUBLIC_CMS_URL + "/api";
 
@@ -38,8 +39,14 @@ export const getMenuContent = async () => {
 
 export const getHeroContent = async () =>
   (await getContent("hero")) as unknown as HeroContent;
+
 export const getLogosContent = async () =>
   (await getContent("logos")) as unknown as LogosContent;
+
 export const getAboutContent = async () =>
   (await getContent("about")) as unknown as AboutContent;
+
+export const getFooterContent = async () =>
+(await getContent("footer")) as unknown as FooterContent;
+
 export const getHomepageContent = async () => await getContent("homepage");

@@ -7,10 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { MainMenuResponse } from "@/lib/definitions";
+import { MainMenuContent } from "@/lib/definitions";
 import { getMediaUrl } from "@/utils/all";
 
-const MainMenu = ({ menuContent }: { menuContent: MainMenuResponse }) => {
+const MainMenu = ({ menuContent }: { menuContent: MainMenuContent }) => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);

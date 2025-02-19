@@ -1,6 +1,11 @@
 "use server";
 
-import { HeroResponse, MainMenuResponse } from "./definitions";
+import {
+  AboutContent,
+  HeroContent,
+  LogosContent,
+  MainMenuContent,
+} from "./definitions";
 
 const apiUrl = process.env.NEXT_PUBLIC_CMS_URL + "/api";
 
@@ -15,7 +20,7 @@ const getContent = async (slug: string) => {
 export const getMenuContent = async () => {
   const menuContent = (await getContent(
     "main-menu"
-  )) as unknown as MainMenuResponse;
+  )) as unknown as MainMenuContent;
 
   menuContent.links = menuContent.links.map((item) => {
     if (typeof item.children === "string") {
@@ -31,6 +36,10 @@ export const getMenuContent = async () => {
   return menuContent;
 };
 
-export const getHeroContent = async () => await getContent("hero") as unknown as HeroResponse;
-
+export const getHeroContent = async () =>
+  (await getContent("hero")) as unknown as HeroContent;
+export const getLogosContent = async () =>
+  (await getContent("logos")) as unknown as LogosContent;
+export const getAboutContent = async () =>
+  (await getContent("about")) as unknown as AboutContent;
 export const getHomepageContent = async () => await getContent("homepage");

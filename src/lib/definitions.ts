@@ -5,9 +5,9 @@ export interface MenuItem {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface Response {}
+export interface Content {}
 
-export interface MediaResponse extends Response {
+export interface MediaContent extends Content {
   name: string;
   caption: string;
   size: number;
@@ -15,26 +15,41 @@ export interface MediaResponse extends Response {
   cloud_storage: boolean;
 }
 
-export interface ButtonResponse extends Response {
+export interface ActionButton {
   label: string;
   href: string;
 }
 
-export interface MainMenuResponse extends Response {
-  "logo-dark": MediaResponse;
-  "logo-light": MediaResponse;
-  "action-button": ButtonResponse;
+export interface MainMenuContent extends Content {
+  "logo-dark": MediaContent;
+  "logo-light": MediaContent;
+  "action-button": ActionButton;
   links: MenuItem[];
 }
 
-export interface HeroResponse extends Response {
+export interface HeroContent extends Content {
   tagline: string;
   headline: string;
   "emphasized-text": string;
   description: string;
-  image: MediaResponse;
+  image: MediaContent;
   freelancer: string;
   brandbox: string;
   services: string;
-  "cta-button": ButtonResponse;
+  "cta-button": ActionButton;
+}
+
+export interface LogosContent extends Content {
+  text: string[];
+  logos: MediaContent[];
+}
+
+export interface AboutContent extends Content {
+  tagline: string;
+  heading: string;
+  "action-button": ActionButton;
+  image: MediaContent;
+  "marquee-text": string[];
+  headline: string;
+  paragraphs: string[];
 }

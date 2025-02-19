@@ -2,7 +2,7 @@
 
 import AnimatedCTAButton from "@/components/animated-cta-button";
 import Typography from "@/components/typography";
-import { HeroResponse } from "@/lib/definitions";
+import { HeroContent } from "@/lib/definitions";
 import { getMediaUrl } from "@/utils/all";
 import { gsap } from "@/utils/gsap";
 import { Wand2 } from "lucide-react";
@@ -10,7 +10,7 @@ import { Wand2 } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 
-const Hero = ({ heroContent }: { heroContent: HeroResponse }) => {
+const Hero = ({ heroContent }: { heroContent: HeroContent }) => {
   // Refs for GSAP animations
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);

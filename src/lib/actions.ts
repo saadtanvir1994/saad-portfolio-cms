@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
 import {
@@ -6,6 +7,7 @@ import {
   HeroContent,
   LogosContent,
   MainMenuContent,
+  ServicesContent,
 } from "@/lib/definitions";
 
 const apiUrl = process.env.NEXT_PUBLIC_CMS_URL + "/api";
@@ -45,6 +47,13 @@ export const getLogosContent = async () =>
 
 export const getAboutContent = async () =>
   (await getContent("about")) as unknown as AboutContent;
+
+export const getServicesContent = async () => {
+  const servicesContent = await getContent("services") as any;
+  servicesContent.items = servicesContent.items.map((item: any) => item.values)
+
+  return servicesContent as ServicesContent;
+}
 
 export const getFooterContent = async () =>
 (await getContent("footer")) as unknown as FooterContent;

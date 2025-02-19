@@ -1,3 +1,5 @@
+import { IconName } from "lucide-react/dynamic";
+
 export interface MenuItem {
   label: string;
   href: string;
@@ -52,6 +54,22 @@ export interface AboutContent extends Content {
   "marquee-text": string[];
   headline: string;
   paragraphs: string[];
+}
+
+export interface ServiceItem extends Content {
+  title: string;
+  description: string;
+  icon: IconName;
+  "icon-color": string;
+  "sub-services": string[];
+  href: string;
+}
+
+export interface ServicesContent extends Content {
+  tagline: string;
+  heading: string;
+  description: string;
+  items: ServiceItem[];
 }
 
 export interface FooterContent extends Content {

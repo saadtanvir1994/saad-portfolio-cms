@@ -2,6 +2,7 @@ import Typography from "@/components/typography";
 import { getLogosContent } from "@/lib/actions";
 import { getMediaUrl } from "@/utils/all";
 import Image from "next/image";
+import React from "react";
 
 const LogosBlock = async () => {
   const logosContent = await getLogosContent();
@@ -14,9 +15,9 @@ const LogosBlock = async () => {
           className="mb-8 text-center text-[var(--gray-200)] !w-full md:!w-full"
         >
           {logosContent.text.map((text, index) => (
-            <>
+            <React.Fragment key={index}>
               {text} {index !== logosContent.text.length - 1 && <br />}
-            </>
+            </React.Fragment>
           ))}
         </Typography>
         <div className="my-4">

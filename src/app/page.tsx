@@ -1,7 +1,5 @@
+import ClientWrapper from "@/components/client/client-wrapper";
+
 export default function Home() {
-  return (
-    <div className="">
-      
-    </div>
-  );
+  return <ClientWrapper />;
 }

@@ -1,6 +1,6 @@
 "use server";
 
-import { MainMenuResponse } from "./definitions";
+import { HeroResponse, MainMenuResponse } from "./definitions";
 
 const apiUrl = process.env.NEXT_PUBLIC_CMS_URL + "/api";
 
@@ -30,5 +30,7 @@ export const getMenuContent = async () => {
 
   return menuContent;
 };
+
+export const getHeroContent = async () => await getContent("hero") as unknown as HeroResponse;
 
 export const getHomepageContent = async () => await getContent("homepage");

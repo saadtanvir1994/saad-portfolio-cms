@@ -15,12 +15,26 @@ export interface MediaResponse extends Response {
   cloud_storage: boolean;
 }
 
+export interface ButtonResponse extends Response {
+  label: string;
+  href: string;
+}
+
 export interface MainMenuResponse extends Response {
   "logo-dark": MediaResponse;
   "logo-light": MediaResponse;
-  "action-button": {
-    label: string;
-    href: string;
-  };
+  "action-button": ButtonResponse;
   links: MenuItem[];
+}
+
+export interface HeroResponse extends Response {
+  tagline: string;
+  headline: string;
+  "emphasized-text": string;
+  description: string;
+  image: MediaResponse;
+  freelancer: string;
+  brandbox: string;
+  services: string;
+  "cta-button": ButtonResponse;
 }

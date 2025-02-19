@@ -72,6 +72,39 @@ export interface ServicesContent extends Content {
   items: ServiceItem[];
 }
 
+export interface TechnologiesContent extends Content {
+  tagline: string;
+  heading: string;
+  paragraph: string;
+}
+
+export interface ExpectationsContent extends Content {
+  heading: string;
+  description: string;
+  points: {
+    heading: string;
+    paragraph: string;
+  }[];
+}
+
+export interface WorkStagesContent extends Content {
+  heading: string;
+  "video-embed": string;
+  stages: {
+    number: number;
+    label: string;
+    description: string;
+    tags: string[];
+    gradient: string;
+  }[];
+}
+
+export interface WorkflowContent extends Content {
+  technologies: TechnologiesContent;
+  expectations: ExpectationsContent;
+  "work-stages": WorkStagesContent;
+}
+
 export interface FooterContent extends Content {
   heading: string;
   "action-buttons": ActionButton[];

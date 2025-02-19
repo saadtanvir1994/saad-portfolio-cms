@@ -1,36 +1,13 @@
-// import { useRef } from "react";
-// import gsap from "gsap";
-// import { useGSAP } from "@gsap/react";
 import Typography from "@/components/typography";
 import ServiceCard from "./blocks/service-card";
-import { ServicesContent } from "@/lib/definitions";
 import ServicesWrapper from "./services-wrapper";
+import { getServicesContent } from "@/lib/actions";
 
-const Services = ({ servicesContent }: { servicesContent: ServicesContent }) => {
-  // const sectionRef = useRef<HTMLDivElement>(null);
-
-  // useGSAP(() => {
-  //   const ctx = gsap.context(() => {
-  //     gsap.from(".services-header > *", {
-  //       opacity: 0,
-  //       y: 30,
-  //       stagger: 0.2,
-  //       duration: 0.8,
-  //       ease: "power3.out",
-  //       scrollTrigger: {
-  //         trigger: ".services-header",
-  //         start: "top bottom-=200",
-  //         once: true,
-  //       },
-  //     });
-  //   }, sectionRef);
-
-  //   return () => ctx.revert();
-  // }, []);
+const Services = async () => {
+  const servicesContent = await getServicesContent();
 
   return (
     <ServicesWrapper>
-    {/* <section ref={sectionRef} className="dark relative w-full bg-[--gray-25]"> */}
       <div className="container mx-auto px-4 py-16 md:py-32">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-12">
           <div className="services-header flex flex-col md:col-span-5">
@@ -59,7 +36,6 @@ const Services = ({ servicesContent }: { servicesContent: ServicesContent }) => 
           ))}
         </div>
       </div>
-    {/* </section> */}
     </ServicesWrapper>
   );
 };

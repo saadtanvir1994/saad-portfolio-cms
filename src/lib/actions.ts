@@ -8,6 +8,7 @@ import {
   LogosContent,
   MainMenuContent,
   ServicesContent,
+  WorkflowContent,
 } from "@/lib/definitions";
 
 const apiUrl = process.env.NEXT_PUBLIC_CMS_URL + "/api";
@@ -49,13 +50,16 @@ export const getAboutContent = async () =>
   (await getContent("about")) as unknown as AboutContent;
 
 export const getServicesContent = async () => {
-  const servicesContent = await getContent("services") as any;
-  servicesContent.items = servicesContent.items.map((item: any) => item.values)
+  const servicesContent = (await getContent("services")) as any;
+  servicesContent.items = servicesContent.items.map((item: any) => item.values);
 
   return servicesContent as ServicesContent;
-}
+};
+
+export const getWorkflowContent = async () =>
+  (await getContent("workflow")) as unknown as WorkflowContent;
 
 export const getFooterContent = async () =>
-(await getContent("footer")) as unknown as FooterContent;
+  (await getContent("footer")) as unknown as FooterContent;
 
 export const getHomepageContent = async () => await getContent("homepage");

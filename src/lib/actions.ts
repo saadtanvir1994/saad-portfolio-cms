@@ -7,6 +7,7 @@ import {
   HeroContent,
   LogosContent,
   MainMenuContent,
+  PricingFaqsContent,
   ServicesContent,
   ShowcaseContent,
   WorkflowContent,
@@ -64,12 +65,25 @@ export const getShowcaseContent = async () => {
   const showcaseContent = (await getContent("showcase")) as any;
 
   showcaseContent.testimonials = showcaseContent.testimonials.values;
-  showcaseContent.testimonials.items = showcaseContent.testimonials.items.map((item: any) => item.values);
+  showcaseContent.testimonials.items = showcaseContent.testimonials.items.map(
+    (item: any) => item.values
+  );
   showcaseContent.portfolio = showcaseContent.portfolio.values;
-  showcaseContent.portfolio.items = showcaseContent.portfolio.items.map((item: any) => item.values);
+  showcaseContent.portfolio.items = showcaseContent.portfolio.items.map(
+    (item: any) => item.values
+  );
 
   return showcaseContent as ShowcaseContent;
-}
+};
+
+export const getPricingFaqsContent = async () => {
+  const pricingFaqsContent = (await getContent("pricing-faqs")) as any;
+
+  pricingFaqsContent.pricing = pricingFaqsContent.pricing.values;
+  pricingFaqsContent.faqs = pricingFaqsContent.faqs.values;
+
+  return pricingFaqsContent as PricingFaqsContent;
+};
 
 export const getFooterContent = async () =>
   (await getContent("footer")) as unknown as FooterContent;

@@ -142,6 +142,38 @@ export interface ShowcaseContent extends Content {
   portfolio: PortfolioContent;
 }
 
+export interface PricingItemContent extends Content {
+  name: string;
+  description: string;
+  "short-description": string;
+  price: string;
+  frequency?: string;
+  features: string[];
+  primary: boolean;
+}
+
+export interface PricingContent extends Content {
+  tagline: string;
+  text: string;
+  description: string;
+  items: PricingItemContent[];
+}
+
+export interface FaqsContent extends Content {
+  title: string;
+  subtitle?: string;
+  description: string;
+  items: {
+    question: string;
+    answer: string;
+  }[];
+}
+
+export interface PricingFaqsContent extends Content {
+  pricing: PricingContent;
+  faqs: FaqsContent;
+}
+
 export interface FooterContent extends Content {
   heading: string;
   "action-buttons": ActionButton[];

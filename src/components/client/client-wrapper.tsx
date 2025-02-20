@@ -5,6 +5,7 @@ import About from "@/components/sections/about";
 import Services from "@/components/sections/services";
 import Workflow from "@/components/sections/workflow";
 import Showcase from "@/components/sections/showcase";
+import PricingFaqs from "@/components/sections/pricing-faqs";
 
 const ClientWrapper = async () => {
   const heroContent = await getHeroContent();
@@ -17,6 +18,7 @@ const ClientWrapper = async () => {
       <Services />
       <Workflow />
       <Showcase />
+      <PricingFaqs />
     </>
   )
 }

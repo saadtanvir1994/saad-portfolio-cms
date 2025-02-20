@@ -1,16 +1,16 @@
 import { getShowcaseContent } from "@/lib/actions";
 import TestimonialsSection from "./testimonials";
 import PortfolioSection from "./portfoio-section";
-import TextSwaping from "./text-swapping-wrapper";
+import TextSwapWrapper from "./text-swap-wrapper";
 
 const Showcase = async () => {
-  const showcaseContent = await getShowcaseContent();
+  const { testimonials, portfolio, roles } = await getShowcaseContent();
 
   return (
     <>
-      <TestimonialsSection content={showcaseContent.testimonials} />
-      <PortfolioSection content={showcaseContent.portfolio} />
-      <TextSwaping roles={showcaseContent.roles} />
+      <TestimonialsSection content={testimonials} />
+      <PortfolioSection content={portfolio} />
+      <TextSwapWrapper roles={roles} />
     </>
   );
 };

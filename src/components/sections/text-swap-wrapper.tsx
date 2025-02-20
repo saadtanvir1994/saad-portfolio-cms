@@ -1,4 +1,4 @@
-import TextSwap from "./blocks/textswap";
+import TextSwap from "./blocks/text-swap";
 
 const TextSwaping = ({ roles }: { roles: string[] }) => {
   return (

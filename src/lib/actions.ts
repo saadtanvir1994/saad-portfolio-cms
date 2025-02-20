@@ -8,6 +8,7 @@ import {
   LogosContent,
   MainMenuContent,
   ServicesContent,
+  ShowcaseContent,
   WorkflowContent,
 } from "@/lib/definitions";
 
@@ -58,6 +59,17 @@ export const getServicesContent = async () => {
 
 export const getWorkflowContent = async () =>
   (await getContent("workflow")) as unknown as WorkflowContent;
+
+export const getShowcaseContent = async () => {
+  const showcaseContent = (await getContent("showcase")) as any;
+
+  showcaseContent.testimonials = showcaseContent.testimonials.values;
+  showcaseContent.testimonials.items = showcaseContent.testimonials.items.map((item: any) => item.values);
+  showcaseContent.portfolio = showcaseContent.portfolio.values;
+  showcaseContent.portfolio.items = showcaseContent.portfolio.items.map((item: any) => item.values);
+
+  return showcaseContent as ShowcaseContent;
+}
 
 export const getFooterContent = async () =>
   (await getContent("footer")) as unknown as FooterContent;

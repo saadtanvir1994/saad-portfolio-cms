@@ -105,6 +105,43 @@ export interface WorkflowContent extends Content {
   "work-stages": WorkStagesContent;
 }
 
+export interface TestimonialContent extends Content {
+  avatar: MediaContent;
+  name: string;
+  designation: string;
+  message: string;
+}
+
+export interface TestimonialsContent extends Content {
+  title: string;
+  tagline: string;
+  items: TestimonialContent[];
+}
+
+export interface PortfolioItemContent extends Content {
+  title: string;
+  href: string;
+  "short-description": string;
+  "long-description": string;
+  "bg-image": MediaContent;
+  challenges: string[];
+  solutions: string[];
+  skills: string[];
+}
+
+export interface PortfolioContent extends Content {
+  tagline: string;
+  heading: string;
+  description: string;
+  items: PortfolioItemContent[];
+}
+
+export interface ShowcaseContent extends Content {
+  roles: string[];
+  testimonials: TestimonialsContent;
+  portfolio: PortfolioContent;
+}
+
 export interface FooterContent extends Content {
   heading: string;
   "action-buttons": ActionButton[];

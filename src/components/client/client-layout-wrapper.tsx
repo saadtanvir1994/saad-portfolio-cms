@@ -1,15 +1,15 @@
-"use client";
-
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import { ReactNode } from "react";
+import CustomCursor from "@/components/client/custom-cursor";
+import SmoothScroll from "@/components/client/smooth-scroll";
 
-const CustomCursor = dynamic(() => import("@/components/client/custom-cursor"), {
-  ssr: false,
-});
+// const CustomCursor = dynamic(() => import("@/components/client/custom-cursor"), {
+//   ssr: false,
+// });
 
-const SmoothScroll = dynamic(() => import("@/components/client/smooth-scroll"), {
-  ssr: false,
-});
+// const SmoothScroll = dynamic(() => import("@/components/client/smooth-scroll"), {
+//   ssr: false,
+// });
 
 export default function ClientLayoutWrapper({
   children,

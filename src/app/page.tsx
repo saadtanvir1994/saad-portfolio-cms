@@ -1,5 +1,4 @@
-import Hero from "@/components/home/hero";
-import { getHeroContent } from "@/lib/actions";
+import Hero from "@/components/home/hero-section";
 import LogosBlock from "@/components/home/logos-block";
 import About from "@/components/home/about";
 import Services from "@/components/services";
@@ -8,11 +7,9 @@ import Showcase from "@/components/showcase";
 import PricingFaqs from "@/components/pricing-faqs";
 
 const Home = async () => {
-  const heroContent = await getHeroContent();
-
   return (
     <>
-      <Hero heroContent={heroContent} />
+      <Hero />
       <LogosBlock />
       <About />
       <Services />

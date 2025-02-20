@@ -234,7 +234,7 @@ const MainMenu = ({ menuContent }: { menuContent: MainMenuContent }) => {
                 )}
               </li>
             ))}
-            <li>
+            <li role="menuitem">
               <Link href={actionBtn.href} className={`relative`}>
                 <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-gray-300 bg-[--gray-900] px-4 py-2">
                   <svg
@@ -270,7 +270,7 @@ const MainMenu = ({ menuContent }: { menuContent: MainMenuContent }) => {
         >
           <ul className="w-full space-y-2" role="menu">
             {menuItems.map((item) => (
-              <li key={item.label} role="none">
+              <li key={item.label} role="menuitem">
                 <Link
                   href={item.href}
                   className={`font-nortica block rounded-lg px-4 py-2 text-sm font-medium uppercase tracking-wider transition-colors hover:bg-[--gray-50] hover:text-white ${

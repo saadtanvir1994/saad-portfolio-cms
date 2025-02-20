@@ -1,47 +1,13 @@
-import Typography from "@/components/typography";
-import AnimatedCTAButton from "@/components/animated-cta-button";
+import Typography from "@/components/ui/typography";
+import AnimatedCTAButton from "@/components/ui/animated-cta-button";
 import { DynamicIcon } from "lucide-react/dynamic";
 import { ServiceItem } from "@/lib/definitions";
-import ServiceCardWrapper from "./service-card-wrapper";
-// import { useRef } from "react";
-// import gsap from "gsap";
-// import { useGSAP } from "@gsap/react";
+import ServiceCardWrapper from "@/components/services/service-card-wrapper";
 
-const ServiceCard = ({
-  item,
-  index
-}: { item: ServiceItem; index: number }) => {
-  // const cardRef = useRef<HTMLDivElement>(null);
-
-  // useGSAP(() => {
-  //   const card = cardRef.current;
-  //   if (!card) return;
-
-  //   gsap.set(card, { opacity: 0, y: 50 });
-
-  //   ScrollTrigger.create({
-  //     trigger: card,
-  //     start: "top bottom-=100",
-  //     onEnter: () => {
-  //       gsap.to(card, {
-  //         opacity: 1,
-  //         y: 0,
-  //         duration: 0.8,
-  //         ease: "power3.out",
-  //         delay: index * 0.1,
-  //       });
-  //     },
-  //     once: true,
-  //   });
-  // }, [index]);
+const ServiceCard = ({ item, index }: { item: ServiceItem; index: number }) => {
 
   return (
     <ServiceCardWrapper index={index}>
-    {/* <div
-      ref={cardRef}
-      className="service-card group/item dark relative w-full overflow-hidden rounded-lg bg-[--gray-50] p-6 2xl:aspect-[1/1.6] 2xl:p-8"
-      data-cursor="CLICK ARROW"
-    > */}
       {/* Front side */}
       <div className="front-side flex h-full flex-col justify-between">
         <div className="d-block relative z-20 mb-8 h-16 w-16 scale-100 transition duration-300 ease-in-out group-hover/item:scale-90">
@@ -100,7 +66,7 @@ const ServiceCard = ({
           variant="icon-only"
         />
       </div>
-    {/* </div> */}
+      {/* </div> */}
     </ServiceCardWrapper>
   );
 };

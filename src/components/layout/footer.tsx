@@ -1,5 +1,5 @@
-import AnimatedCTAButton from "@/components/animated-cta-button";
-import Typography from "@/components/typography";
+import AnimatedCTAButton from "@/components/ui/animated-cta-button";
+import Typography from "@/components/ui/typography";
 import { getFooterContent } from "@/lib/actions";
 import { getMediaUrl } from "@/utils/all";
 import Image from "next/image";

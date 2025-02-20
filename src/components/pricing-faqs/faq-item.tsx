@@ -1,6 +1,6 @@
 "use client";
 
-import Typography from "@/components/typography";
+import Typography from "@/components/ui/typography";
 import { ChevronDown } from "lucide-react";
 import React, { useState } from "react";
 

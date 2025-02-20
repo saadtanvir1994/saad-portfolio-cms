@@ -1,5 +1,5 @@
-import AnimatedCTAButton from "@/components/animated-cta-button";
-import Typography from "@/components/typography";
+import AnimatedCTAButton from "@/components/ui/animated-cta-button";
+import Typography from "@/components/ui/typography";
 import { PricingItemContent } from "@/lib/definitions";
 import { Check } from "lucide-react";
 
@@ -36,10 +36,8 @@ const PricingItem = ({ item }: { item: PricingItemContent }) => {
             ariaLabel="Web design pricing"
             href="/"
             text="Start Today"
-            variant="simpleoutlined"
-            className={`my-6 w-full ${
-              item.primary && "bg-[#cc2a02]  text-white"
-            }`}
+            variant={item.primary ? "simple" : "simpleoutlined"}
+            className="my-6 w-full"
           />
           <h5 className="mt-8 text-xl font-semibold text-gray-950">
             What&apos;s Included

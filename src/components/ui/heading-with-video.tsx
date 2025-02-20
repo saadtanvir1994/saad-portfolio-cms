@@ -1,4 +1,4 @@
-import Typography from "@/components/typography";
+import Typography from "@/components/ui/typography";
 import { Play, X } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -64,7 +64,7 @@ const Modal: React.FC<VideoModalProps> = ({ youtubeUrl, isOpen, onClose }) => {
   );
 };
 
-const HeadingWithVideo = ({ videoUrl }: { videoUrl: string; }) => {
+const HeadingWithVideo = ({ videoUrl }: { videoUrl: string }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (

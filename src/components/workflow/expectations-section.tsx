@@ -1,11 +1,11 @@
 "use client";
 
-import Typography from "@/components/typography";
+import Typography from "@/components/ui/typography";
 import { ExpectationsContent } from "@/lib/definitions";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
 import { useLayoutEffect, useRef } from "react";
 
-const ExpectationsSection = ({ content }: { content: ExpectationsContent; }) => {
+const ExpectationsSection = ({ content }: { content: ExpectationsContent }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);

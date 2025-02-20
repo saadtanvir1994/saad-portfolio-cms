@@ -1,7 +1,7 @@
 "use client";
 
-import AnimatedCTAButton from "@/components/animated-cta-button";
-import Typography from "@/components/typography";
+import AnimatedCTAButton from "@/components/ui/animated-cta-button";
+import Typography from "@/components/ui/typography";
 import { HeroContent } from "@/lib/definitions";
 import { getMediaUrl } from "@/utils/all";
 import { gsap } from "@/utils/gsap";

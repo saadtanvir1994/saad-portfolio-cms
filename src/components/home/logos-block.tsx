@@ -1,4 +1,4 @@
-import Typography from "@/components/typography";
+import Typography from "@/components/ui/typography";
 import { getLogosContent } from "@/lib/actions";
 import { getMediaUrl } from "@/utils/all";
 import Image from "next/image";
@@ -25,7 +25,6 @@ const LogosBlock = async () => {
             <div>
               <div className="w-full flex-shrink-0">
                 <div className="-mx-4 -mb-16 flex flex-wrap items-center justify-center xl:justify-between">
-                  
                   {logosContent.logos.map((logo, idx) => (
                     <div className="mb-16 w-1/4 px-4 xl:w-auto" key={idx}>
                       <Image

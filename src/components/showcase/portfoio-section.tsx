@@ -1,5 +1,5 @@
-import Typography from "@/components/typography";
-import PortfolioItems from "./blocks/portfolio-items";
+import Typography from "@/components/ui/typography";
+import PortfolioItems from "@/components/showcase/portfolio-items";
 import { PortfolioContent } from "@/lib/definitions";
 
 const PortfolioSection = ({ content }: { content: PortfolioContent }) => {

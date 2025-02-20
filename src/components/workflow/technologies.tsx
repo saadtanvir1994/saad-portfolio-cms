@@ -1,5 +1,5 @@
-import TechLogos from "@/components/client/tech-logos";
-import Typography from "@/components/typography";
+import TechLogos from "@/components/ui/tech-logos";
+import Typography from "@/components/ui/typography";
 import { TechnologiesContent } from "@/lib/definitions";
 import React from "react";
 

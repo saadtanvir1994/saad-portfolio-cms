@@ -1,8 +1,8 @@
-import AnimatedCTAButton from "@/components/animated-cta-button";
-import TopRightCTA from "@/components/client/top-cta";
-import Typography from "@/components/typography";
+import AnimatedCTAButton from "@/components/ui/animated-cta-button";
+import TopRightCTA from "@/components/ui/top-cta";
+import Typography from "@/components/ui/typography";
 import { PricingContent } from "@/lib/definitions";
-import PricingItem from "./blocks/pricing-item";
+import PricingItem from "@/components/pricing-faqs/pricing-item";
 
 const ContactSection = () => {
   return (

@@ -1,6 +1,6 @@
-import AnimatedCTAButton from "@/components/animated-cta-button";
-import SimpleMarquee from "@/components/client/star-marquee";
-import Typography from "@/components/typography";
+import AnimatedCTAButton from "@/components/ui/animated-cta-button";
+import SimpleMarquee from "@/components/ui/star-marquee";
+import Typography from "@/components/ui/typography";
 import { getAboutContent } from "@/lib/actions";
 import { getMediaUrl } from "@/utils/all";
 import Image from "next/image";

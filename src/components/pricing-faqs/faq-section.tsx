@@ -1,5 +1,5 @@
-import FaqItem from "@/components/client/faq-item";
-import Typography from "@/components/typography";
+import FaqItem from "@/components/pricing-faqs/faq-item";
+import Typography from "@/components/ui/typography";
 import { FaqsContent } from "@/lib/definitions";
 
 const FaqSection = ({ content }: { content: FaqsContent }) => {

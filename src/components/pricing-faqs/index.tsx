@@ -1,6 +1,6 @@
 import { getPricingFaqsContent } from "@/lib/actions";
-import PricingSection from "./pricing-section";
-import FaqSection from "./faq-section";
+import PricingSection from "@/components/pricing-faqs/pricing-section";
+import FaqSection from "@/components/pricing-faqs/faq-section";
 
 const PricingFaqs = async () => {
   const { pricing, faqs } = await getPricingFaqsContent();
@@ -10,7 +10,7 @@ const PricingFaqs = async () => {
       <PricingSection content={pricing} />
       <FaqSection content={faqs} />
     </>
-  )
-}
+  );
+};
 
 export default PricingFaqs;

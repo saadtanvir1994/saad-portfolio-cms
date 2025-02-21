@@ -5,6 +5,7 @@ import ClientLayoutWrapper from "@/components/layout/client-layout-wrapper";
 import MainMenu from "@/components/layout/main-menu";
 import { getMenuContent } from "@/lib/actions";
 import Footer from "@/components/layout/footer";
+import NavigationMenu from "@/components/layout/navigation-menu";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,7 +38,8 @@ export default async function RootLayout({
       <body className={`${inter.variable} antialiased`}>
         <ClientLayoutWrapper>
           <div className="overflow-hidden">
-            <MainMenu menuContent={menuContent} />
+            {/* <MainMenu menuContent={menuContent} /> */}
+            <NavigationMenu menuContent={menuContent} />
             {children}
             <Footer />
           </div>

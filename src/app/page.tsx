@@ -18,7 +18,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       title: metadata.metaTitle,
       description: metadata.metaDescription,
       images: [metadata.metaImage],
-      tags: metadata.keywords,
+      type: "website",
     },
     twitter: {
       title: metadata.metaTitle,

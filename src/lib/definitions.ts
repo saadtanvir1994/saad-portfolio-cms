@@ -23,10 +23,16 @@ export interface ActionButton {
 }
 
 export interface MainMenuContent extends Content {
+  "logo": MediaContent;
   "logo-dark": MediaContent;
   "logo-light": MediaContent;
   "action-button": ActionButton;
+  email: string;
   links: MenuItem[];
+  "social-links": {
+    label: string;
+    url: string;
+  }[];
 }
 
 export interface HeroContent extends Content {
@@ -189,6 +195,8 @@ export interface MetadataContent extends Content {
   metaTitle: string;
   metaDescription: string;
   metaImage: string;
+  logo: string;
+  type: string;
   canonicalUrl: string;
   keywords: string;
 }

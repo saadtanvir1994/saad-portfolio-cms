@@ -27,7 +27,19 @@ const getResource = async (slug: string) => {
 
 const getContent = async (slug: string) => (await getResource(slug)).values as Content;
 
-const getMetadata = async (slug: string) => (await getResource(slug)).metadata as MetadataContent;
+const getMetadata = async (slug: string) => {
+  let metadata = (await getResource(slug)).metadata as any;
+  
+  if (typeof metadata.structuredData === "string") {
+    try {
+      const data = JSON.parse(metadata.structuredData);
+      metadata = Object.assign(metadata, data);
+    } catch {
+    }
+  }
+
+  return metadata as MetadataContent;
+};
 
 export const getMenuContent = async () => {
   const menuContent = (await getContent(

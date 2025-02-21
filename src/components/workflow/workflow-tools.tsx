@@ -41,27 +41,25 @@ const WorkflowTools = () => {
   ];
 
   return (
-    <section className="overflow-hidden pb-32 pt-8">
-      <div className="container mx-auto px-4">
-        <div className="relative mx-auto max-w-4xl overflow-hidden">
-          <div className="-m-1.5 flex flex-wrap justify-center">
-            {logos.map((logo, index) =>
-              <div className="w-auto p-1.5 transition duration-200" key={index}>
-                <div className="flex items-center rounded-full border border-gray-300 bg-white px-6 py-2.5 transition duration-200 hover:bg-gray-100">
-                  <Image
-                    src={logo.src}
-                    alt={logo.name}
-                    height={22}
-                    width={22}
-                  />
-                  <span className="font-bold ml-3 tracking-tight">{logo.name}</span>
-                </div>
+    <div className="container mx-auto px-4 overflow-hidden pb-32 pt-8">
+      <div className="relative mx-auto max-w-4xl overflow-hidden">
+        <div className="-m-1.5 flex flex-wrap justify-center">
+          {logos.map((logo, index) =>
+            <div className="w-auto p-1.5 transition duration-200" key={index}>
+              <div className="flex items-center rounded-full border border-gray-300 bg-white px-6 py-2.5 transition duration-200 hover:bg-gray-100">
+                <Image
+                  src={logo.src}
+                  alt={logo.name}
+                  height={22}
+                  width={22}
+                />
+                <span className="font-bold ml-3 tracking-tight">{logo.name}</span>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -8,5 +8,3 @@ const HeroSection = async () => {
 };
 
 export default HeroSection;
-
-export const revalidate = 1000;

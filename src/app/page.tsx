@@ -30,7 +30,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   }
 }
 
-const Home = async () => {
+const Home = () => {
   return (
     <>
       <Suspense>

@@ -5,6 +5,29 @@ import Services from "@/components/services";
 import Workflow from "@/components/workflow";
 import Showcase from "@/components/showcase";
 import PricingFaqs from "@/components/pricing-faqs";
+import type { Metadata } from "next";
+import { getHomepageMetadata } from "@/lib/actions";
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const metadata = await getHomepageMetadata();
+ 
+  return {
+    title: metadata.metaTitle,
+    description: metadata.metaDescription,
+    openGraph: {
+      title: metadata.metaTitle,
+      description: metadata.metaDescription,
+      images: [metadata.metaImage],
+      tags: metadata.keywords,
+    },
+    twitter: {
+      title: metadata.metaTitle,
+      description: metadata.metaDescription,
+      images: [metadata.metaImage],
+    },
+    keywords: metadata.keywords,
+  }
+}
 
 const Home = async () => {
   return (

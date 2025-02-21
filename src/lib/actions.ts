@@ -3,10 +3,12 @@
 
 import {
   AboutContent,
+  Content,
   FooterContent,
   HeroContent,
   LogosContent,
   MainMenuContent,
+  MetadataContent,
   PricingFaqsContent,
   ServicesContent,
   ShowcaseContent,
@@ -15,13 +17,17 @@ import {
 
 const apiUrl = process.env.NEXT_PUBLIC_CMS_URL + "/api";
 
-const getContent = async (slug: string) => {
+const getResource = async (slug: string) => {
   const url = `${apiUrl}/collections/${slug}/content`;
   const res = await fetch(url);
   const data = await res.json();
 
-  return data.data!.content.data[0]!.values as Response;
-};
+  return data.data!.content.data[0];
+}
+
+const getContent = async (slug: string) => (await getResource(slug)).values as Content;
+
+const getMetadata = async (slug: string) => (await getResource(slug)).metadata as MetadataContent;
 
 export const getMenuContent = async () => {
   const menuContent = (await getContent(
@@ -89,3 +95,5 @@ export const getFooterContent = async () =>
   (await getContent("footer")) as unknown as FooterContent;
 
 export const getHomepageContent = async () => await getContent("homepage");
+
+export const getHomepageMetadata = async () => await getMetadata("homepage");

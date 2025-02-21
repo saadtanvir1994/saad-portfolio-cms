@@ -15,7 +15,7 @@ const About = async () => {
       <div className="bg-zinc-50 px-4 py-16 md:py-32">
         <div className="container relative mx-auto grid grid-cols-1 gap-0 md:grid-cols-12 md:gap-8">
           <div className="flex flex-col md:col-span-6">
-            <span className="mb-4 text-xl font-light uppercase tracking-widest">
+            <span className="text-md dark mb-2 font-light uppercase tracking-widest text-[--text-dtertiary]">
               {aboutContent.tagline}
             </span>
 
@@ -90,7 +90,7 @@ const About = async () => {
       <InfiniteMarquee
         items={aboutContent["infinite-marquee-items"]}
         gap={40}
-        className="text-xl font-semibold uppercase text-[--gray-900]"
+        className="text-5xl font-semibold uppercase text-[--gray-900]"
       />
     </section>
   );

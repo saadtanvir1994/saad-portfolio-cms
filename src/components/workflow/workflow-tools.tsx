@@ -44,11 +44,9 @@ const WorkflowTools = () => {
     <section className="overflow-hidden pb-32 pt-8">
       <div className="container mx-auto px-4">
         <div className="relative mx-auto max-w-4xl overflow-hidden">
-          <div className="absolute left-0 top-0 h-full w-24 md:w-96"></div>
-          <div className="bg-gradient-white-light2 absolute right-0 top-0 h-full w-24 rotate-180 transform md:w-96"></div>
           <div className="-m-1.5 flex flex-wrap justify-center">
             {logos.map((logo, index) =>
-              <div className="w-auto p-1.5" key={index}>
+              <div className="w-auto p-1.5 transition duration-200" key={index}>
                 <div className="flex items-center rounded-full border border-gray-300 bg-white px-6 py-2.5 transition duration-200 hover:bg-gray-100">
                   <Image
                     src={logo.src}

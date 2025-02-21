@@ -14,12 +14,12 @@ const Technologies = ({ content }: { content: TechnologiesContent }) => {
             <span className="text-md dark mb-2 font-light uppercase tracking-widest text-[--text-dtertiary]">
               {content.tagline}
             </span>
-            <Typography variant="display-2" className="!mx-auto mb-6 uppercase">
+            <Typography variant="display-2" className="max-w-[60%] md:max-w-[80%] exact-2xl:max-w-[40%] text-3xl lg:text-5xl text-[--text-primary] tracking-tighter !mx-auto mb-6 uppercase">
               {content.heading}
             </Typography>
             <Typography
               variant="p"
-              className="mx-auto w-[85%] text-[--text-tertiary]"
+              className="mx-auto max-w-[80%] text-[--text-tertiary]"
             >
               {content.paragraph}
             </Typography>

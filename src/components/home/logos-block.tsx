@@ -1,8 +1,9 @@
 import Typography from "@/components/ui/typography";
 import { getLogosContent } from "@/lib/actions";
-import { getMediaUrl } from "@/utils/all";
-import Image from "next/image";
+// import { getMediaUrl } from "@/utils/all";
+// import Image from "next/image";
 import React from "react";
+import SpriteIcon from "../ui/sprite-icon";
 
 const LogosBlock = async () => {
   const logosContent = await getLogosContent();
@@ -26,13 +27,17 @@ const LogosBlock = async () => {
               <div className="w-full flex-shrink-0">
                 <div className="-mx-4 -mb-16 flex flex-wrap items-center justify-center xl:justify-between">
                   {logosContent.logos.map((logo, idx) => (
-                    <div className="mb-16 w-1/4 px-4 xl:w-auto" key={idx}>
-                      <Image
+                    <div className="mb-16 w-1/4 px-4 py-4 xl:w-auto w-40" key={idx}>
+                      {/* <Image
                         className="mx-auto block"
                         src={getMediaUrl(logo)}
                         alt={"Client Logo " + idx}
                         width={100}
                         height={40}
+                      /> */}
+                      <SpriteIcon
+                        name={logo.caption}
+                        className="w-[100px] h-[40px]"
                       />
                     </div>
                   ))}

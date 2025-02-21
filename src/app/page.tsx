@@ -8,6 +8,7 @@ import PricingFaqs from "@/components/pricing-faqs";
 import type { Metadata } from "next";
 import { getHomepageMetadata } from "@/lib/actions";
 import { Suspense } from "react";
+import SvgSprite from "@/components/ui/svg-sprite";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const metadata = await getHomepageMetadata();
@@ -54,6 +55,7 @@ const Home = () => {
       <Suspense>
         <PricingFaqs />
       </Suspense>
+      <SvgSprite />
     </>
   );
 };

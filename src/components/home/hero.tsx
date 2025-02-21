@@ -6,6 +6,7 @@ import { Wand2 } from "lucide-react";
 
 import Image from "next/image";
 import React from "react";
+import SpriteIcon from "../ui/sprite-icon";
 
 const Hero = ({ heroContent }: { heroContent: HeroContent }) => {
   return (
@@ -67,13 +68,14 @@ const Hero = ({ heroContent }: { heroContent: HeroContent }) => {
           <div className="order-3 flex h-full max-w-full justify-between gap-4 px-0 py-6 md:order-3 md:flex-col md:gap-0 md:px-4 md:py-0">
             <div className="dark mx-auto mb-4 flex h-full w-full max-w-[100%] flex-col items-center rounded-lg border-xs border-[var(--gray-100)] bg-gradient-to-b from-[var(--gray-0)] to-[var(--gray-50)] px-4 py-8 md:h-auto md:max-w-[100%]">
               <div className="relative flex h-12 w-12 items-center justify-center">
-                <Image
+                {/* <Image
                   src="/images/top-rated-upwork-freelancer.svg"
                   alt="top rated freelancer"
                   fill
                   priority
                   className="object-cover"
-                />
+                /> */}
+                <SpriteIcon name="top-rated-upwork-freelancer" className="h-12 w-12" />
               </div>
               <Typography variant="p" className="mt-4 text-center !text-lg text-white">
                 {heroContent.freelancer}
@@ -92,12 +94,13 @@ const Hero = ({ heroContent }: { heroContent: HeroContent }) => {
                 <AnimatedCTAButton ariaLabel="View Services" variant="icon-only" href="/services" />
               </div>
               <div className="absolute -bottom-32 left-0 h-52 w-full opacity-60 md:-bottom-24">
-                <Image
+                {/* <Image
                   src="/images/services-bento-bg.svg"
                   alt="Services background pattern"
                   fill
                   className="object-cover object-bottom"
-                />
+                /> */}
+                <SpriteIcon name="services-bento-bg" className="object-cover object-bottom -ml-10" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#161616] to-transparent" />
               </div>
             </div>

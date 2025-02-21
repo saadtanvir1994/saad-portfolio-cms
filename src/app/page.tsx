@@ -7,6 +7,7 @@ import Showcase from "@/components/showcase";
 import PricingFaqs from "@/components/pricing-faqs";
 import type { Metadata } from "next";
 import { getHomepageMetadata } from "@/lib/actions";
+import { Suspense } from "react";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const metadata = await getHomepageMetadata();
@@ -32,13 +33,27 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const Home = async () => {
   return (
     <>
-      <Hero />
-      <LogosBlock />
-      <About />
-      <Services />
-      <Workflow />
-      <Showcase />
-      <PricingFaqs />
+      <Suspense>
+        <Hero />
+      </Suspense>
+      <Suspense>
+        <LogosBlock />
+      </Suspense>
+      <Suspense>
+        <About />
+      </Suspense>
+      <Suspense>
+        <Services />
+      </Suspense>
+      <Suspense>
+        <Workflow />
+      </Suspense>
+      <Suspense>
+        <Showcase />
+      </Suspense>
+      <Suspense>
+        <PricingFaqs />
+      </Suspense>
     </>
   );
 };

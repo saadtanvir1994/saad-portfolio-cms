@@ -13,7 +13,7 @@ const NavigationMenu = ({ menuContent }: { menuContent: MainMenuContent }) => {
   return (
     <>
       {/* Hamburger Button */}
-      <div className="fixed left-1/2 right-4 top-6 z-50 flex w-full -translate-x-1/2 items-center justify-between px-4 md:px-12 mix-blend-difference">
+      <div className="fixed left-1/2 right-4 top-6 z-50 flex w-full -translate-x-1/2 items-center justify-between px-12 mix-blend-difference">
         <Link href="/" aria-label="Home">
           <div className="relative h-[64px] w-[64px] animate-spin-slow">
             <Image

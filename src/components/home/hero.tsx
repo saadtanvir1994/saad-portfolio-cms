@@ -166,9 +166,9 @@ const Hero = ({ heroContent }: { heroContent: HeroContent }) => {
               </p>
               <div className="text-center">
                 <AnimatedCTAButton
-                  ariaLabel="Start a Project"
-                  href="/"
-                  text="Start a Project"
+                  ariaLabel={heroContent["cta-button"].label}
+                  href={heroContent["cta-button"].href}
+                  text={heroContent["cta-button"].label}
                 />
               </div>
             </div>

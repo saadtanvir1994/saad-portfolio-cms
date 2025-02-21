@@ -28,9 +28,9 @@ const About = async () => {
           </div>
           <div className="flex items-end justify-end md:col-span-6">
             <AnimatedCTAButton
-              ariaLabel="About Me"
-              href="/"
-              text="About Me"
+              ariaLabel={aboutContent["action-button"].label}
+              href={aboutContent["action-button"].href}
+              text={aboutContent["action-button"].label}
               variant="light"
               className="mb-0 ml-auto mr-0 md:mb-8"
             />

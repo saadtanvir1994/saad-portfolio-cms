@@ -18,9 +18,7 @@ const PricingItem = ({ item }: { item: PricingItemContent }) => {
           </div>
           <div className="flex items-baseline gap-2">
             <h4
-              className={`mb-2 mt-4 text-center text-6xl tracking-tighter md:mt-8 md:text-left md:text-7xl ${
-                !item.primary && "font-heading"
-              }`}
+              className="mb-2 mt-4 text-center text-6xl tracking-tighter md:mt-8 md:text-left md:text-7xl"
             >
               {item.price}
             </h4>

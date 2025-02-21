@@ -90,7 +90,7 @@ const About = async () => {
       <InfiniteMarquee
         items={aboutContent["infinite-marquee-items"]}
         gap={40}
-        className="text-5xl font-semibold uppercase text-[--gray-900]"
+        className="text-5xl font-light uppercase text-[--gray-900]"
       />
     </section>
   );

@@ -54,6 +54,7 @@ export interface AboutContent extends Content {
   "marquee-text": string[];
   headline: string;
   paragraphs: string[];
+  "infinite-marquee-items": string[];
 }
 
 export interface ServiceItem extends Content {

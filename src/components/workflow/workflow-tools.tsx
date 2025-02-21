@@ -1,5 +1,4 @@
-// import Image from 'next/image';
-import SpriteIcon from '../ui/sprite-icon';
+import Image from 'next/image';
 
 const WorkflowTools = () => {
   const logos = [
@@ -48,14 +47,9 @@ const WorkflowTools = () => {
           {logos.map((logo, index) =>
             <div className="w-auto p-1.5 transition duration-200" key={index}>
               <div className="flex items-center rounded-full border border-gray-300 bg-white px-6 py-2.5 transition duration-200 hover:bg-gray-100">
-                {/* <Image
+                <Image
                   src={logo.src}
                   alt={logo.name}
-                  height={22}
-                  width={22}
-                /> */}
-                <SpriteIcon
-                  name={logo.name}
                   height={22}
                   width={22}
                 />

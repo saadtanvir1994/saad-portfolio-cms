@@ -13,7 +13,9 @@ const AboutStats = ({ content }: { content: StatsContent }) => {
               src={getMediaUrl(content["main-image"])}
               alt={content["main-image"].caption}
               className="h-full w-full rounded-lg object-cover"
-              fill
+              width={0}
+              height={0}
+              style={{ width: "100%", height: "auto" }}
             />
           </div>
 
@@ -24,7 +26,9 @@ const AboutStats = ({ content }: { content: StatsContent }) => {
                 src={getMediaUrl(content["first-stat-image"].image)}
                 alt={content["first-stat-image"].image.caption}
                 className="h-full w-full rounded-lg object-cover"
-                fill
+                width={0}
+                height={0}
+                style={{ width: "100%", height: "auto" }}
               />
               <div className="absolute left-4 top-4">
                 <p className="text-sm text-[var(--gray-900)] mix-blend-difference">
@@ -55,7 +59,9 @@ const AboutStats = ({ content }: { content: StatsContent }) => {
                 src={getMediaUrl(content["second-stat-image"].image)}
                 alt={content["second-stat-image"].image.caption}
                 className="h-full w-full rounded-lg object-cover"
-                fill
+                width={0}
+                height={0}
+                style={{ width: "100%", height: "auto" }}
               />
             </div>
           </div>

@@ -1,6 +1,7 @@
 import SimpleCta from "@/components/ui/simple-cta";
 import Typography from "@/components/ui/typography";
 import { CapabilitiesContent } from "@/lib/definitions";
+import React from "react";
 
 const Capabilities = ({ content }: { content: CapabilitiesContent }) => {
   return (
@@ -18,16 +19,18 @@ const Capabilities = ({ content }: { content: CapabilitiesContent }) => {
                 className="mb-6 !w-[100%] uppercase"
               >
                 {content.title.split(" ").map((word, index) =>
-                  index === 0 ? (
-                    word + " "
-                  ) : index === 1 ? (
-                    <>
-                      <br />
-                      {word + " "}
-                    </>
-                  ) : (
-                    word + " "
-                  )
+                  <React.Fragment key={index}>
+                    {index === 0 ? (
+                      word + " "
+                    ) : index === 1 ? (
+                      <>
+                        <br />
+                        {word + " "}
+                      </>
+                    ) : (
+                      word + " "
+                    )}
+                  </React.Fragment>
                 )}
               </Typography>
             </div>
@@ -46,7 +49,7 @@ const Capabilities = ({ content }: { content: CapabilitiesContent }) => {
               </p>
               <ul className="flex flex-col gap-4">
                 {service.items.map((item, id) => (
-                  <li key={id}>
+                  <li key={`${index}-${id}`}>
                     <SimpleCta name={item.label} href={item.url} />
                   </li>
                 ))}

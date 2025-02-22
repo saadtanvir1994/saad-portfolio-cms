@@ -9,7 +9,7 @@ const ImageSet = ({ images }: { images: MediaContent[] }) => {
         <div key={index} className="relative h-[390px] w-[410px] overflow-hidden rounded-3xl">
           <Image
             src={getMediaUrl(image)}
-            alt={image.caption}
+            alt={image.caption || "Project Image"}
             fill
             className="object-cover"
             loading="lazy"

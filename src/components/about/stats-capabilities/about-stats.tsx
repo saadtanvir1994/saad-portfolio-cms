@@ -15,7 +15,7 @@ const AboutStats = ({ content }: { content: StatsContent }) => {
               className="h-full w-full rounded-lg object-cover"
               width={0}
               height={0}
-              style={{ width: "100%", height: "auto" }}
+              style={{ width: "100%", height: "100%" }}
             />
           </div>
 
@@ -28,7 +28,7 @@ const AboutStats = ({ content }: { content: StatsContent }) => {
                 className="h-full w-full rounded-lg object-cover"
                 width={0}
                 height={0}
-                style={{ width: "100%", height: "auto" }}
+                style={{ width: "100%", height: "100%" }}
               />
               <div className="absolute left-4 top-4">
                 <p className="text-sm text-[var(--gray-900)] mix-blend-difference">
@@ -61,7 +61,7 @@ const AboutStats = ({ content }: { content: StatsContent }) => {
                 className="h-full w-full rounded-lg object-cover"
                 width={0}
                 height={0}
-                style={{ width: "100%", height: "auto" }}
+                style={{ width: "100%", height: "100%" }}
               />
             </div>
           </div>

@@ -5,6 +5,7 @@ import {
   AboutContent,
   Content,
   FooterContent,
+  FunfactsContent,
   HeroContent,
   InnerHeroContent,
   LogosContent,
@@ -26,7 +27,7 @@ const getResources = async (slug: string) => {
   const data = await res.json();
 
   return data.data!.content.data;
-}
+};
 
 const getResource = async (slug: string) => (await getResources(slug))[0];
 
@@ -120,8 +121,9 @@ export const getHomepageMetadata = async () => await getMetadata("homepage");
 export const getInnerHeroContent = async (path: string) => {
   const items = await getResources("hero-inner");
 
-  return items.find((item: any) => item.values.path === path).values as unknown as InnerHeroContent;
-}
+  return items.find((item: any) => item.values.path === path)
+    .values as unknown as InnerHeroContent;
+};
 
 export const getStatsCapabilitiesContet = async () =>
   (await getContent(
@@ -130,3 +132,6 @@ export const getStatsCapabilitiesContet = async () =>
 
 export const getMilestonesHiringContent = async () =>
   (await getContent("milestones-hire")) as unknown as MilestonesHireContent;
+
+export const getAboutFunFactsContent = async () =>
+  (await getContent("about-fun-facts")) as unknown as FunfactsContent;

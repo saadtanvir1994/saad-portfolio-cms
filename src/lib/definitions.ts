@@ -271,3 +271,16 @@ export interface MilestonesHireContent {
   milestones: MilestonesContent;
   hiring: HireMeContent;
 }
+
+export interface FunfactItem {
+  label: string;
+  number: number;
+  color: "black" | "orange";
+  height: number;
+}
+
+export interface FunfactsContent {
+  subtitle: string;
+  title: string;
+  items: FunfactItem[];
+}

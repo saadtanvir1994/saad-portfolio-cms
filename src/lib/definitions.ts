@@ -204,6 +204,13 @@ export interface MetadataContent extends Content {
 
 // About Page Content
 
+export interface InnerHeroContent {
+  path: string;
+  title: string;
+  description: string;
+  "cta-button": ActionButton;
+}
+
 interface NumberText {
   number: string;
   text: string;

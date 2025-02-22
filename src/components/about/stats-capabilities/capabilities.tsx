@@ -17,7 +17,18 @@ const Capabilities = ({ content }: { content: CapabilitiesContent }) => {
                 variant="display-2"
                 className="mb-6 !w-[100%] uppercase"
               >
-                {content.title}
+                {content.title.split(" ").map((word, index) =>
+                  index === 0 ? (
+                    word + " "
+                  ) : index === 1 ? (
+                    <>
+                      <br />
+                      {word + " "}
+                    </>
+                  ) : (
+                    word + " "
+                  )
+                )}
               </Typography>
             </div>
           </div>

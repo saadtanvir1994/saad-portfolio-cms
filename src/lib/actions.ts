@@ -6,6 +6,7 @@ import {
   Content,
   FooterContent,
   HeroContent,
+  InnerHeroContent,
   LogosContent,
   MainMenuContent,
   MetadataContent,
@@ -19,13 +20,15 @@ import {
 
 const apiUrl = process.env.NEXT_PUBLIC_CMS_URL + "/api";
 
-const getResource = async (slug: string) => {
+const getResources = async (slug: string) => {
   const url = `${apiUrl}/collections/${slug}/content`;
   const res = await fetch(url);
   const data = await res.json();
 
-  return data.data!.content.data[0];
-};
+  return data.data!.content.data;
+}
+
+const getResource = async (slug: string) => (await getResources(slug))[0];
 
 const getContent = async (slug: string) =>
   (await getResource(slug)).values as Content;
@@ -113,6 +116,12 @@ export const getHomepageContent = async () => await getContent("homepage");
 export const getHomepageMetadata = async () => await getMetadata("homepage");
 
 // About Page
+
+export const getInnerHeroContent = async (path: string) => {
+  const items = await getResources("hero-inner");
+
+  return items.find((item: any) => item.values.path === path).values as unknown as InnerHeroContent;
+}
 
 export const getStatsCapabilitiesContet = async () =>
   (await getContent(

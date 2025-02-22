@@ -49,7 +49,7 @@ const NavigationMenu = ({ menuContent }: { menuContent: MainMenuContent }) => {
 
       {/* Side Navigation Menu */}
       <div
-        className={`fixed right-0 top-4 z-50 h-[90vh] w-[95%] transform overflow-hidden rounded-lg bg-white transition-transform duration-300 ease-in-out md:h-[75vh] md:w-[616px] ${
+        className={`fixed right-0 top-4 bottom-4 z-50 h-screen w-[95%] transform overflow-hidden rounded-lg bg-white transition-transform duration-300 ease-in-out md:w-[616px] ${
           isOpen ? "-translate-x-4" : "translate-x-full"
         }`}
       >

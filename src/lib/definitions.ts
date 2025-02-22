@@ -23,7 +23,7 @@ export interface ActionButton {
 }
 
 export interface MainMenuContent extends Content {
-  "logo": MediaContent;
+  logo: MediaContent;
   "logo-dark": MediaContent;
   "logo-light": MediaContent;
   "action-button": ActionButton;
@@ -77,7 +77,7 @@ export interface ServicesContent extends Content {
   tagline: string;
   heading: string;
   description: string;
-  items: ServiceItem[];
+  items: ServiceItemContent[];
 }
 
 export interface TechnologiesContent extends Content {
@@ -200,4 +200,67 @@ export interface MetadataContent extends Content {
   type: string;
   canonicalUrl: string;
   keywords: string;
+}
+
+// About Page Content
+
+interface NumberText {
+  number: string;
+  text: string;
+}
+
+interface ImageText {
+  image: MediaContent;
+  text: string;
+}
+
+export interface StatsContent {
+  "main-image": MediaContent;
+  "first-stat-image": ImageText;
+  "first-stat-text": NumberText;
+  "second-stat-image": ImageText;
+  "second-stat-text": NumberText;
+}
+
+interface ServiceItemContent {
+  service: string;
+  items: {
+    label: string;
+    url: string;
+  }[];
+}
+
+export interface CapabilitiesContent {
+  subtitle: string;
+  title: string;
+  paragraph: string;
+  services: ServiceItemContent[];
+}
+
+export interface StatsCapabilitiesContent {
+  stats: StatsContent;
+  capabilities: CapabilitiesContent;
+}
+
+export interface MilestonesContent {
+  subtitle: string;
+  title: string;
+  paragraph: string;
+  "action-button": ActionButton;
+  statistics: NumberText[];
+}
+
+export interface HireMeContent {
+  title: string;
+  image: MediaContent;
+  reasons: {
+    "icon-name": IconName;
+    title: string;
+    description: string;
+  }[];
+}
+
+export interface MilestonesHireContent {
+  milestones: MilestonesContent;
+  hiring: HireMeContent;
 }

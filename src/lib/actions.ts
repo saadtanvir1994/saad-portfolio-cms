@@ -9,9 +9,11 @@ import {
   LogosContent,
   MainMenuContent,
   MetadataContent,
+  MilestonesHireContent,
   PricingFaqsContent,
   ServicesContent,
   ShowcaseContent,
+  StatsCapabilitiesContent,
   WorkflowContent,
 } from "@/lib/definitions";
 
@@ -23,19 +25,19 @@ const getResource = async (slug: string) => {
   const data = await res.json();
 
   return data.data!.content.data[0];
-}
+};
 
-const getContent = async (slug: string) => (await getResource(slug)).values as Content;
+const getContent = async (slug: string) =>
+  (await getResource(slug)).values as Content;
 
 const getMetadata = async (slug: string) => {
   let metadata = (await getResource(slug)).metadata as any;
-  
+
   if (typeof metadata.structuredData === "string") {
     try {
       const data = JSON.parse(metadata.structuredData);
       metadata = Object.assign(metadata, data);
-    } catch {
-    }
+    } catch {}
   }
 
   return metadata as MetadataContent;
@@ -109,3 +111,13 @@ export const getFooterContent = async () =>
 export const getHomepageContent = async () => await getContent("homepage");
 
 export const getHomepageMetadata = async () => await getMetadata("homepage");
+
+// About Page
+
+export const getStatsCapabilitiesContet = async () =>
+  (await getContent(
+    "stats-capabilities"
+  )) as unknown as StatsCapabilitiesContent;
+
+export const getMilestonesHiringContent = async () =>
+  (await getContent("milestones-hire")) as unknown as MilestonesHireContent;

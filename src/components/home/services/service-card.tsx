@@ -1,14 +1,14 @@
 import Typography from "@/components/ui/typography";
 import AnimatedCTAButton from "@/components/ui/animated-cta-button";
 import { DynamicIcon } from "lucide-react/dynamic";
-import { ServiceWithSubservices } from "@/lib/definitions";
+import { ServiceItem } from "@/lib/definitions";
 import ServiceCardWrapper from "@/components/home/services/service-card-wrapper";
 
 const ServiceCard = ({
   item,
   index,
 }: {
-  item: ServiceWithSubservices;
+  item: ServiceItem;
   index: number;
 }) => {
   return (

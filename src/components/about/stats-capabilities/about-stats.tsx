@@ -9,30 +9,37 @@ const AboutStats = ({ content }: { content: StatsContent }) => {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
           {/* Main Image - Spans 2 rows */}
           <div className="relative md:col-span-6">
-            <Image
-              src={getMediaUrl(content["main-image"])}
-              alt={content["main-image"].caption}
-              className="h-full w-full rounded-lg object-cover"
-              fill
-            />
+            <div className="relative aspect-square overflow-hidden rounded-lg">
+              <Image
+                src={getMediaUrl(content["main-image"])}
+                alt={content["main-image"].caption}
+                className="object-cover"
+                fill
+                loading="lazy"
+              />
+            </div>
           </div>
 
           {/* Surface Laptop Image */}
           <div className="grid grid-rows-2 gap-4 md:col-span-3">
             <div className="relative">
-              <Image
-                src={getMediaUrl(content["first-stat-image"].image)}
-                alt={content["first-stat-image"].image.caption}
-                className="h-full w-full rounded-lg object-cover"
-                fill
-              />
-              <div className="absolute left-4 top-4">
+              <div className="relative aspect-square overflow-hidden rounded-lg">
+                <Image
+                  src={getMediaUrl(content["first-stat-image"].image)}
+                  alt={content["first-stat-image"].image.caption}
+                  className="object-cover"
+                  loading="lazy"
+                  fill
+                />
+              </div>
+
+              <div className="absolute left-6 top-8">
                 <p className="text-sm text-[var(--gray-900)] mix-blend-difference">
                   {content["first-stat-image"].text}
                 </p>
               </div>
             </div>
-            <div className="relative rounded-lg bg-[var(--gray-50)] p-8">
+            <div className="relative aspect-square rounded-lg bg-[var(--gray-50)] p-8">
               <p className="mb-4 text-sm text-[var(--gray-600)]">
                 {content["first-stat-text"].text}
               </p>
@@ -50,12 +57,13 @@ const AboutStats = ({ content }: { content: StatsContent }) => {
                 {content["second-stat-text"].number}
               </h3>
             </div>
-            <div className="relative">
+            <div className="relative aspect-square overflow-hidden rounded-lg">
               <Image
                 src={getMediaUrl(content["second-stat-image"].image)}
                 alt={content["second-stat-image"].image.caption}
-                className="h-full w-full rounded-lg object-cover"
+                className="object-cover"
                 fill
+                loading="lazy"
               />
             </div>
           </div>

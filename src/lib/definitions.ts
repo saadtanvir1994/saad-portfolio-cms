@@ -77,7 +77,7 @@ export interface ServicesContent extends Content {
   tagline: string;
   heading: string;
   description: string;
-  items: ServiceItemContent[];
+  items: ServiceItem[];
 }
 
 export interface TechnologiesContent extends Content {

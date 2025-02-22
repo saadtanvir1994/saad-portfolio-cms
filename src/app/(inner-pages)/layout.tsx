@@ -1,6 +1,12 @@
-const InnerPagesLayout = () => {
+const InnerPagesLayout = ({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) => {
   return (
-    <div>InnerPagesLayout</div>
+    <div>
+      {children}
+    </div>
   )
 }
 

@@ -33,6 +33,7 @@ const LogosBlock = async () => {
                         alt={"Client Logo " + idx}
                         width={100}
                         height={40}
+                        loading="lazy"
                       />
                     </div>
                   ))}

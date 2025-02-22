@@ -61,6 +61,7 @@ export interface AboutContent extends Content {
   headline: string;
   paragraphs: string[];
   "infinite-marquee-items": string[];
+  "marquee-images": MediaContent[];
 }
 
 export interface ServiceItem extends Content {

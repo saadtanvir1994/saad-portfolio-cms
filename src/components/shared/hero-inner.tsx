@@ -1,14 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Wand } from "lucide-react";
 import Image from "next/image";
 import AnimatedCTAButton from "@/components/ui/animated-cta-button";
 import Typography from "@/components/ui/typography";
-// import { getInnerHeroContent } from "@/lib/actions";
+import { getInnerHeroContent } from "@/lib/actions";
 
 const HeroSectionInner = async ({ path }: { path: string }) => {
-  // const content = await getInnerHeroContent(path);
+  const content = await getInnerHeroContent(path);
 
-  // if (!content) return null;
+  if (!content) return null;
 
   return (
     <div className="dark relative mx-4 my-4 mb-0 flex min-h-[95vh] items-center overflow-hidden rounded-3xl bg-gray-100 bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-[--gray-0] via-[#161616] to-[--gray-0] text-[var(--gray-500)]">
@@ -25,15 +24,15 @@ const HeroSectionInner = async ({ path }: { path: string }) => {
               Design for Loyalty. Develop for Longevity.
             </Typography>
             <h1 className="text-2xl uppercase !leading-tight tracking-tighter text-[var(--text-primary)] md:text-5xl exact-2xl:text-7xl">
-              Freelance Website Designer, Professional SEO Expert, Nextjs Developer
+              {content.title}
             </h1>
             <p className="text-md text-[var(--text-tertiary)] md:max-w-[80%] md:!text-lg">
-              We invent unique, consistent and memorable branding for bold clients. We invent unique, consistent and memorable branding for bold clients.
+              {content.description}
             </p>
             <AnimatedCTAButton
-              href="/"
-              text="Hire Web Designer"
-              ariaLabel="Hire Web Designer"
+              href={content["cta-button"].href}
+              text={content["cta-button"].label}
+              ariaLabel={content["cta-button"].label}
             />
           </div>
           <div className="order-2 flex h-full flex-col items-end justify-end gap-6 px-0 md:px-4">

@@ -1,7 +1,7 @@
 import { getWorkflowContent } from "@/lib/actions";
-import Technologies from "@/components/workflow/technologies";
-import ExpectationsSection from "@/components/workflow/expectations-section";
-import WorkStages from "@/components/workflow/work-stages";
+import Technologies from "@/components/home/workflow/technologies";
+import ExpectationsSection from "@/components/home/workflow/expectations-section";
+import WorkStages from "@/components/home/workflow/work-stages";
 
 const Workflow = async () => {
   const {

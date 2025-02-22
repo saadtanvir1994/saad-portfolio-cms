@@ -1,5 +1,5 @@
 import Typography from "@/components/ui/typography";
-import TestimonialsCarousel from "@/components/showcase/testimonials-carousel";
+import TestimonialsCarousel from "@/components/home/showcase/testimonials-carousel";
 import { TestimonialsContent } from "@/lib/definitions";
 
 const TestimonialsSection = async ({

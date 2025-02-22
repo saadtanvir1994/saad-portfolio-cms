@@ -2,10 +2,9 @@ import Typography from "@/components/ui/typography";
 import AnimatedCTAButton from "@/components/ui/animated-cta-button";
 import { DynamicIcon } from "lucide-react/dynamic";
 import { ServiceItem } from "@/lib/definitions";
-import ServiceCardWrapper from "@/components/services/service-card-wrapper";
+import ServiceCardWrapper from "@/components/home/services/service-card-wrapper";
 
 const ServiceCard = ({ item, index }: { item: ServiceItem; index: number }) => {
-
   return (
     <ServiceCardWrapper index={index}>
       {/* Front side */}

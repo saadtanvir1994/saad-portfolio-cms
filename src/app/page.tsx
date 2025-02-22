@@ -1,10 +1,10 @@
 import Hero from "@/components/home/hero-section";
 import LogosBlock from "@/components/home/logos-block";
 import About from "@/components/home/about";
-import Services from "@/components/services";
-import Workflow from "@/components/workflow";
-import Showcase from "@/components/showcase";
-import PricingFaqs from "@/components/pricing-faqs";
+import Services from "@/components/home/services";
+import Workflow from "@/components/home/workflow";
+import Showcase from "@/components/home/showcase";
+import PricingFaqs from "@/components/home/pricing-faqs";
 import type { Metadata } from "next";
 import { getHomepageMetadata } from "@/lib/actions";
 import { Suspense } from "react";

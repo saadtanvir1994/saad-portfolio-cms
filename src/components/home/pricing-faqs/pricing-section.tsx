@@ -2,7 +2,7 @@ import AnimatedCTAButton from "@/components/ui/animated-cta-button";
 import TopRightCTA from "@/components/ui/top-cta";
 import Typography from "@/components/ui/typography";
 import { PricingContent } from "@/lib/definitions";
-import PricingItem from "@/components/pricing-faqs/pricing-item";
+import PricingItem from "@/components/home/pricing-faqs/pricing-item";
 
 const ContactSection = () => {
   return (

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Asterisk, Check } from "lucide-react";
 import Typography from "@/components/ui/typography";
-import PortfolioItemsWrapper from "@/components/showcase/portfolio-items-wrapper";
+import PortfolioItemsWrapper from "@/components/home/showcase/portfolio-items-wrapper";
 import { PortfolioItemContent } from "@/lib/definitions";
 import { getMediaUrl } from "@/utils/all";
 

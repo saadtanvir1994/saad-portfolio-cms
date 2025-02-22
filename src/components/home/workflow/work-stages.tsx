@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import React, { useRef } from "react";
 import HeadingWithVideo from "@/components/ui/heading-with-video";
 import { WorkStagesContent } from "@/lib/definitions";
-import StageCard from "@/components/workflow/stage-card";
+import StageCard from "@/components/home/workflow/stage-card";
 
 const WorkStages = ({ content }: { content: WorkStagesContent }) => {
   const containerRef = useRef<HTMLDivElement>(null);

@@ -1,4 +1,4 @@
-import FaqItem from "@/components/pricing-faqs/faq-item";
+import FaqItem from "@/components/home/pricing-faqs/faq-item";
 import Typography from "@/components/ui/typography";
 import { FaqsContent } from "@/lib/definitions";
 

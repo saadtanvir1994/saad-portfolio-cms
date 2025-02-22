@@ -1,6 +1,6 @@
 import Typography from "@/components/ui/typography";
-import ServiceCard from "@/components/services/service-card";
-import ServicesWrapper from "@/components/services/services-wrapper";
+import ServiceCard from "@/components/home/services/service-card";
+import ServicesWrapper from "@/components/home/services/services-wrapper";
 import { getServicesContent } from "@/lib/actions";
 
 const Services = async () => {

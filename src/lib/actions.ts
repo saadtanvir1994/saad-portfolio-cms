@@ -135,3 +135,7 @@ export const getMilestonesHiringContent = async () =>
 
 export const getAboutFunFactsContent = async () =>
   (await getContent("about-fun-facts")) as unknown as FunfactsContent;
+
+export const getAboutPageContent = async () => await getContent("about-page");
+
+export const getAboutPageMetadata = async () => await getMetadata("about-page");

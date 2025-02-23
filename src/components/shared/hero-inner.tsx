@@ -2,13 +2,9 @@ import { Wand } from "lucide-react";
 import Image from "next/image";
 import AnimatedCTAButton from "@/components/ui/animated-cta-button";
 import Typography from "@/components/ui/typography";
-import { getInnerHeroContent } from "@/lib/actions";
+import { InnerHeroContent } from "@/lib/definitions";
 
-const HeroSectionInner = async ({ path }: { path: string }) => {
-  const content = await getInnerHeroContent(path);
-
-  if (!content) return null;
-
+const HeroSectionInner = async ({ content }: { content: InnerHeroContent }) => {
   return (
     <div className="dark relative mx-4 my-4 mb-0 flex min-h-[95vh] items-center overflow-hidden rounded-3xl bg-gray-100 bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-[--gray-0] via-[#161616] to-[--gray-0] text-[var(--gray-500)]">
       {/* Navigation padding */}

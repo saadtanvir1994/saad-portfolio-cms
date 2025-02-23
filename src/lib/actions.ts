@@ -13,6 +13,7 @@ import {
   MetadataContent,
   MilestonesHireContent,
   PricingFaqsContent,
+  ServiceContent,
   ServicesContent,
   ShowcaseContent,
   StatsCapabilitiesContent,
@@ -21,8 +22,8 @@ import {
 
 const apiUrl = process.env.NEXT_PUBLIC_CMS_URL + "/api";
 
-const getResources = async (slug: string) => {
-  const url = `${apiUrl}/collections/${slug}/content`;
+const getResources = async (slug: string, query = "") => {
+  const url = `${apiUrl}/collections/${slug}/content${query ? ("?s=" + query) : ""}`;
   const res = await fetch(url);
   const data = await res.json();
 
@@ -118,10 +119,10 @@ export const getHomepageMetadata = async () => await getMetadata("homepage");
 
 // About Page
 
-export const getInnerHeroContent = async (path: string) => {
+export const getInnerHeroContent = async (slug: string) => {
   const items = await getResources("hero-inner");
 
-  return items.find((item: any) => item.values.path === path)
+  return items.find((item: any) => item.values.slug === slug)
     .values as unknown as InnerHeroContent;
 };
 
@@ -139,3 +140,20 @@ export const getAboutFunFactsContent = async () =>
 export const getAboutPageContent = async () => await getContent("about-page");
 
 export const getAboutPageMetadata = async () => await getMetadata("about-page");
+
+export const getAllServicesSlug = async () => {
+  const items = (await getResources("service-page")).map((item: any) => item.values);
+
+  return items.map((item: any) => ({ slug: item.slug.split("/").slice(2) }));
+}
+
+export const getServiceContent = async (slug: string) => {
+  const items = await getResources("service-page", slug);
+
+  const content = items.find((item: any) => item.values.slug === slug).values as any;
+
+  content.hero = content.hero.values;
+  content.subservices = content.subservices.values;
+
+  return content as ServiceContent;
+}

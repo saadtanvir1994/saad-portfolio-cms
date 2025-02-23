@@ -206,6 +206,7 @@ export interface MetadataContent extends Content {
 
 export interface InnerHeroContent {
   path: string;
+  slug: string;
   title: string;
   description: string;
   "cta-button": ActionButton;
@@ -283,4 +284,24 @@ export interface FunfactsContent {
   subtitle: string;
   title: string;
   items: FunfactItem[];
+}
+
+// Services Page
+
+export interface SubserviceItem {
+  "icon-name": IconName;
+  title: string;
+  description: string;
+}
+
+export interface SubservicesContent {
+  title: string;
+  description: string;
+  subservices: SubserviceItem[];
+}
+
+export interface ServiceContent {
+  slug: string;
+  hero: InnerHeroContent;
+  subservices: SubservicesContent;
 }

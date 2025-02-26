@@ -23,7 +23,7 @@ import { exec } from "child_process";
 
 const apiUrl = process.env.NEXT_PUBLIC_CMS_URL + "/api";
 
-export const regenerateSitemap = () => {
+export const regenerateSitemap = async () => {
   try {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     exec("pnpm run postbuild", (error, stdout, stderr) => {

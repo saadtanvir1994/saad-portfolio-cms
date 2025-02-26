@@ -177,3 +177,13 @@ export const getServiceContent = async (slug: string) => {
 
   return content as ServiceContent;
 };
+
+export const getAllServicesUrls = async () => {
+  const items = await getResources("service-page");
+
+  return items.map((item: any) => ({
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}${item.values.slug}`,
+    lastModified: item.updated_at,
+    frequency: "monthly",
+  }));
+}

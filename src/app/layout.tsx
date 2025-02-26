@@ -5,6 +5,7 @@ import ClientLayoutWrapper from "@/components/layout/client-layout-wrapper";
 import { getMenuContent } from "@/lib/actions";
 import Footer from "@/components/layout/footer";
 import NavigationMenu from "@/components/layout/navigation-menu";
+import HrefLangTag from "@/components/shared/href-lang-tag";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,6 +35,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <HrefLangTag />
+      </head>
       <body className={`${inter.variable} antialiased`}>
         <ClientLayoutWrapper>
           <div className="overflow-hidden">

@@ -18,10 +18,10 @@ export const metadata: Metadata = {
   description:
     "Crafting seamless user experiences, stunning designs, and powerful SEO solutions to help your brand shine. Your all-in-one expert for digital success.",
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
   other: {
-    seobility: 'a266dca5342da97d7f48374d8961496e',
+    seobility: "a266dca5342da97d7f48374d8961496e",
   },
 };
 

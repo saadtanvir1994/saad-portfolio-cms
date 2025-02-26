@@ -8,10 +8,11 @@ import PricingFaqs from "@/components/home/pricing-faqs";
 import type { Metadata } from "next";
 import { getHomepageMetadata } from "@/lib/actions";
 import { Suspense } from "react";
+import HomepageSchema from "@/components/schemas/homepage-schema";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const metadata = await getHomepageMetadata();
- 
+
   return {
     title: metadata.metaTitle,
     description: metadata.metaDescription,
@@ -27,8 +28,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
       images: [metadata.metaImage],
     },
     keywords: metadata.keywords,
-  }
-}
+  };
+};
 
 const Home = () => {
   return (
@@ -54,6 +55,7 @@ const Home = () => {
       <Suspense>
         <PricingFaqs />
       </Suspense>
+      <HomepageSchema />
     </>
   );
 };

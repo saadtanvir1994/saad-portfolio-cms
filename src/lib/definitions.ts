@@ -200,6 +200,7 @@ export interface MetadataContent extends Content {
   type: string;
   canonicalUrl: string;
   keywords: string;
+  structuredData: string;
 }
 
 // About Page Content

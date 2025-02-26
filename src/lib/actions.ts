@@ -19,23 +19,8 @@ import {
   StatsCapabilitiesContent,
   WorkflowContent,
 } from "@/lib/definitions";
-import { exec } from "child_process";
 
 const apiUrl = process.env.NEXT_PUBLIC_CMS_URL + "/api";
-
-export const regenerateSitemap = async () => {
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    exec("pnpm run postbuild", (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error regenerating sitemap: ${error}`);
-      }
-      console.log(`Sitemap regenerated: ${stdout}`);
-    });
-  } catch (error) {
-    console.error(`Error regenerating sitemap: ${error}`);
-  }
-};
 
 const getResources = async (slug: string, query = "") => {
   const url = `${apiUrl}/collections/${slug}/content${

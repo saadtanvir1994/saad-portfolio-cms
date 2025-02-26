@@ -5,6 +5,7 @@ import MilestonesHiring from "@/components/about/milestones-hiring";
 import StatsCapabilities from "@/components/about/stats-capabilities";
 import { getAboutPageMetadata } from "@/lib/actions";
 import type { Metadata } from "next";
+import AboutPageSchema from "@/components/schemas/about-page-schema";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const metadata = await getAboutPageMetadata();
@@ -29,13 +30,16 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const AboutPage = () => {
   return (
-    <div>
-      <AboutHeroWrapper />
-      <About />
-      <StatsCapabilities />
-      <MilestonesHiring />
-      <FunFacts />
-    </div>
+    <>
+      <div>
+        <AboutHeroWrapper />
+        <About />
+        <StatsCapabilities />
+        <MilestonesHiring />
+        <FunFacts />
+      </div>
+      <AboutPageSchema />
+    </>
   );
 };
 

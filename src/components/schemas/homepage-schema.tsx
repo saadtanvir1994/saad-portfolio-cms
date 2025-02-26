@@ -1,4 +1,6 @@
 import { getHomepageMetadata, getMenuContent } from "@/lib/actions";
+import { getSchemas } from "@/utils/all";
+import PageSchema from "./page-schema";
 
 const getNavigationSchema = async () => {
   const menuContent = await getMenuContent();
@@ -11,34 +13,11 @@ const getNavigationSchema = async () => {
   };
 };
 
-const getOtherSchemas = async () => {
-  const homepageMetadata = await getHomepageMetadata();
-
-  const structuredData = await JSON.parse(homepageMetadata.structuredData);
-  if (structuredData) {
-    return structuredData.structuredSchemas as unknown[];
-  }
-
-  return []
-}
-
 const HomepageSchema = async () => {
   const navigationSchema = await getNavigationSchema();
-  const otherSchemas = await getOtherSchemas();
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [
-            navigationSchema,
-            ...otherSchemas,
-          ],
-        }),
-      }}
-    />
-  );
+  const otherSchemas = await getSchemas(getHomepageMetadata);
+
+  return <PageSchema schemas={[navigationSchema, ...otherSchemas]} />
 };
 
 export default HomepageSchema;

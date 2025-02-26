@@ -1,7 +1,7 @@
 import HeroSectionInner from "@/components/shared/hero-inner";
 import { getAllServicesSlug, getServiceContent } from "@/lib/actions";
 import { notFound } from "next/navigation";
-import SubServices from "../../../components/services/sub-services";
+import SubServices from "@/components/services/sub-services";
 
 export const generateStaticParams = async () => await getAllServicesSlug();
 

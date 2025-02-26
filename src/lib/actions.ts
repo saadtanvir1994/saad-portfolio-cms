@@ -184,6 +184,6 @@ export const getAllServicesUrls = async () => {
   return items.map((item: any) => ({
     url: `${process.env.NEXT_PUBLIC_SITE_URL}${item.values.slug}`,
     lastModified: item.updated_at,
-    frequency: "monthly",
+    changeFrequency: "monthly",
   }));
 }

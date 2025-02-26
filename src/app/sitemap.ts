@@ -8,7 +8,7 @@ export default async function sitemap() {
   const routes = menuContent.links.map(link => ({
     url: `${URL}${link.href}`,
     lastModified: new Date().toISOString(),
-    frequency: "monthly",
+    changeFrequency: "monthly",
     priority: 1,
   }));
 

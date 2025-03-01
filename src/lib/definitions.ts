@@ -184,12 +184,15 @@ export interface PricingFaqsContent extends Content {
 
 export interface FooterContent extends Content {
   heading: string;
-  "action-buttons": ActionButton[];
+  "action-button": ActionButton;
   logo: MediaContent;
   "social-links": {
     label: string;
     url: string;
   }[];
+  locations: string[];
+  "company-details": string[];
+  email: string;
 }
 
 export interface MetadataContent extends Content {

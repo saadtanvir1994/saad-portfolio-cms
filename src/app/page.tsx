@@ -9,6 +9,7 @@ import type { Metadata } from "next";
 import { getHomepageMetadata } from "@/lib/actions";
 import { Suspense } from "react";
 import HomepageSchema from "@/components/schemas/homepage-schema";
+import BlogSection from "@/components/blog/blog-section";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const metadata = await getHomepageMetadata();
@@ -55,6 +56,7 @@ const Home = () => {
       <Suspense>
         <PricingFaqs />
       </Suspense>
+      <BlogSection />
       <HomepageSchema />
     </>
   );

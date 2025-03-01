@@ -3,6 +3,8 @@
 
 import {
   AboutContent,
+  BlogCategory,
+  BlogContent,
   Content,
   FooterContent,
   FunfactsContent,
@@ -22,9 +24,9 @@ import {
 
 const apiUrl = process.env.NEXT_PUBLIC_CMS_URL + "/api";
 
-const getResources = async (slug: string, query = "") => {
+const getResources = async (slug: string, ...params: string[]) => {
   const url = `${apiUrl}/collections/${slug}/content${
-    query ? "?s=" + query : ""
+    params ? ("?" + params.join("&")) : ""
   }`;
   const res = await fetch(url);
   const data = await res.json();
@@ -152,7 +154,7 @@ export const getAllServicesSlug = async () => {
 };
 
 export const getServiceContent = async (slug: string) => {
-  const items = await getResources("service-page", slug);
+  const items = await getResources("service-page", `s=${slug}`);
 
   const content = items.find((item: any) => item.values.slug === slug)
     .values as any;
@@ -171,4 +173,34 @@ export const getAllServicesUrls = async () => {
     lastModified: item.updated_at,
     changeFrequency: "monthly",
   }));
+}
+
+const transformBlogItem = (item: any) => {
+  const properties = ["created_at", "updated_at", "published_at"];
+  const propertiesObj = properties.reduce((obj, prop) => ({ ...obj, [prop]: item[prop] }), {});
+  
+  item = item.values;
+  item.author = item?.author?.values;
+  item.categories = item.categories.map((category: any) => category.values);
+  
+  return Object.assign(item, propertiesObj) as BlogContent
+}
+
+export const getLatestBlogs = async (amount: number = 2) => {
+  const blogItems = await getResources("blog", `offset=${amount}`);
+
+  return blogItems.map(transformBlogItem) as BlogContent[];
+}
+
+export const getAllBlogs = async (category: string = "all") => {
+  console.log("category is ", category);
+  const blogItems = await getResources("blog", category !== "all" ? `whereRelation[categories][slug]=${category}` : "");
+
+  return blogItems.map(transformBlogItem) as BlogContent[];
+}
+
+export const getAllCategories = async () => {
+  const categories = await getResources("blog-category");
+
+  return [{ name: "All", slug: "all" }, ...categories.map((cat: any) => cat.values)] as BlogCategory[];
 }

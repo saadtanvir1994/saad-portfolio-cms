@@ -306,3 +306,29 @@ export interface ServiceContent {
   hero: InnerHeroContent;
   subservices: SubservicesContent;
 }
+
+// Blogs
+
+export interface BlogCategory {
+  name: string;
+  slug: string;
+}
+
+export interface BlogAuthor {
+  name: string;
+  avatar: MediaContent;
+}
+
+export interface BlogContent {
+  title: string;
+  excerpt: string;
+  slug: string;
+  author: BlogAuthor;
+  categories: BlogCategory[];
+  "reading-time": number;
+  "cover-image": MediaContent;
+  content: string;
+  created_at: Date;
+  updated_at: Date;
+  published_at: Date;
+}

@@ -40,7 +40,7 @@ export default async function RootLayout({
       </head>
       <body className={`${inter.variable} antialiased`}>
         <ClientLayoutWrapper>
-          <div className="overflow-hidden">
+          <div>
             {/* <MainMenu menuContent={menuContent} /> */}
             <NavigationMenu menuContent={menuContent} />
             {children}

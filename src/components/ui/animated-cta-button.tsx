@@ -25,7 +25,7 @@ const AnimatedCTAButton: React.FC<AnimatedCTAButtonProps> = ({
     simple:
       "bg-[#cc2a02]  text-white  hover:border hover:border-[#FF4102] hover:bg-[#FF4102]",
     simpleoutlined:
-      "border border-neutral-500 text-[var(--gray-0)] hover:bg-[#FF4102] hover:text-white hover:border-[#FF4102]",
+      "border border-neutral-500 hover:bg-[#FF4102] hover:text-white hover:border-[#FF4102]",
     light:
       "bg-gray-50 bg-[--gray-300] text-gray-800 border border-[--gray-100]",
     dark: "bg-[#FF4102] text-white",

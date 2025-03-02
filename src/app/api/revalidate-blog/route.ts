@@ -2,4 +2,7 @@
 import { NextRequest } from "next/server";
 import { revalidatePage } from "@/lib/actions";
 
-export const POST = async (_req: NextRequest) => await revalidatePage("/about");
+export const POST = async (_req: NextRequest) => {
+  await revalidatePage("/blogs")
+  await revalidatePage("/blogs/[slug]");
+};

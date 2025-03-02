@@ -1,8 +1,9 @@
 import { Separator } from "@/components/ui/separator";
 import { FileText } from "lucide-react";
-import { getAllCategories } from "@/lib/actions";
-import CategoryLink from "@/components/blog/category-link";
 import BlogItems from "@/components/blog/blog-items";
+import { Suspense } from "react";
+import BlogItemsSkeleton from "@/components/skeletons/blog-items-skeleton";
+import CategoryList from "@/components/blog/category-list";
 
 interface PageParams {
   category?: string;
@@ -10,8 +11,6 @@ interface PageParams {
 
 const BlogPage = async ({ searchParams }: { searchParams: Promise<PageParams> }) => {
   const category = (await searchParams).category || "all";
-
-  const categories = await getAllCategories();
 
   return (
     <section className="bg-white py-32">
@@ -25,15 +24,11 @@ const BlogPage = async ({ searchParams }: { searchParams: Promise<PageParams> })
               with the world.
             </p>
             <Separator />
-            <nav>
-              <ul className="flex flex-wrap items-center justify-center gap-4 lg:flex-col lg:items-start lg:gap-2">
-                {categories.map((cat) => (
-                  <CategoryLink category={cat} key={cat.slug} />
-                ))}
-              </ul>
-            </nav>
+            <CategoryList />
           </header>
-          <BlogItems category={category} />
+          <Suspense fallback={<BlogItemsSkeleton />}>
+            <BlogItems category={category} />
+          </Suspense>
         </div>
       </div>
     </section>

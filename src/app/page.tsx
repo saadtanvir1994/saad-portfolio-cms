@@ -10,26 +10,12 @@ import { getHomepageMetadata } from "@/lib/actions";
 import { Suspense } from "react";
 import HomepageSchema from "@/components/schemas/homepage-schema";
 import BlogSection from "@/components/blog/blog-section";
+import { populateMetadata } from "@/utils/all";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const metadata = await getHomepageMetadata();
 
-  return {
-    title: metadata.metaTitle,
-    description: metadata.metaDescription,
-    openGraph: {
-      title: metadata.metaTitle,
-      description: metadata.metaDescription,
-      images: [metadata.metaImage],
-      type: "website",
-    },
-    twitter: {
-      title: metadata.metaTitle,
-      description: metadata.metaDescription,
-      images: [metadata.metaImage],
-    },
-    keywords: metadata.keywords,
-  };
+  return populateMetadata(metadata);
 };
 
 const Home = () => {

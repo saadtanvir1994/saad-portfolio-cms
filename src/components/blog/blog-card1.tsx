@@ -9,14 +9,14 @@ import { getMediaUrl } from "@/utils/all";
 const BlogCard1 = ({ blog }: { blog: BlogContent }) => {
   return (
     <Link key={blog.title} href={`/blog/${blog.slug}`} className="group flex flex-col">
-      <div className="mb-4 flex overflow-clip rounded-xl md:mb-5">
-        <div className="transition duration-300 group-hover:scale-105">
+      <div className="mb-4 flex overflow-clip rounded-xl md:mb-5 border h-[300px] w-[400px]">
+        <div className="transition duration-300 group-hover:scale-105 h-full w-full">
           <Image
             src={getMediaUrl(blog["cover-image"])}
             alt="alt"
-            className="aspect-[3/2] h-full w-full object-cover object-center"
-            height={190}
-            width={295}
+            className="aspect-[3/2] object-cover object-center h-full w-full"
+            height={400}
+            width={300}
           />
         </div>
       </div>

@@ -21,12 +21,14 @@ import {
   StatsCapabilitiesContent,
   WorkflowContent,
 } from "@/lib/definitions";
+import { revalidatePath } from "next/cache";
+import { NextResponse } from "next/server";
 
 const apiUrl = process.env.NEXT_PUBLIC_CMS_URL + "/api";
 
 const getResources = async (slug: string, ...params: string[]) => {
   const url = `${apiUrl}/collections/${slug}/content${
-    params ? ("?" + params.join("&")) : ""
+    params ? "?" + params.join("&") : ""
   }`;
   const res = await fetch(url);
   const data = await res.json();
@@ -34,7 +36,8 @@ const getResources = async (slug: string, ...params: string[]) => {
   return data.data!.content.data;
 };
 
-const getResource = async (slug: string) => (await getResources(slug))[0];
+const getResource = async (slug: string, ...params: string[]) =>
+  (await getResources(slug, ...params))[0];
 
 const getContent = async (slug: string) =>
   (await getResource(slug)).values as Content;
@@ -51,6 +54,13 @@ const getMetadata = async (slug: string) => {
 
   return metadata as MetadataContent;
 };
+
+export const revalidatePage = async (path: string, type?: "layout" | "page") => {
+  revalidatePath(path, type);
+  return NextResponse.json({
+    message: "Cache revalided successully!",
+  });
+}
 
 export const getMenuContent = async () => {
   const menuContent = (await getContent(
@@ -173,34 +183,59 @@ export const getAllServicesUrls = async () => {
     lastModified: item.updated_at,
     changeFrequency: "monthly",
   }));
-}
+};
+
+// Blogs
 
 const transformBlogItem = (item: any) => {
   const properties = ["created_at", "updated_at", "published_at"];
-  const propertiesObj = properties.reduce((obj, prop) => ({ ...obj, [prop]: item[prop] }), {});
-  
+  const propertiesObj = properties.reduce(
+    (obj, prop) => ({ ...obj, [prop]: item[prop] }),
+    {}
+  );
+
+  const metadata = item.metadata;
   item = item.values;
   item.author = item?.author?.values;
   item.categories = item.categories.map((category: any) => category.values);
-  
-  return Object.assign(item, propertiesObj) as BlogContent
-}
+  item.metadata = metadata;
+
+  return Object.assign(item, propertiesObj) as BlogContent;
+};
 
 export const getLatestBlogs = async (amount: number = 2) => {
   const blogItems = await getResources("blog", `offset=${amount}`);
 
   return blogItems.map(transformBlogItem) as BlogContent[];
-}
+};
 
 export const getAllBlogs = async (category: string = "all") => {
-  console.log("category is ", category);
-  const blogItems = await getResources("blog", category !== "all" ? `whereRelation[categories][slug]=${category}` : "");
+  const blogItems = await getResources(
+    "blog",
+    category !== "all" ? `whereRelation[categories][slug]=${category}` : ""
+  );
 
   return blogItems.map(transformBlogItem) as BlogContent[];
-}
+};
 
 export const getAllCategories = async () => {
   const categories = await getResources("blog-category");
 
-  return [{ name: "All", slug: "all" }, ...categories.map((cat: any) => cat.values)] as BlogCategory[];
-}
+  return [
+    { name: "All", slug: "all" },
+    ...categories.map((cat: any) => cat.values),
+  ] as BlogCategory[];
+};
+
+export const getBlogBySlug = async (slug: string) => {
+  const blog = await getResource("blog", `where[slug]=${slug}`);
+
+  return transformBlogItem(blog);
+};
+
+export const getAllBlogsSlug = async () => {
+  const blogs = await getResources("blog", "offset=1000");
+  const transformedItems = blogs.map(transformBlogItem) as BlogContent[];
+
+  return transformedItems.map((item) => ({ slug: item.slug }));
+};

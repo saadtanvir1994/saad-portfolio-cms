@@ -8,26 +8,12 @@ import type { Metadata } from "next";
 import AboutPageSchema from "@/components/schemas/about-page-schema";
 import Head from "next/head";
 import HrefLangTag from "@/components/shared/href-lang-tag";
+import { populateMetadata } from "@/utils/all";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const metadata = await getAboutPageMetadata();
 
-  return {
-    title: metadata.metaTitle,
-    description: metadata.metaDescription,
-    openGraph: {
-      title: metadata.metaTitle,
-      description: metadata.metaDescription,
-      images: [metadata.metaImage],
-      type: "website",
-    },
-    twitter: {
-      title: metadata.metaTitle,
-      description: metadata.metaDescription,
-      images: [metadata.metaImage],
-    },
-    keywords: metadata.keywords,
-  };
+  return populateMetadata(metadata);
 };
 
 const AboutPage = () => {

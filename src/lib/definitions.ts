@@ -334,4 +334,5 @@ export interface BlogContent {
   created_at: Date;
   updated_at: Date;
   published_at: Date;
+  metadata: MetadataContent;
 }

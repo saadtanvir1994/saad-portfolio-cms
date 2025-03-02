@@ -5,9 +5,9 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { useRef } from "react";
 import ImageSet from "@/components/about/image-set";
-import { MediaContent } from "@/lib/definitions";
+import { ImageWithDim } from "@/lib/definitions";
 
-const ImageMarquee = ({ images }: { images: MediaContent[] }) => {
+const ImageMarquee = ({ images }: { images: ImageWithDim[] }) => {
   const marqueeRef = useRef<HTMLDivElement>(null);
   const marqueeTrigger = useRef<HTMLDivElement>(null);
 
@@ -30,10 +30,9 @@ const ImageMarquee = ({ images }: { images: MediaContent[] }) => {
 
   return (
     <div className="relative w-full" ref={marqueeTrigger}>
-      <div className="absolute -top-24 left-1/3 z-50 rounded-full bg-[var(--gray-50)] mix-blend-difference">
+      <div className="absolute -top-16 left-1/3 z-50 h-[160px] w-[160px] rounded-full bg-[var(--gray-50)] mix-blend-difference md:-top-24 md:h-[200px] md:w-[200px]">
         <Image
-          width={200}
-          height={200}
+          fill
           loading="lazy"
           src="/images/arrow-circle-saad-2.svg"
           alt="circle"
@@ -42,8 +41,10 @@ const ImageMarquee = ({ images }: { images: MediaContent[] }) => {
       </div>
 
       <div className="flex overflow-hidden">
-        <div className="flex items-center gap-12" ref={marqueeRef}>
-          {Array.from([1, 2]).map((_, id) => <ImageSet key={id} images={images} />)}
+        <div className="flex items-center gap-12 overflow-hidden" ref={marqueeRef}>
+          {Array.from({ length: 2 }).map((_, id) => (
+            <ImageSet key={id} images={images} />
+          ))}
         </div>
       </div>
     </div>

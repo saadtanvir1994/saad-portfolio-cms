@@ -1,15 +1,15 @@
-import { MediaContent } from "@/lib/definitions";
+import { ImageWithDim } from "@/lib/definitions";
 import { getMediaUrl } from "@/utils/all";
 import Image from "next/image";
 
-const ImageSet = ({ images }: { images: MediaContent[] }) => {
+const ImageSet = ({ images }: { images: ImageWithDim[] }) => {
   return (
     <div className="flex items-center justify-center gap-12">
-      {images.map((image, index) => (
-        <div key={index} className="relative h-[390px] w-[410px] overflow-hidden rounded-3xl">
+      {images.map((item, index) => (
+        <div key={index} className="relative overflow-hidden rounded-3xl" style={{ height: item.height, width: item.width }}>
           <Image
-            src={getMediaUrl(image)}
-            alt={image.caption || "Project Image"}
+            src={getMediaUrl(item.image)}
+            alt={item.image.caption || "Project Image"}
             fill
             className="object-cover"
             loading="lazy"

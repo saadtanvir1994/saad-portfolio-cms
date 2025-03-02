@@ -2,7 +2,7 @@
 "use server";
 
 import {
-  AboutContent,
+  IntroductionContent,
   BlogCategory,
   BlogContent,
   BlogsPageContent,
@@ -21,6 +21,7 @@ import {
   ShowcaseContent,
   StatsCapabilitiesContent,
   WorkflowContent,
+  AboutSectionContent,
 } from "@/lib/definitions";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
@@ -49,7 +50,7 @@ const getContent = async (slug: string, setMetadata: boolean = false) => {
   }
 
   return content as Content;
-}
+};
 
 const getMetadata = async (slug: string) => {
   let metadata = (await getResource(slug)).metadata as any;
@@ -99,8 +100,8 @@ export const getHeroContent = async () =>
 export const getLogosContent = async () =>
   (await getContent("logos")) as unknown as LogosContent;
 
-export const getAboutContent = async () =>
-  (await getContent("about")) as unknown as AboutContent;
+export const getIntroductionContent = async () =>
+  (await getContent("introduction")) as unknown as IntroductionContent;
 
 export const getServicesContent = async () => {
   const servicesContent = (await getContent("services")) as any;
@@ -151,6 +152,9 @@ export const getInnerHeroContent = async (slug: string) => {
   return items.find((item: any) => item.values.slug === slug)
     .values as unknown as InnerHeroContent;
 };
+
+export const getAboutSectionContent = async () =>
+  (await getContent("about-section")) as unknown as AboutSectionContent;
 
 export const getStatsCapabilitiesContet = async () =>
   (await getContent(

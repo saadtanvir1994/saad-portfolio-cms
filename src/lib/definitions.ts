@@ -53,7 +53,7 @@ export interface LogosContent extends Content {
   logos: MediaContent[];
 }
 
-export interface AboutContent extends Content {
+export interface IntroductionContent extends Content {
   tagline: string;
   heading: string;
   "action-button": ActionButton;
@@ -62,7 +62,6 @@ export interface AboutContent extends Content {
   headline: string;
   paragraphs: string[];
   "infinite-marquee-items": string[];
-  "marquee-images": MediaContent[];
 }
 
 export interface ServiceItem extends Content {
@@ -217,22 +216,35 @@ export interface InnerHeroContent extends Content {
   "cta-button": ActionButton;
 }
 
-interface NumberText {
+export interface ImageWithDim {
+  image: MediaContent;
+  height: number;
+  width: number;
+}
+
+export interface AboutSectionContent extends Content {
+  subtitle: string;
+  title: string;
+  headline: string;
+  paragraphs: string[];
+  "marquee-images": ImageWithDim[];
+}
+
+export interface NumberText {
   number: string;
   text: string;
 }
 
-interface ImageText {
+export interface ImageText {
   image: MediaContent;
   text: string;
 }
 
-export interface StatsContent extends Content {
-  "main-image": MediaContent;
-  "first-stat-image": ImageText;
-  "first-stat-text": NumberText;
-  "second-stat-image": ImageText;
-  "second-stat-text": NumberText;
+export interface StatsItemContent {
+  empty: boolean;
+  number: string;
+  title: string;
+  description: string;
 }
 
 interface ServiceItemContent extends Content {
@@ -251,7 +263,7 @@ export interface CapabilitiesContent extends Content {
 }
 
 export interface StatsCapabilitiesContent extends Content {
-  stats: StatsContent;
+  stats: StatsItemContent[];
   capabilities: CapabilitiesContent;
 }
 

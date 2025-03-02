@@ -1,14 +1,14 @@
 import AnimatedCTAButton from "@/components/ui/animated-cta-button";
 import SimpleMarquee from "@/components/ui/star-marquee";
 import Typography from "@/components/ui/typography";
-import { getAboutContent } from "@/lib/actions";
+import { getIntroductionContent } from "@/lib/actions";
 import { getMediaUrl } from "@/utils/all";
 import Image from "next/image";
 import React from "react";
 import InfiniteMarquee from "@/components/ui/infinite-marquee";
 
 const About = async () => {
-  const aboutContent = await getAboutContent();
+  const aboutContent = await getIntroductionContent();
 
   return (
     <section>

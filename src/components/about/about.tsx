@@ -1,37 +1,51 @@
 import Typography from "@/components/ui/typography";
-import { getAboutContent } from "@/lib/actions";
+import { getAboutSectionContent } from "@/lib/actions";
 import ImageMarquee from "@/components/about/image-marquee";
 
 const About = async () => {
-  const aboutContent = await getAboutContent();
+  const content = await getAboutSectionContent();
 
   return (
-    <section className="relative overflow-hidden bg-zinc-50 px-4 py-16 md:py-32">
-      <div className="container">
-        <span className="md:text-md mb-4 text-sm font-light uppercase tracking-wider">
-          {aboutContent.tagline}
-        </span>
-        <div className="-m-4 mb-20 flex flex-wrap">
-          <div className="w-full p-4 lg:w-1/2">
-            <Typography variant="display-2" className="mb-6 uppercase">
-              {aboutContent.heading}
-            </Typography>
+    <section className="relative overflow-hidden bg-[var(--gray-25)] px-4 py-16 md:py-32">
+      <div className="container relative mx-auto">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
+          <div className="flex flex-col md:col-span-5">
+            <div className="services-header flex flex-col md:col-span-5">
+              <span className="mb-2 block text-base font-light uppercase tracking-wide text-[--text-tertiary]">
+                {content.subtitle}
+              </span>
+              <Typography
+                variant="display-2"
+                className="mb-3 uppercase !text-[--text-primary] md:mb-6"
+              >
+                {content.title}
+              </Typography>
+            </div>
           </div>
-          <div className="w-full p-4 lg:w-1/2">
-            <div className="w-full max-w-2xl">
-              <p className="mb-4 text-lg font-medium tracking-tight text-[--text-primary]">
-                {aboutContent.headline}
-              </p>
-              {aboutContent.paragraphs.map((item, index) => (
-                <p key={index} className="mb-8 text-lg tracking-tight text-[var(--text-tertiary)]">
-                  {item}
-                </p>
+
+          <div className="md:col-span-7">
+            <div className="mx-auto mb-10 max-w-full md:mb-32 md:max-w-3xl md:pt-8">
+              <Typography
+                variant="h3"
+                className="mb-6 !w-full !text-2xl font-medium capitalize !tracking-tight"
+              >
+                {content.headline}
+              </Typography>
+
+              {content.paragraphs.map((para, index) => (
+                <Typography
+                  variant="p"
+                  className="text-[var(--text-tertiary)]"
+                  key={index}
+                >
+                  {para}
+                </Typography>
               ))}
             </div>
           </div>
         </div>
       </div>
-      <ImageMarquee images={aboutContent["marquee-images"]} />
+      <ImageMarquee images={content["marquee-images"]} />
     </section>
   );
 };

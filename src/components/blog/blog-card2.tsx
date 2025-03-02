@@ -6,7 +6,7 @@ import { getMediaUrl } from "@/utils/all";
 const BlogCard2 = ({ blog }: { blog: BlogContent }) => {
   return (
     <Link
-      href={`/blog/${blog.slug}`}
+      href={`/blog/${blog.category.slug}/${blog.slug}`}
       className="group relative isolate h-80 rounded-lg bg-gray-100"
     >
       <div className="z-10 flex h-full flex-col justify-between p-6">

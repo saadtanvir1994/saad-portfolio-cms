@@ -220,7 +220,7 @@ const transformBlogItem = (item: any) => {
   const metadata = item.metadata;
   item = item.values;
   item.author = item?.author?.values;
-  item.categories = item.categories.map((category: any) => category.values);
+  item.category = item.category.values;
   item.metadata = metadata;
 
   return Object.assign(item, propertiesObj) as BlogContent;
@@ -235,7 +235,7 @@ export const getLatestBlogs = async (amount: number = 2) => {
 export const getAllBlogs = async (category: string = "all") => {
   const blogItems = await getResources(
     "blog",
-    category !== "all" ? `whereRelation[categories][slug]=${category}` : ""
+    category !== "all" ? `whereRelation[category][slug]=${category}` : ""
   );
 
   return blogItems.map(transformBlogItem) as BlogContent[];
@@ -245,7 +245,7 @@ export const getAllCategories = async () => {
   const categories = await getResources("blog-category");
 
   return [
-    { name: "All", slug: "all" },
+    { name: "All", slug: "" },
     ...categories.map((cat: any) => cat.values),
   ] as BlogCategory[];
 };
@@ -260,7 +260,7 @@ export const getAllBlogsSlug = async () => {
   const blogs = await getResources("blog", "offset=1000");
   const transformedItems = blogs.map(transformBlogItem) as BlogContent[];
 
-  return transformedItems.map((item) => ({ slug: item.slug }));
+  return transformedItems.map((item) => ({ category: item.category.name, slug: item.slug }));
 };
 
 export const getAllBlogsUrls = async () => {

@@ -8,7 +8,11 @@ import { getMediaUrl } from "@/utils/all";
 
 const BlogCard1 = ({ blog }: { blog: BlogContent }) => {
   return (
-    <Link key={blog.title} href={`/blog/${blog.slug}`} className="group flex flex-col">
+    <Link
+      key={blog.title}
+      href={`/blog/${blog.category.slug}/${blog.slug}`}
+      className="group flex flex-col"
+    >
       <div className="mb-4 flex overflow-clip rounded-xl md:mb-5 border h-[300px] w-[400px]">
         <div className="transition duration-300 group-hover:scale-105 h-full w-full">
           <Image
@@ -22,7 +26,7 @@ const BlogCard1 = ({ blog }: { blog: BlogContent }) => {
         </div>
       </div>
       <div className="flex w-fit items-center rounded-full border border-border p-1">
-        <Badge className="hover:bg-primary">{blog.categories[0].name}</Badge>
+        <Badge className="hover:bg-primary">{blog.category.name}</Badge>
         <div className="mx-2 text-xs font-medium">
           {blog["reading-time"]} min read
         </div>

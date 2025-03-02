@@ -14,6 +14,7 @@ import PageSchema from "@/components/schemas/page-schema";
 import type { Metadata } from "next";
 
 interface PageProps {
+  category: string;
   slug: string;
 }
 
@@ -41,7 +42,7 @@ const BlogInnerPage = async ({ params }: { params: Promise<PageProps> }) => {
       <section className="py-32 bg-white">
         <div className="container">
           <div className="mx-auto flex max-w-5xl flex-col items-center gap-5">
-            <Badge variant="secondary">{blogPost.categories[0].name}</Badge>
+            <Badge variant="secondary">{blogPost.category.name}</Badge>
             <h1 className="text-pretty text-center text-3xl font-medium lg:text-5xl">
               {blogPost.title}
             </h1>

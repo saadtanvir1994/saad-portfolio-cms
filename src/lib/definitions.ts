@@ -292,7 +292,16 @@ export interface ComparisonItem {
   "col-span": number;
   image: MediaContent;
   aspect: "square" | "video";
-  "subtitle-color": "pink" | "blue" | "amber" | "green" | "purple" | "sky" | "indigo" | "rose" | "teal";
+  "subtitle-color":
+    | "pink"
+    | "blue"
+    | "amber"
+    | "green"
+    | "purple"
+    | "sky"
+    | "indigo"
+    | "rose"
+    | "teal";
   "image-height": number;
 }
 
@@ -364,7 +373,7 @@ export interface BlogContent extends Content {
   excerpt: string;
   slug: string;
   author: BlogAuthor;
-  categories: BlogCategory[];
+  category: BlogCategory;
   "reading-time": number;
   "cover-image": MediaContent;
   content: string;

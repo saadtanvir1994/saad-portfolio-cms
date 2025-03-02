@@ -1,28 +1,23 @@
 "use client";
 
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { BlogCategory } from "@/lib/definitions";
+import Link from "next/link";
 
 const CategoryLink = ({ category }: { category: BlogCategory }) => {
-  const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const currentCategory = searchParams.get("category") || "all";
-
-  const setCategory = (cat: string) => {
-    const params = new URLSearchParams(searchParams);
-    if (cat === "all") {
-      params.delete("category");
-    } else {
-      params.set("category", cat);
-    }
-    router.replace(`${pathname}?${params.toString()}`);
-  };
-
-
+  const currentCategory = pathname.split("/").slice(-1)[0];
+  
   return (
-    <li onClick={() => setCategory(category.slug)} className={`hover:text-primary ${currentCategory == category.slug ? "text-primary" : "text-muted-foreground"}`}>
-      {category.name}
+    <li
+      className={`hover:text-primary ${
+        currentCategory == category.slug ||
+        (pathname === "/blog" && category.slug === "")
+          ? "text-primary"
+          : "text-muted-foreground"
+      }`}
+    >
+      <Link href={`/blog/${category.slug}`}>{category.name}</Link>
     </li>
   );
 };

@@ -17,6 +17,7 @@ const BlogCard1 = ({ blog }: { blog: BlogContent }) => {
             className="aspect-[3/2] object-cover object-center h-full w-full"
             height={400}
             width={300}
+            loading="lazy"
           />
         </div>
       </div>

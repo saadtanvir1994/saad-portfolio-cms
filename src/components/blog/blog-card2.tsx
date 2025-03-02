@@ -27,6 +27,7 @@ const BlogCard2 = ({ blog }: { blog: BlogContent }) => {
         className="ease-[cubic-bezier(0.77,0,0.175,1)] absolute inset-0 -z-10 size-full rounded-lg object-cover brightness-50 transition-all duration-500 [clip-path:inset(0_0_100%_0)] group-hover:[clip-path:inset(0_0_0%_0)]"
         height={320}
         width={220}
+        loading="lazy"
       />
     </Link>
   );

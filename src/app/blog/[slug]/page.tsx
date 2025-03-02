@@ -11,6 +11,7 @@ import Image from "next/image";
 import "./styles.css";
 import ContentOutline from "@/components/blog/content-outline";
 import PageSchema from "@/components/schemas/page-schema";
+import type { Metadata } from "next";
 
 interface PageProps {
   slug: string;
@@ -22,11 +23,11 @@ export const generateMetadata = async ({
   params,
 }: {
   params: Promise<PageProps>;
-}) => {
+}): Promise<Metadata> => {
   const slug = (await params).slug;
   const metadata = (await getBlogBySlug(slug)).metadata;
 
-  return populateMetadata(metadata);
+  return populateMetadata(metadata, "article");
 };
 
 const BlogInnerPage = async ({ params }: { params: Promise<PageProps> }) => {

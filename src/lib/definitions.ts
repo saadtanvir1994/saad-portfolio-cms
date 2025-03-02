@@ -6,8 +6,9 @@ export interface MenuItem {
   children?: MenuItem[];
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface Content {}
+export interface Content {
+  metadata?: MetadataContent;
+}
 
 export interface MediaContent extends Content {
   name: string;
@@ -208,7 +209,7 @@ export interface MetadataContent extends Content {
 
 // About Page Content
 
-export interface InnerHeroContent {
+export interface InnerHeroContent extends Content {
   path: string;
   slug: string;
   title: string;
@@ -226,7 +227,7 @@ interface ImageText {
   text: string;
 }
 
-export interface StatsContent {
+export interface StatsContent extends Content {
   "main-image": MediaContent;
   "first-stat-image": ImageText;
   "first-stat-text": NumberText;
@@ -234,7 +235,7 @@ export interface StatsContent {
   "second-stat-text": NumberText;
 }
 
-interface ServiceItemContent {
+interface ServiceItemContent extends Content {
   service: string;
   items: {
     label: string;
@@ -242,19 +243,19 @@ interface ServiceItemContent {
   }[];
 }
 
-export interface CapabilitiesContent {
+export interface CapabilitiesContent extends Content {
   subtitle: string;
   title: string;
   paragraph: string;
   services: ServiceItemContent[];
 }
 
-export interface StatsCapabilitiesContent {
+export interface StatsCapabilitiesContent extends Content {
   stats: StatsContent;
   capabilities: CapabilitiesContent;
 }
 
-export interface MilestonesContent {
+export interface MilestonesContent extends Content {
   subtitle: string;
   title: string;
   paragraph: string;
@@ -262,7 +263,7 @@ export interface MilestonesContent {
   statistics: NumberText[];
 }
 
-export interface HireMeContent {
+export interface HireMeContent extends Content {
   title: string;
   image: MediaContent;
   reasons: {
@@ -272,7 +273,7 @@ export interface HireMeContent {
   }[];
 }
 
-export interface MilestonesHireContent {
+export interface MilestonesHireContent extends Content {
   milestones: MilestonesContent;
   hiring: HireMeContent;
 }
@@ -284,7 +285,7 @@ export interface FunfactItem {
   height: number;
 }
 
-export interface FunfactsContent {
+export interface FunfactsContent extends Content {
   subtitle: string;
   title: string;
   items: FunfactItem[];
@@ -298,19 +299,24 @@ export interface SubserviceItem {
   description: string;
 }
 
-export interface SubservicesContent {
+export interface SubservicesContent extends Content {
   title: string;
   description: string;
   subservices: SubserviceItem[];
 }
 
-export interface ServiceContent {
+export interface ServiceContent extends Content {
   slug: string;
   hero: InnerHeroContent;
   subservices: SubservicesContent;
 }
 
 // Blogs
+
+export interface BlogsPageContent extends Content {
+  title: string;
+  description: string;
+}
 
 export interface BlogCategory {
   name: string;
@@ -322,7 +328,7 @@ export interface BlogAuthor {
   avatar: MediaContent;
 }
 
-export interface BlogContent {
+export interface BlogContent extends Content {
   title: string;
   excerpt: string;
   slug: string;

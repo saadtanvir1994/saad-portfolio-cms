@@ -1,4 +1,5 @@
 import { MediaContent, MetadataContent } from "@/lib/definitions";
+import type { Metadata } from "next";
 
 export const getMediaUrl = (media: MediaContent) => {
   if (!media) return "";
@@ -8,13 +9,19 @@ export const getMediaUrl = (media: MediaContent) => {
 };
 
 export const getSchemasFromMetadata = async (metadata: MetadataContent) => {
-  const structuredData = await JSON.parse(metadata.structuredData);
+  let structuredData;
+  try {
+    structuredData = await JSON.parse(metadata?.structuredData || "");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (error) {
+    structuredData = null;
+  }
   if (structuredData) {
     return structuredData.structuredSchemas as unknown[];
   }
 
   return [];
-}
+};
 
 export const getSchemas = async (
   getMetadata: () => Promise<MetadataContent>
@@ -24,14 +31,21 @@ export const getSchemas = async (
   return await getSchemasFromMetadata(metadata);
 };
 
-export const populateMetadata = (metadata: MetadataContent) => ({
+export const populateMetadata = (
+  metadata: MetadataContent,
+  type?:
+    | "article"
+    | "website"
+    | "book"
+    | "profile"
+): Metadata => ({
   title: metadata.metaTitle,
   description: metadata.metaDescription,
   openGraph: {
     title: metadata.metaTitle,
     description: metadata.metaDescription,
     images: [metadata.metaImage],
-    type: "website",
+    type: type || "website",
   },
   twitter: {
     title: metadata.metaTitle,

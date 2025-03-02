@@ -5,6 +5,7 @@ import {
   AboutContent,
   BlogCategory,
   BlogContent,
+  BlogsPageContent,
   Content,
   FooterContent,
   FunfactsContent,
@@ -39,8 +40,16 @@ const getResources = async (slug: string, ...params: string[]) => {
 const getResource = async (slug: string, ...params: string[]) =>
   (await getResources(slug, ...params))[0];
 
-const getContent = async (slug: string) =>
-  (await getResource(slug)).values as Content;
+const getContent = async (slug: string, setMetadata: boolean = false) => {
+  const resource = await getResource(slug);
+  const content = resource.values;
+
+  if (setMetadata) {
+    content.metadata = resource.metadata;
+  }
+
+  return content as Content;
+}
 
 const getMetadata = async (slug: string) => {
   let metadata = (await getResource(slug)).metadata as any;
@@ -55,12 +64,15 @@ const getMetadata = async (slug: string) => {
   return metadata as MetadataContent;
 };
 
-export const revalidatePage = async (path: string, type?: "layout" | "page") => {
+export const revalidatePage = async (
+  path: string,
+  type?: "layout" | "page"
+) => {
   revalidatePath(path, type);
   return NextResponse.json({
     message: "Cache revalided successully!",
   });
-}
+};
 
 export const getMenuContent = async () => {
   const menuContent = (await getContent(
@@ -186,6 +198,11 @@ export const getAllServicesUrls = async () => {
 };
 
 // Blogs
+
+export const getBlogsPageContent = async () =>
+  (await getContent("blogs-page", true)) as BlogsPageContent;
+
+export const getBlogsPageMetadata = async () => await getMetadata("blogs-page");
 
 const transformBlogItem = (item: any) => {
   const properties = ["created_at", "updated_at", "published_at"];

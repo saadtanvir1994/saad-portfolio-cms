@@ -256,3 +256,13 @@ export const getAllBlogsSlug = async () => {
 
   return transformedItems.map((item) => ({ slug: item.slug }));
 };
+
+export const getAllBlogsUrls = async () => {
+  const items = await getResources("blog");
+
+  return items.map((item: any) => ({
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${item.values.slug}`,
+    lastModified: item.updated_at,
+    changeFrequency: "monthly",
+  }));
+};

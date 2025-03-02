@@ -250,6 +250,12 @@ export const getAllCategories = async () => {
   ] as BlogCategory[];
 };
 
+export const getAllCategoriesSlug = async () => {
+  const categories = await getResources("blog-category");
+
+  return categories.map((cat: any) => ({ category: cat.values.slug }));
+}
+
 export const getBlogBySlug = async (slug: string) => {
   const blog = await getResource("blog", `where[slug]=${slug}`);
 

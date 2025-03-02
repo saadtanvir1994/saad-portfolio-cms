@@ -39,6 +39,7 @@ const BlogCard1 = ({ blog }: { blog: BlogContent }) => {
         <Avatar className="size-12">
           <AvatarImage
             src={getMediaUrl(blog.author.avatar)}
+            alt={blog.author.avatar.caption}
             className="aspect-square size-full"
           />
           <AvatarFallback>ST</AvatarFallback>

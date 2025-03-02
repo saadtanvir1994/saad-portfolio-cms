@@ -49,7 +49,10 @@ const BlogInnerPage = async ({ params }: { params: Promise<PageProps> }) => {
             </p>
             <div className="mt-6 flex items-center gap-4">
               <Avatar>
-                <AvatarImage src={getMediaUrl(blogPost.author.avatar)} />
+                <AvatarImage
+                  src={getMediaUrl(blogPost.author.avatar)}
+                  alt={blogPost.author.avatar.caption}
+                />
                 <AvatarFallback>ST</AvatarFallback>
               </Avatar>
               <div>

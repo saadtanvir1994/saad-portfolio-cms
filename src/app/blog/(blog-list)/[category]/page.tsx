@@ -7,7 +7,7 @@ interface PageProps {
   category: string;
 }
 
-export const getStaticParams = async () => {
+export const generateStaticParams = async () => {
   const categories = await getAllCategories();
 
   return categories.map(category => ({ category: category.slug }));

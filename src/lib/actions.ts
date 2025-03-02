@@ -14,7 +14,7 @@ import {
   LogosContent,
   MainMenuContent,
   MetadataContent,
-  MilestonesHireContent,
+  MilestonesComparisonContent,
   PricingFaqsContent,
   ServiceContent,
   ServicesContent,
@@ -161,8 +161,10 @@ export const getStatsCapabilitiesContet = async () =>
     "stats-capabilities"
   )) as unknown as StatsCapabilitiesContent;
 
-export const getMilestonesHiringContent = async () =>
-  (await getContent("milestones-hire")) as unknown as MilestonesHireContent;
+export const getMilestonesComparisonContent = async () =>
+  (await getContent(
+    "milestones-comparison"
+  )) as unknown as MilestonesComparisonContent;
 
 export const getAboutFunFactsContent = async () =>
   (await getContent("about-fun-facts")) as unknown as FunfactsContent;

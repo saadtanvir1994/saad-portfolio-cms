@@ -1,7 +1,7 @@
 import About from "@/components/about/about";
 import FunFacts from "@/components/about/fun-facts";
 import AboutHeroWrapper from "@/components/about/about-hero";
-import MilestonesHiring from "@/components/about/milestones-hiring";
+import MilestonesComparisons from "@/components/about/milestones-comparison";
 import StatsCapabilities from "@/components/about/stats-capabilities";
 import { getAboutPageMetadata } from "@/lib/actions";
 import type { Metadata } from "next";
@@ -21,7 +21,7 @@ const AboutPage = () => {
         <AboutHeroWrapper />
         <About />
         <StatsCapabilities />
-        <MilestonesHiring />
+        <MilestonesComparisons />
         <FunFacts />
       </div>
       <AboutPageSchema />

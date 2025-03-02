@@ -10,16 +10,16 @@ const MilestonesSection = ({ content }: { content: MilestonesContent }) => {
         <div className="-m-4 flex flex-wrap">
           <div className="w-full p-4 md:w-1/2">
             <div className="flex flex-col md:col-span-6">
-              <span className="md:text-md mb-4 text-sm font-light uppercase tracking-wider text-[var(--gray-500)]">
+              <span className="mb-2 block text-base font-light uppercase tracking-wide text-[--text-tertiary]">
                 {content.subtitle}
               </span>
 
-              <Typography variant="h3" className="mb-4 max-w-lg uppercase">
+              <Typography variant="h2" className="mb-4 max-w-lg uppercase">
                 {content.title}
               </Typography>
               <Typography
                 variant="p"
-                className="mb-6 max-w-lg text-[var(--gray-700)]"
+                className="mb-6 max-w-lg text-center text-lg text-[var(--gray-400)] md:text-left"
               >
                 {content.paragraph}
               </Typography>
@@ -35,7 +35,7 @@ const MilestonesSection = ({ content }: { content: MilestonesContent }) => {
             <div className="flex flex-col gap-6 md:gap-12">
               {content.statistics.map((item, id) => (
                 <div className="flex flex-col gap-4" key={id}>
-                  <h2 className="text-center text-7xl leading-none tracking-tight text-[var(--orange-color)] md:text-[160px]">
+                  <h2 className="text-center text-7xl leading-none tracking-tight text-orange-500 md:text-[160px]">
                     {item.number}
                   </h2>
                   <p className="mx-auto max-w-xs text-center text-xl font-medium tracking-tight text-[var(--gray-600)]">

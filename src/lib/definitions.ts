@@ -285,9 +285,28 @@ export interface HireMeContent extends Content {
   }[];
 }
 
-export interface MilestonesHireContent extends Content {
+export interface ComparisonItem {
+  subtitle: string;
+  title: string;
+  description: string;
+  "col-span": number;
+  image: MediaContent;
+  aspect: "square" | "video";
+  "subtitle-color": "pink" | "blue" | "amber" | "green" | "purple" | "sky" | "indigo" | "rose" | "teal";
+  "image-height": number;
+}
+
+export interface ComparisonContent {
+  subtitle: string;
+  title: string;
+  description: string;
+  items: ComparisonItem[];
+  "cta-button": ActionButton;
+}
+
+export interface MilestonesComparisonContent extends Content {
   milestones: MilestonesContent;
-  hiring: HireMeContent;
+  comparison: ComparisonContent;
 }
 
 export interface FunfactItem {

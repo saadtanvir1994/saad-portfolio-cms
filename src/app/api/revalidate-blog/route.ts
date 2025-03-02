@@ -4,5 +4,6 @@ import { revalidatePage } from "@/lib/actions";
 
 export const POST = async (_req: NextRequest) => {
   await revalidatePage("/blogs")
-  await revalidatePage("/blogs/[slug]");
+  await revalidatePage("/blogs/[category]");
+  await revalidatePage("/bogs/[category]/[slug]")
 };

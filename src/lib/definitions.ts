@@ -117,6 +117,8 @@ export interface TestimonialContent extends Content {
   avatar: MediaContent;
   name: string;
   designation: string;
+  date: string;
+  title: string;
   message: string;
 }
 
@@ -323,12 +325,32 @@ export interface FunfactItem {
   number: number;
   color: "black" | "orange";
   height: number;
+  image: MediaContent;
 }
 
 export interface FunfactsContent extends Content {
   subtitle: string;
   title: string;
+  number: string;
+  "first-paragraph": string;
+  "second-paragraph": string;
   items: FunfactItem[];
+}
+
+export interface CertificateItem {
+  subtitle: string;
+  title: string;
+  "awarded-by": string;
+  image: MediaContent;
+  url: string;
+}
+
+export interface CertificatesContent {
+  subtitle: string;
+  title: string;
+  description: string;
+  items: CertificateItem[];
+  "action-button": ActionButton;
 }
 
 // Services Page

@@ -1,45 +1,89 @@
 import { getAboutFunFactsContent } from "@/lib/actions";
+import Typography from "@/components/ui/typography";
+import Image from "next/image";
+import { getMediaUrl } from "@/utils/all";
+
+const bottomPos = ["bottom-4", "bottom-7", "bottom-14", "bottom-10", "bottom-7"];
 
 const FunFacts = async () => {
   const content = await getAboutFunFactsContent();
 
   return (
-    <section className="bg-neutral-100 px-8 py-32 md:px-24">
-      <div className="-m-4 flex flex-wrap">
-        <div className="w-full p-4 lg:w-1/2">
-          <p className="mb-6 font-medium tracking-tight text-gray-700">
-            {content.subtitle}
-          </p>
-          <h1 className="max-w-xs font-heading text-4xl font-medium tracking-tight md:max-w-md md:text-6xl">
-            {content.title}
-          </h1>
+    <section className="relative overflow-x-hidden bg-white px-8 py-32 md:px-24">
+      <div className="container px-0">
+        <div className="absolute right-4 top-8 h-40 w-40 animate-bounce mix-blend-exclusion md:bottom-4 md:left-4 md:top-auto md:h-56 md:w-56">
+          <Image
+            src="/images/shape-global.png"
+            fill
+            alt="freelancer working globally illustration"
+            loading="lazy"
+          />
         </div>
-        <div className="w-full p-4 lg:w-1/2">
-          <div className="flex flex-wrap gap-6 lg:justify-end">
-            {content.items.map((item, id) => (
-              <div key={id}>
-                <div className="relative mb-4 h-[460px] w-20 rounded-full bg-gray-50">
-                  <div className="absolute bottom-0 left-0 right-0">
-                    <div
-                      className={`rounded-full ${
-                        item.color === "black" ? "bg-black" : "bg-orange-500"
-                      }`}
-                      style={{ height: item.height }}
-                    >
-                      <p
-                        className="absolute bottom-20 left-1/2 -translate-x-1/2 -rotate-90 transform whitespace-nowrap font-medium tracking-tight text-white"
-                        data-last-active-input=""
-                      >
-                        {item.label}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-center text-2xl font-medium tracking-tight">
-                  {item.number}
-                </p>
+
+        <div className="flex flex-wrap md:-m-4">
+          <div className="w-full md:w-1/3">
+            <span className="mb-2 block text-base font-light uppercase tracking-wide text-[--text-tertiary]">
+              {content.subtitle}
+            </span>
+            <Typography variant="h3" className="mb-4 max-w-lg uppercase">
+              {content.title}
+            </Typography>
+
+            <p className="text-7xl leading-none tracking-tight text-[var(--orange-color)] md:text-[160px]">
+              {content.number}
+            </p>
+
+            <Typography
+              variant="p"
+              className="my-6 max-w-lg text-[var(--text-tertiary)]"
+            >
+              {content["first-paragraph"]}
+            </Typography>
+          </div>
+          <div className="w-full md:w-2/3">
+            <div className="flex flex-col gap-1 md:flex-row">
+              <div className="w-full md:w-1/3">
+                <Typography
+                  variant="p"
+                  className="!mb-20 w-full text-[var(--text-tertiary)]"
+                >
+                  {content["second-paragraph"]}
+                </Typography>
               </div>
-            ))}
+              <div className="flex w-full flex-wrap justify-between gap-2 md:w-2/3 md:justify-center md:gap-3">
+                {content.items.map((item, index) => (
+                  <div key={index}>
+                    <div className="relative mb-4 h-[460px] w-16 rounded-full bg-zinc-100 md:w-20">
+                      <div className="absolute bottom-0 left-0 right-0">
+                        <div
+                          className="rounded-full bg-zinc-900"
+                          style={{ height: item.height }}
+                        >
+                          <div
+                            className={`absolute left-1/2 -translate-x-1/2 -rotate-90 transform whitespace-nowrap font-medium tracking-tight mix-blend-difference ${bottomPos[index]}`}
+                          >
+                            <div className="flex items-center gap-4">
+                              <Image
+                                src={getMediaUrl(item.image)}
+                                width={48}
+                                height={48}
+                                alt={item.image.caption}
+                                loading="lazy"
+                                className="h-12 w-12 rounded-full border-xs border-gray-300 object-cover"
+                              />
+                              <span className="text-white">{item.label}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <span className="block text-center text-2xl font-medium tracking-tight">
+                      {item.number}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

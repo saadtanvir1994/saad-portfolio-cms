@@ -22,6 +22,8 @@ import {
   StatsCapabilitiesContent,
   WorkflowContent,
   AboutSectionContent,
+  TestimonialContent,
+  CertificatesContent,
 } from "@/lib/definitions";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
@@ -166,6 +168,15 @@ export const getMilestonesComparisonContent = async () =>
     "milestones-comparison"
   )) as unknown as MilestonesComparisonContent;
 
+export const getAboutPageReviews = async () => {
+  const content: any = await getContent("about-page-reviews-section");
+
+  return content.items.map((item: any) => item.values) as TestimonialContent[];
+};
+
+export const getCertificatesContent = async () =>
+  (await getContent("certificates-section")) as unknown as CertificatesContent;
+
 export const getAboutFunFactsContent = async () =>
   (await getContent("about-fun-facts")) as unknown as FunfactsContent;
 
@@ -254,7 +265,7 @@ export const getAllCategoriesSlug = async () => {
   const categories = await getResources("blog-category");
 
   return categories.map((cat: any) => ({ category: cat.values.slug }));
-}
+};
 
 export const getBlogBySlug = async (slug: string) => {
   const blog = await getResource("blog", `where[slug]=${slug}`);
@@ -266,7 +277,10 @@ export const getAllBlogsSlug = async () => {
   const blogs = await getResources("blog", "offset=1000");
   const transformedItems = blogs.map(transformBlogItem) as BlogContent[];
 
-  return transformedItems.map((item) => ({ category: item.category.name, slug: item.slug }));
+  return transformedItems.map((item) => ({
+    category: item.category.name,
+    slug: item.slug,
+  }));
 };
 
 export const getAllBlogsUrls = async () => {

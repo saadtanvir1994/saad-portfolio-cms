@@ -45,7 +45,7 @@ const TestimonialsCarousel = ({
           >
             <p className="mb-6 text-2xl md:text-3xl">{testimonial.message}</p>
             <h3 className="mb-2 text-xl font-semibold">{testimonial.name}</h3>
-            <p className="text-gray-600">{testimonial.designation}</p>
+            <p className="text-gray-600">{testimonial.designation} - {testimonial.date}</p>
           </div>
         ))}
       </div>

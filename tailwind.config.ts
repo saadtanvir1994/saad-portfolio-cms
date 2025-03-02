@@ -84,6 +84,8 @@ export default {
         "exact-2xl": "1920px",
       },
       backgroundImage: {
+        "gradient-gray":
+          "linear-gradient(125.68deg, #F4F4F5 100%, #FBFBFB 100%)",
         "gradient-blue": "linear-gradient(98.24deg, #56C1E3 0%, #5B6AF0 100%)",
         "gradient-orange":
           "linear-gradient(98.24deg, #FFB36D 0%, #EC5353 100%)",

@@ -7,6 +7,9 @@ import { getAboutPageMetadata } from "@/lib/actions";
 import type { Metadata } from "next";
 import AboutPageSchema from "@/components/schemas/about-page-schema";
 import { populateMetadata } from "@/utils/all";
+import ReviewsSection from "@/components/about/reviews-section";
+import CertificatesSection from "@/components/about/certificates-section";
+import ContactBlock from "@/components/shared/contact-block";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const metadata = await getAboutPageMetadata();
@@ -22,7 +25,10 @@ const AboutPage = () => {
         <About />
         <StatsCapabilities />
         <MilestonesComparisons />
+        <ReviewsSection />
         <FunFacts />
+        <CertificatesSection />
+        <ContactBlock />
       </div>
       <AboutPageSchema />
     </>

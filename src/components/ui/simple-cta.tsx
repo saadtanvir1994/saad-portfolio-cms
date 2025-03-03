@@ -15,19 +15,13 @@ const SimpleCta = ({
   showIcon = true,
 }: SimpleCtaProps) => {
   const baseClasses =
-    "flex items-center py-1 justify-between gap-3 text-sm capitalize text-[var(--gray-700)] font-medium transition-colors hover:text-[--orange-color] focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 rounded-sm";
+    "flex items-center py-1 justify-between gap-3 text-base capitalize text-[var(--gray-700)] font-normal transition-colors hover:text-[--orange-color] focus:outline-none focus:ring-0";
   const combinedClasses = `${baseClasses} ${className}`.trim();
 
   return (
     <Link href={href} className={combinedClasses} aria-label={name}>
       <span>{name}</span>
-      {showIcon && (
-        <ArrowUpRight
-          className="h-6 w-6"
-          aria-hidden="true"
-          role="presentation"
-        />
-      )}
+      {showIcon && <ArrowUpRight className="h-4 w-4" />}
     </Link>
   );
 };

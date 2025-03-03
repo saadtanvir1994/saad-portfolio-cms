@@ -56,7 +56,7 @@ const CertificatesSection = async () => {
                         fill
                         src={getMediaUrl(cert.image)}
                         alt={cert.image.caption}
-                        loading="lazy"
+                        loading="eager"
                       />
                     </div>
                     <div className="absolute bottom-4 right-4 z-30">
@@ -118,7 +118,7 @@ const CertificatesSection = async () => {
                         fill
                         src={getMediaUrl(cert.image)}
                         alt={cert.image.caption}
-                        loading="lazy"
+                        loading="eager"
                       />
                     </div>
                   </div>

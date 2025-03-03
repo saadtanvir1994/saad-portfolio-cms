@@ -59,7 +59,7 @@ const HeroSectionInner = async ({ content }: { content: InnerHeroContent }) => {
           </div>
 
           <div className="order-3 flex h-full max-w-full justify-between gap-4 px-0 py-6 md:order-3 md:flex-col md:gap-0 md:px-4 md:py-0">
-            <div className="dark relative h-full min-h-52 w-full overflow-hidden rounded-lg border-xs border-[var(--gray-100)] bg-gradient-to-b from-[var(--gray-0)] to-[var(--gray-50)] px-5 py-5 text-left transition duration-700 md:aspect-[1/1.3]">
+          <div className="dark relative h-full min-h-56 w-full overflow-hidden rounded-lg border-xs border-[var(--gray-100)] bg-gradient-to-b from-[var(--gray-0)] to-[var(--gray-50)] px-5 py-5 text-left transition duration-700 md:aspect-[1/1.3] md:min-h-52">
               {/* Content */}
               <div className="relative z-10">
                 <Typography
@@ -99,8 +99,8 @@ const HeroSectionInner = async ({ content }: { content: InnerHeroContent }) => {
       </div>
 
       {/* Decorative circles */}
-      <div className="animate-first absolute left-8 top-4 z-20 h-16 w-16 rounded-full bg-[radial-gradient(circle_at_center,_var(--gray-200)_0,_var(--gray-100)_50%)] md:h-32 md:w-32" />
-      <div className="animate-fourth absolute bottom-16 right-0 z-20 h-16 w-16 rounded-full bg-[radial-gradient(circle_at_center,_var(--gray-100)_0,_var(--gray-200)_80%)] md:h-32 md:w-32" />
+      <div className="absolute left-8 top-4 z-20 h-16 w-16 animate-first rounded-full bg-[radial-gradient(circle_at_center,_var(--gray-200)_0,_var(--gray-100)_50%)] md:h-32 md:w-32" />
+      <div className="absolute bottom-16 right-0 z-20 h-16 w-16 animate-fourth rounded-full bg-[radial-gradient(circle_at_center,_var(--gray-100)_0,_var(--gray-200)_80%)] md:h-32 md:w-32" />
     </div>
   );
 };

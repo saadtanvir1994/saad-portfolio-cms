@@ -40,7 +40,7 @@ const FaqItem = ({
         <div className="overflow-hidden">
           <Typography
             variant="p"
-            className="pt-4 !text-base text-[var(--gray-900)]"
+            className="pt-4 !text-base text-[var(--gray-700)]"
           >
             {answer}
           </Typography>

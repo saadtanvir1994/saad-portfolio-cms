@@ -38,19 +38,51 @@ export const populateMetadata = (
     | "website"
     | "book"
     | "profile"
-): Metadata => ({
-  title: metadata.metaTitle,
-  description: metadata.metaDescription,
-  openGraph: {
-    title: metadata.metaTitle,
-    description: metadata.metaDescription,
-    images: [metadata.metaImage],
-    type: type || "website",
-  },
-  twitter: {
-    title: metadata.metaTitle,
-    description: metadata.metaDescription,
-    images: [metadata.metaImage],
-  },
-  keywords: metadata.keywords,
-});
+): Metadata => {
+  const result: Metadata = {};
+
+  if (metadata.metaTitle) {
+    result.title = metadata.metaTitle;
+  }
+  if (metadata.metaDescription) {
+    result.description = metadata.metaDescription;
+  }
+  if (metadata.keywords) {
+    result.keywords = metadata.keywords;
+  }
+
+  const openGraph: Record<string, unknown> = {};
+  if (metadata.metaTitle) {
+    openGraph.title = metadata.metaTitle;
+  }
+  if (metadata.metaDescription) {
+    openGraph.description = metadata.metaDescription;
+  }
+  if (metadata.metaImage) {
+    openGraph.images = [metadata.metaImage];
+  }
+  if (type) {
+    openGraph.type = type;
+  } else {
+    openGraph.type = "website";
+  }
+  if (Object.keys(openGraph).length > 0) {
+    result.openGraph = openGraph;
+  }
+
+  const twitter: Record<string, unknown> = {};
+  if (metadata.metaTitle) {
+    twitter.title = metadata.metaTitle;
+  }
+  if (metadata.metaDescription) {
+    twitter.description = metadata.metaDescription;
+  }
+  if (metadata.metaImage) {
+    twitter.images = [metadata.metaImage];
+  }
+  if (Object.keys(twitter).length > 0) {
+    result.twitter = twitter;
+  }
+
+  return result;
+};

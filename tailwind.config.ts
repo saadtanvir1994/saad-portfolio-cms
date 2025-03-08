@@ -27,7 +27,9 @@ export default {
         fifth: "moveInCircle 20s ease infinite",
         marquee: "marquee 25s linear infinite",
         marquee2: "marquee2 25s linear infinite",
+        "slide-from-top": "slide-from-top 1s infinite",
       },
+
       keyframes: {
         marquee: {
           "0%": {
@@ -76,6 +78,12 @@ export default {
           },
           "100%": {
             transform: "translateY(-50%)",
+          },
+        },
+        "slide-from-top": {
+          "0%, 100%": {
+            transform: "translateY(0)",
+            easing: "cubic-bezier(0.77,0,0.175,1)",
           },
         },
       },

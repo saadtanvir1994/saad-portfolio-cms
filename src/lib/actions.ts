@@ -195,11 +195,29 @@ export const getAllServicesSlug = async () => {
 export const getServiceContent = async (slug: string) => {
   const items = await getResources("service-page", `s=${slug}`);
 
-  const content = items.find((item: any) => item.values.slug === slug)
-    .values as any;
+  const item = items.find((item: any) => item.values.slug === slug) as any;
 
-  content.hero = content.hero.values;
-  content.subservices = content.subservices.values;
+  if (!item) return null;
+
+  const content = item.values;
+  content.metadata = item.metadata;
+
+  const sections = [
+    "hero",
+    "subservices",
+    "subservice-tabs",
+    "subservice-stats",
+    "subservice-pricing",
+    "subservice-problem",
+    "subservice-content",
+    "subservice-approach",
+    "subservice-comparison",
+    "subservice-faqs",
+  ];
+
+  sections.map((section) => {
+    if (content[section]) content[section] = content[section].values;
+  });
 
   return content as ServiceContent;
 };
@@ -213,6 +231,14 @@ export const getAllServicesUrls = async () => {
     changeFrequency: "monthly",
   }));
 };
+
+export const getServiceMetadata = async (slug: string) => {
+  const items = await getResources("service-page", `s=${slug}`);
+
+  const item = items.find((item: any) => item.values.slug === slug) as any;
+
+  return item.metadata as MetadataContent;
+}
 
 // Blogs
 

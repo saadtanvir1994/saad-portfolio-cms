@@ -367,10 +367,107 @@ export interface SubservicesContent extends Content {
   subservices: SubserviceItem[];
 }
 
+export interface TabItem {
+  name: string;
+  image: MediaContent;
+  heading: string;
+  paragraph: string;
+  list: string[];
+}
+
+export interface SubserviceSection {
+  mode: "light" | "dark";
+  subtitle: string;
+  title: string;
+  description: string;
+}
+
+export interface SubserviceTabs extends SubserviceSection {
+  tabs: TabItem[];
+}
+
+export interface SubserviceStatItem {
+  icon: IconName;
+  value: string;
+  label: string;
+}
+
+export interface SubserviceStats extends SubserviceSection {
+  items: SubserviceStatItem[];
+}
+
+export interface SubservicePricing extends SubserviceSection {
+  price: string;
+  "price-subtext": string;
+  "cta-button": ActionButton;
+  "features-title": string;
+  features: string[];
+}
+
+export interface SubserviceProblemItem {
+  subtitle: string;
+  title: string;
+  graphic: "icon" | "image";
+  icon: IconName;
+  image: MediaContent;
+  paragraph: string;
+  list: string[];
+}
+
+export interface SubserviceProblem extends SubserviceSection {
+  items: SubserviceProblemItem[];
+}
+
+export interface SubserviceContentFeature {
+  graphic: "icon" | "image";
+  icon: IconName;
+  image: MediaContent;
+  title: string;
+  description: string;
+}
+
+export interface SubserviceContent extends SubserviceSection {
+  "center-image": MediaContent;
+  features: SubserviceContentFeature[];
+}
+
+export interface SubserviceApproachTab {
+  label: string;
+  icon: IconName;
+  color: string;
+  description: string;
+  deliverables: string[];
+}
+
+export interface SubserviceApproach extends SubserviceSection {
+  tabs: SubserviceApproachTab[];
+}
+
+export interface SubserviceComparisonItem {
+  icon: IconName;
+  title: string;
+  description: string;
+  others: "true" | "false" | "partial";
+  me: "true" | "false" | "partial";
+}
+
+export interface SubserviceComparison extends SubserviceSection {
+  avatar: MediaContent;
+  features: SubserviceComparisonItem[];
+}
+
 export interface ServiceContent extends Content {
   slug: string;
   hero: InnerHeroContent;
   subservices: SubservicesContent;
+  "subservice-tabs": SubserviceTabs;
+  "subservice-stats": SubserviceStats;
+  "subservice-pricing": SubservicePricing;
+  "subservice-problem": SubserviceProblem;
+  "subservice-content": SubserviceContent;
+  "subservice-approach": SubserviceApproach;
+  "subservice-comparison": SubserviceComparison;
+  "subservice-faqs": FaqsContent;
 }
 
 // Blogs

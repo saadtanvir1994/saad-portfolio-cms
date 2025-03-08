@@ -13,12 +13,12 @@ const FaqSection = ({ content }: { content: FaqsContent }) => {
           >
             {content.title}
           </Typography>
-          {content.subtitle && (
+          {content.description && (
             <Typography
               variant="p"
               className="mb-16 text-[var(--text-tertiary)]"
             >
-              {content.subtitle}
+              {content.description}
             </Typography>
           )}
         </div>

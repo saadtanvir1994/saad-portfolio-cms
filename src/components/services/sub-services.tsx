@@ -1,5 +1,6 @@
 import { SubserviceItem, SubservicesContent } from "@/lib/definitions";
 import { DynamicIcon } from "lucide-react/dynamic";
+import Typography from "@/components/ui/typography";
 
 const SubServices = ({ content }: { content: SubservicesContent }) => {
   // Dividing services into columns
@@ -17,14 +18,14 @@ const SubServices = ({ content }: { content: SubservicesContent }) => {
     index: number;
   }) => (
     <div className="group relative flex aspect-[3/5] w-full flex-col items-center justify-between overflow-hidden rounded-full border border-[var(--gray-600)] px-8 py-8 text-center transition-transform duration-300 hover:-translate-y-1 md:aspect-[2/4] lg:aspect-[3/5] lg:px-12 lg:py-16">
-      <div className="mb-4 inline-block p-3 text-[var(--gray-300)]">
+      <div className="mb-4 inline-block p-3 text-[var(--gray-400)]">
         <DynamicIcon name={service["icon-name"]} className="h-6 w-6" />
       </div>
-      <h3 className="mb-2 mt-auto max-w-28 text-lg font-light capitalize text-[var(--gray-200)]">
+      <h3 className="mb-2 mt-auto max-w-28 text-lg font-semibold capitalize text-[var(--gray-500)]">
         {service.title}
       </h3>
-      <div className="absolute inset-0 flex translate-y-full items-center justify-center overflow-hidden bg-black/60 opacity-0 backdrop-blur-sm transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100">
-        <p className="px-4 py-6 text-sm text-[var(--gray-200)]">
+      <div className="absolute inset-0 flex items-center justify-center overflow-hidden bg-black/60 opacity-0 backdrop-blur-sm transition-all duration-700 group-hover:visible group-hover:opacity-100">
+        <p className="px-4 py-6 text-sm text-[var(--gray-700)]">
           {service.description}
         </p>
       </div>
@@ -32,13 +33,23 @@ const SubServices = ({ content }: { content: SubservicesContent }) => {
   );
 
   return (
-    <section className="py-16 pb-32">
-      <div className="mx-auto max-w-7xl px-4">
+    <section className="dark py-16 pb-32">
+      <div className="container mx-auto px-4">
         <div className="mb-12">
-          <h2 className="mb-4 text-3xl font-bold text-white">{content.title}</h2>
-          <p className="max-w-80 text-gray-400">
-            {content.description}
-          </p>
+          <div className="mb-12">
+            <span className="md:text-md mb-2 text-sm font-light uppercase tracking-widest text-[var(--text-tertiary)]">
+              {content.subtitle || "Our Offering"}
+            </span>
+            <Typography
+              variant="display-2"
+              className="mb-2 !w-full uppercase text-[var(--text-primary)]"
+            >
+              {content.title}
+            </Typography>
+            <Typography variant="p" className="text-[var(--gray-500)]">
+              {content.description}
+            </Typography>
+          </div>
         </div>
 
         <div className="ml-auto mr-0 max-w-6xl">

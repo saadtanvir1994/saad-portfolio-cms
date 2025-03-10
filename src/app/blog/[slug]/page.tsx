@@ -14,7 +14,6 @@ import PageSchema from "@/components/schemas/page-schema";
 import type { Metadata } from "next";
 
 interface PageProps {
-  category: string;
   slug: string;
 }
 

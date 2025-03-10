@@ -10,7 +10,7 @@ const BlogCard1 = ({ blog }: { blog: BlogContent }) => {
   return (
     <Link
       key={blog.title}
-      href={`/blog/${blog.category.slug}/${blog.slug}`}
+      href={`/blog/${blog.slug}`}
       className="group flex flex-col"
     >
       <div className="mb-4 flex overflow-clip rounded-xl md:mb-5 border h-[300px] w-[400px]">

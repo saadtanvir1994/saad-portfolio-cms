@@ -309,11 +309,21 @@ export const getAllBlogsSlug = async () => {
   }));
 };
 
+export const getAllBlogCategoriesUrl = async () => {
+  const items = await getResources("blog-category");
+
+  return items.map((item: any) => ({
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${item.values.slug}`,
+    lastModified: item.updated_at,
+    changeFrequency: "monthly",
+  }));
+}
+
 export const getAllBlogsUrls = async () => {
   const items = await getResources("blog");
 
   return items.map((item: any) => ({
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${item.values.slug}`,
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${item.values.slug}`,
     lastModified: item.updated_at,
     changeFrequency: "monthly",
   }));

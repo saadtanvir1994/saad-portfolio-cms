@@ -12,13 +12,14 @@ const CategoryLink = ({ category }: { category: BlogCategory }) => {
     <li
       className={`hover:text-primary ${
         currentCategory == category.slug ||
-        (pathname === "/blog" && category.slug === "")
+        (pathname === "/blogs" && category.slug === "")
           ? "text-primary"
           : "text-muted-foreground"
       }`}
     >
-      <Link href={`/blog/${category.slug}`}>{category.name}</Link>
+      <Link href={`/blogs/${category.slug}`}>{category.name}</Link>
     </li>
   );
 };
+
 export default CategoryLink;

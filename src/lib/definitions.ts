@@ -362,6 +362,7 @@ export interface SubserviceItem {
 }
 
 export interface SubservicesContent extends Content {
+  subtitle: string;
   title: string;
   description: string;
   subservices: SubserviceItem[];

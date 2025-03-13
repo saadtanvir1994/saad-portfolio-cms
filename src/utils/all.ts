@@ -31,13 +31,39 @@ export const getSchemas = async (
   return await getSchemasFromMetadata(metadata);
 };
 
+const toMetadatabaseUrl = (url: string) => {
+  try {
+    const urlObj = new URL(url.startsWith("http") ? url : "https://" + url);
+
+    if (!urlObj.hostname.startsWith("www.")) {
+      urlObj.hostname = "www." + urlObj.hostname;
+    }
+
+    return urlObj;
+  } catch (error) {
+    console.error("Invalid URL:", error);
+    return null;
+  }
+};
+
+const toCanonicalUrl = (url: string) => {
+  try {
+    const urlObj = new URL(url.startsWith("http") ? url : "https://" + url);
+
+    if (urlObj.hostname.startsWith("www.")) {
+      urlObj.hostname = urlObj.hostname.replace(/^www\./, "");
+    }
+
+    return urlObj;
+  } catch (error) {
+    console.error("Invalid URL:", error);
+    return null;
+  }
+};
+
 export const populateMetadata = (
   metadata: MetadataContent,
-  type?:
-    | "article"
-    | "website"
-    | "book"
-    | "profile"
+  type?: "article" | "website" | "book" | "profile"
 ): Metadata => {
   const result: Metadata = {};
 
@@ -49,6 +75,12 @@ export const populateMetadata = (
   }
   if (metadata.keywords) {
     result.keywords = metadata.keywords;
+  }
+  if (metadata.canonicalUrl) {
+    result.metadataBase = toMetadatabaseUrl(metadata.canonicalUrl);
+    result.alternates = {
+      canonical: toCanonicalUrl(metadata.canonicalUrl),
+    };
   }
 
   const openGraph: Record<string, unknown> = {};

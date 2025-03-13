@@ -14,17 +14,16 @@ const CertificatesSection = async () => {
         <div className="mx-auto lg:max-w-4xl">
           <div className="mb-20 text-center">
             <span className="mb-2 block text-base font-light uppercase tracking-wide text-[--text-tertiary]">
-              Learning
+              {content.subtitle}
             </span>
             <h2 className="mb-6 text-5xl font-bold uppercase sm:text-6xl">
-              Certificates
+              {content.title}
             </h2>
             <Typography
               variant="p"
               className="mx-auto mb-6 max-w-sm px-4 text-[var(--gray-700)] md:max-w-lg"
             >
-              Certificate I have earned by taking course. Here are the few of
-              the courses I have completed
+              {content.description}
             </Typography>
           </div>
 

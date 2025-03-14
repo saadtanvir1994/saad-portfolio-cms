@@ -164,13 +164,14 @@ export interface ShowcaseContent extends Content {
 export interface PricingItemContent extends Content {
   name: string;
   description: string;
+  href: string;
+  "link-text": string;
   "short-description": string;
   price: string;
   frequency?: string;
+  "features-heading": string;
   features: string[];
   primary: boolean;
-  "button-label": string;
-  "button-href": string;
 }
 
 export interface PricingContent extends Content {

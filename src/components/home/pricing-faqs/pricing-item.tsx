@@ -26,19 +26,19 @@ const PricingItem = ({ item }: { item: PricingItemContent }) => {
               <span className="linear-gro !text-md">{item.frequency}</span>
             )}
           </div>
-          <Typography variant="p" className="text-gray-500">
+          <Typography variant="p" className="text-gray-500 min-h-14">
             {item["short-description"]}
           </Typography>
 
           <AnimatedCTAButton
-            ariaLabel={item["button-label"]}
-            text={item["button-label"]}
-            href={item["button-href"]}
+            ariaLabel={item["link-text"] }
+            href={item["href"] }
+            text={item["link-text"] }
             variant={item.primary ? "simple" : "simpleoutlined"}
             className="my-6 w-full"
           />
           <h5 className="mt-8 text-xl font-semibold text-gray-950">
-            What&apos;s Included
+            {item["features-heading"] || "What's included"}
           </h5>
           <ul className="text-md pt-6 text-base text-gray-600">
             {item.features.map((feat, index) => (

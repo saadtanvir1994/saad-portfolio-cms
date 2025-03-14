@@ -227,12 +227,15 @@ export interface MetadataContent extends Content {
 export interface InnerHeroContent extends Content {
   path: string;
   slug: string;
+  subtitle: string;
   title: string;
   description: string;
   "cta-button": ActionButton;
   "brandbox-title": string;
   number: string;
   "number-text": string;
+  image: MediaContent;
+  "box-href": string;
 }
 
 export interface ImageWithDim {

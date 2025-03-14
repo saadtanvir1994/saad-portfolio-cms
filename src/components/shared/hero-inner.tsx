@@ -3,6 +3,7 @@ import Image from "next/image";
 import AnimatedCTAButton from "@/components/ui/animated-cta-button";
 import Typography from "@/components/ui/typography";
 import { InnerHeroContent } from "@/lib/definitions";
+import { getMediaUrl } from "@/utils/all";
 
 const HeroSectionInner = async ({ content }: { content: InnerHeroContent }) => {
   return (
@@ -17,7 +18,7 @@ const HeroSectionInner = async ({ content }: { content: InnerHeroContent }) => {
               variant="span"
               className="uppercase tracking-wider !text-[#ff7e32]"
             >
-              Design for Loyalty. Develop for Longevity.
+              {content.subtitle}
             </Typography>
             <h1 className="text-2xl uppercase !leading-tight tracking-tighter text-[var(--text-primary)] md:text-5xl exact-2xl:text-7xl">
               {content.title}
@@ -39,16 +40,16 @@ const HeroSectionInner = async ({ content }: { content: InnerHeroContent }) => {
                   variant="p"
                   className="text-center text-lg uppercase !text-gray-100"
                 >
-                  Want to Create Brand?
+                  {content["brandbox-title"]}
                 </Typography>
               </div>
             </div>
             <div className="hidden w-full md:block">
               <Image
-                src="/images/website-designer-freelance-seo-consultant-frontend-engineer-saad-tanvir.png"
+                src={getMediaUrl(content.image)}
                 width={288}
                 height={245}
-                alt="Website Designer, Freelance SEO Consultant & Frontend Engineer"
+                alt={content.image.caption || "Website Designer, Freelance SEO Consultant & Frontend Engineer"}
                 priority
                 loading="eager"
                 style={{
@@ -66,10 +67,10 @@ const HeroSectionInner = async ({ content }: { content: InnerHeroContent }) => {
                   variant="h2"
                   className="mb-3 !text-6xl font-semibold uppercase text-white"
                 >
-                  10+
+                  {content.number}
                 </Typography>
                 <p className="text-md w-32 font-light text-gray-200">
-                  Hired by Countries
+                  {content["number-text"]}
                 </p>
               </div>
 
@@ -78,7 +79,7 @@ const HeroSectionInner = async ({ content }: { content: InnerHeroContent }) => {
                 <AnimatedCTAButton
                   ariaLabel="View Services"
                   variant="icon-only"
-                  href="/services"
+                  href={content["box-href"]}
                 />
               </div>
 

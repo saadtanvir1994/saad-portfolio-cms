@@ -42,10 +42,13 @@ export interface HeroContent extends Content {
   "emphasized-text": string;
   description: string;
   image: MediaContent;
+  "freelancer-icon": MediaContent;
   freelancer: string;
   brandbox: string;
+  "services-title": string;
   services: string;
   "cta-button": ActionButton;
+  "services-cta": ActionButton;
 }
 
 export interface LogosContent extends Content {
@@ -134,8 +137,11 @@ export interface PortfolioItemContent extends Content {
   "short-description": string;
   "long-description": string;
   "bg-image": MediaContent;
+  "challenges-label": string;
   challenges: string[];
+  "solutions-label": string;
   solutions: string[];
+  "skills-label": string;
   skills: string[];
 }
 
@@ -147,9 +153,12 @@ export interface PortfolioContent extends Content {
 }
 
 export interface ShowcaseContent extends Content {
-  roles: string[];
   testimonials: TestimonialsContent;
   portfolio: PortfolioContent;
+  "swapping-text": {
+    prefix: string;
+    items: string[]
+  };
 }
 
 export interface PricingItemContent extends Content {
@@ -160,6 +169,8 @@ export interface PricingItemContent extends Content {
   frequency?: string;
   features: string[];
   primary: boolean;
+  "button-label": string;
+  "button-href": string;
 }
 
 export interface PricingContent extends Content {
@@ -176,6 +187,8 @@ export interface FaqsContent extends Content {
   items: {
     question: string;
     answer: string;
+    ques: string;
+    ans: string;
   }[];
 }
 
@@ -216,6 +229,9 @@ export interface InnerHeroContent extends Content {
   title: string;
   description: string;
   "cta-button": ActionButton;
+  "brandbox-title": string;
+  number: string;
+  "number-text": string;
 }
 
 export interface ImageWithDim {
@@ -398,6 +414,7 @@ export interface SubserviceStats extends SubserviceSection {
 }
 
 export interface SubservicePricing extends SubserviceSection {
+  "price-subtitle": string;
   price: string;
   "price-subtext": string;
   "cta-button": ActionButton;
@@ -437,6 +454,7 @@ export interface SubserviceApproachTab {
   icon: IconName;
   color: string;
   description: string;
+  "deliverables-label": string;
   deliverables: string[];
 }
 
@@ -454,6 +472,9 @@ export interface SubserviceComparisonItem {
 
 export interface SubserviceComparison extends SubserviceSection {
   avatar: MediaContent;
+  "first-column-label": string;
+  "second-column-label": string;
+  "third-column-label": string;
   features: SubserviceComparisonItem[];
 }
 
@@ -474,8 +495,12 @@ export interface ServiceContent extends Content {
 // Blogs
 
 export interface BlogsPageContent extends Content {
+  subtitle: string;
   title: string;
   description: string;
+  "title-alt": string;
+  "description-alt": string;
+  button: ActionButton;
 }
 
 export interface BlogCategory {
@@ -501,4 +526,22 @@ export interface BlogContent extends Content {
   updated_at: Date;
   published_at: Date;
   metadata: MetadataContent;
+}
+
+export interface ContactSection {
+  subtitle: string;
+  title: string;
+  heading: string;
+  description: string;
+  buttons: {
+    label: string;
+    href: string;
+    primary: boolean;
+    external: boolean;
+  }[];
+  "text-items": {
+    title: string;
+    items: string[];
+  }[];
+  image: MediaContent;
 }

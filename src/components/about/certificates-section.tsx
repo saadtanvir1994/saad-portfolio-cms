@@ -64,6 +64,7 @@ const CertificatesSection = async () => {
                         ariaLabel="View Course"
                         className="bg-zinc-950"
                         href={cert.url}
+                        external
                       />
                     </div>
                   </div>

@@ -25,7 +25,7 @@ const FaqSection = ({ content }: { content: FaqsContent }) => {
 
         <div className="mx-auto my-6 max-w-3xl divide-y divide-gray-100 md:my-12">
           {content.items.map((faq, id) => (
-            <FaqItem key={id} question={faq.question} answer={faq.answer} />
+            <FaqItem key={id} question={faq.ques} answer={faq.ans} />
           ))}
         </div>
       </div>

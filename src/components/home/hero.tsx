@@ -9,9 +9,7 @@ import React from "react";
 
 const Hero = ({ heroContent }: { heroContent: HeroContent }) => {
   return (
-    <div
-      className="dark relative mx-4 my-4 flex min-h-[100vh] items-center overflow-hidden rounded-3xl bg-gray-100 bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-[var(--gray-0)] via-[#161616] to-[var(--gray-0)] text-[var(--gray-500)]"
-    >
+    <div className="dark relative mx-4 my-4 flex min-h-[100vh] items-center overflow-hidden rounded-3xl bg-gray-100 bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-[var(--gray-0)] via-[#161616] to-[var(--gray-0)] text-[var(--gray-500)]">
       <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4a49492e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
       <div className="container relative">
         <div className="mx-0 grid min-h-[60vh] grid-cols-1 items-center justify-center md:mx-6 md:grid-cols-[228px_1fr_228px]">
@@ -21,7 +19,10 @@ const Hero = ({ heroContent }: { heroContent: HeroContent }) => {
                 src={getMediaUrl(heroContent["image"])}
                 width={196}
                 height={245}
-                alt="Website Designer, Freelance SEO Consultant & Frontend Engineer"
+                alt={
+                  heroContent.image.caption ||
+                  "Website Designer, Freelance SEO Consultant & Frontend Engineer"
+                }
                 priority
                 loading="eager"
                 style={{ objectFit: "cover" }}
@@ -68,28 +69,41 @@ const Hero = ({ heroContent }: { heroContent: HeroContent }) => {
             <div className="dark mx-auto mb-4 flex h-full w-full max-w-[100%] flex-col items-center rounded-lg border-xs border-[var(--gray-100)] bg-gradient-to-b from-[var(--gray-0)] to-[var(--gray-50)] px-4 py-8 md:h-auto md:max-w-[100%]">
               <div className="relative flex h-12 w-12 items-center justify-center">
                 <Image
-                  src="/images/top-rated-upwork-freelancer.svg"
-                  alt="top rated freelancer"
+                  src={getMediaUrl(heroContent["freelancer-icon"])}
+                  alt={
+                    heroContent["freelancer-icon"].caption ||
+                    "top rated freelancer"
+                  }
                   fill
                   priority
                   className="object-cover"
                 />
               </div>
-              <Typography variant="p" className="mt-4 text-center !text-lg text-white">
+              <Typography
+                variant="p"
+                className="mt-4 text-center !text-lg text-white"
+              >
                 {heroContent.freelancer}
               </Typography>
             </div>
             <div className="dark relative min-h-52 w-full overflow-hidden rounded-lg border-xs border-[var(--gray-100)] bg-gradient-to-b from-[var(--gray-0)] to-[var(--gray-50)] px-5 py-5 text-left transition duration-700 md:aspect-[1/1.3]">
               <div className="relative z-10">
-                <Typography variant="h2" className="mb-3 !text-lg font-semibold uppercase text-white">
-                  Services
+                <Typography
+                  variant="h2"
+                  className="mb-3 !text-lg font-semibold uppercase text-white"
+                >
+                  {heroContent["services-title"]}
                 </Typography>
                 <p className="text-md font-light text-gray-200">
                   {heroContent.services}
                 </p>
               </div>
               <div className="absolute bottom-4 right-4 z-20">
-                <AnimatedCTAButton ariaLabel="View Services" variant="icon-only" href="/services" />
+                <AnimatedCTAButton
+                  ariaLabel={heroContent["services-cta"].label}
+                  variant="icon-only"
+                  href={heroContent["services-cta"].href}
+                />
               </div>
               <div className="absolute -bottom-32 left-0 h-52 w-full opacity-60 md:-bottom-24">
                 <Image

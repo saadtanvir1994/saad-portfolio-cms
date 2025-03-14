@@ -4,13 +4,13 @@ import PortfolioSection from "@/components/home/showcase/portfoio-section";
 import TextSwapWrapper from "@/components/home/showcase/text-swap-wrapper";
 
 const Showcase = async () => {
-  const { testimonials, portfolio, roles } = await getShowcaseContent();
+  const { testimonials, portfolio, "swapping-text": swappinText } = await getShowcaseContent();
 
   return (
     <>
       <TestimonialsSection content={testimonials} />
       <PortfolioSection content={portfolio} />
-      <TextSwapWrapper roles={roles} />
+      <TextSwapWrapper prefix={swappinText.prefix} roles={swappinText.items} />
     </>
   );
 };

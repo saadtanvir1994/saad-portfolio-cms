@@ -66,7 +66,7 @@ const PortfolioItems = ({ projects }: { projects: PortfolioItemContent[] }) => {
           <div className="opacity-1 absolute left-0 top-0 z-10 h-full w-full bg-[var(--gray-900)]" />
           <div className="opacity-1 relative bottom-2 z-20 w-full bg-[var(--gray-900)] px-4 py-6">
             <div className="flex flex-wrap items-center gap-2 p-4 pb-0 pl-0">
-              <span className="w-full font-bold capitalize">Challenge:</span>
+              <span className="w-full font-bold capitalize">{project["challenges-label"] || "Challenge:"}</span>
               <ul className="flex flex-wrap gap-2">
                 {project.challenges?.map((challenge) => (
                   <li
@@ -81,7 +81,7 @@ const PortfolioItems = ({ projects }: { projects: PortfolioItemContent[] }) => {
             </div>
             <div className="flex flex-wrap items-center gap-2 p-4 pb-0 pl-0">
               <span className="w-full font-bold capitalize">
-                Solution (Strategy):
+                {project["solutions-label"] || "Solution (Strategy):"}
               </span>
               <ul className="flex flex-wrap gap-2">
                 {project.solutions?.map((sol) => (
@@ -96,7 +96,7 @@ const PortfolioItems = ({ projects }: { projects: PortfolioItemContent[] }) => {
             </div>
             <div className="p-4 px-0 pb-0">
               <span className="mb-2 inline-block font-bold capitalize">
-                Skills:&nbsp;
+                {project["skills-label"] || "Skills:&nbsp;"}
               </span>
               <ul className="flex flex-wrap gap-2">
                 {project.skills.map((skill) => (

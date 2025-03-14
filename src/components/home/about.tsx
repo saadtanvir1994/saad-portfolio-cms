@@ -46,7 +46,7 @@ const About = async () => {
           <div className="relative h-full w-full overflow-hidden rounded-2xl">
             <Image
               src={getMediaUrl(aboutContent.image)}
-              alt="setup"
+              alt={aboutContent.image.caption || "setup"}
               fill
               loading="lazy"
               sizes="(min-width: 780px) 80vw, calc(100vw - 32px)"

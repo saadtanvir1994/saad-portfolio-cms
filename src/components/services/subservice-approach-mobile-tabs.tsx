@@ -52,7 +52,7 @@ const MobileTabs = ({ tabs }: { tabs: SubserviceApproachTab[] }) => {
 
             <div className="mt-8">
               <h3 className="mb-4 text-sm font-semibold uppercase text-[var(--gray-500)]">
-                Deliverables
+                {tab["deliverables-label"]}
               </h3>
               <ul className="space-y-2">
                 {tab.deliverables.map((item, index) => (

@@ -48,7 +48,7 @@ const SubservicePricing = ({ content }: { content: SubservicePricingType }) => {
         <div className="flex flex-col items-center">
           <div className="mb-8 mt-4 w-full max-w-md rounded-lg bg-[var(--gray-25)] p-8 shadow shadow-[var(--gray-200)]">
             <p className="mb-2 text-center text-[var(--gray-400)]">
-              Starting at
+              {content["price-subtitle"]}
             </p>
 
             <div className="mb-2 text-center">

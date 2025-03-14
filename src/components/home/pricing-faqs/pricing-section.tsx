@@ -3,36 +3,35 @@ import TopRightCTA from "@/components/ui/top-cta";
 import Typography from "@/components/ui/typography";
 import { PricingContent } from "@/lib/definitions";
 import PricingItem from "@/components/home/pricing-faqs/pricing-item";
+import { getContactSectionContent } from "@/lib/actions";
 
-const ContactSection = () => {
+const ContactSection = async () => {
+  const content = await getContactSectionContent();
+
   return (
     <div className="mt-6 flex flex-wrap">
       <div className="h-full w-full transform rounded-3xl bg-white p-8 py-12 transition duration-500 hover:-translate-y-2">
         <div className="text-left">
           <div className="h-auto">
             <h3 className="mb-2 text-3xl font-medium capitalize tracking-tight">
-              Need ongoing support or want to get a consultancy?
+              {content.title}
             </h3>
             <Typography variant="p" className="text-gray-500">
-              Don’t worry, we got you covered. We also offer custom pricing.
-              Specific to your needs
+              {content.description}
             </Typography>
           </div>
           <div className="flex !max-w-[40%] gap-4 overflow-hidden">
-            <AnimatedCTAButton
-              ariaLabel="Book My Hours"
-              href="mailto:info@saadtanvir.com"
-              text="Book My Hours"
-              variant="simple"
-              className="my-6 w-full"
-            />
-            <AnimatedCTAButton
-              ariaLabel="Ping on Linkedin"
-              href=""
-              text="Ping on Linkedin"
-              variant="simpleoutlined"
-              className="my-6 w-full"
-            />
+            {content.buttons.map((item, index) => (
+              <AnimatedCTAButton
+                key={index}
+                ariaLabel={item.label}
+                href={item.href}
+                text={item.label}
+                variant={item.primary ? "simple" : "simpleoutlined"}
+                external={item.external}
+                className="my-6 w-full"
+              />
+            ))}
           </div>
         </div>
       </div>

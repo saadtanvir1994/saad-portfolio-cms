@@ -24,6 +24,7 @@ import {
   AboutSectionContent,
   TestimonialContent,
   CertificatesContent,
+  ContactSection,
 } from "@/lib/definitions";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
@@ -149,10 +150,9 @@ export const getHomepageMetadata = async () => await getMetadata("homepage");
 // About Page
 
 export const getInnerHeroContent = async (slug: string) => {
-  const items = await getResources("hero-inner");
+  const item = await getResource("hero-inner", `where[slug]=${slug}`);
 
-  return items.find((item: any) => item.values.slug === slug)
-    .values as unknown as InnerHeroContent;
+  return item.values as unknown as InnerHeroContent;
 };
 
 export const getAboutSectionContent = async () =>
@@ -238,7 +238,7 @@ export const getServiceMetadata = async (slug: string) => {
   const item = items.find((item: any) => item.values.slug === slug) as any;
 
   return item.metadata as MetadataContent;
-}
+};
 
 // Blogs
 
@@ -317,7 +317,7 @@ export const getAllBlogCategoriesUrl = async () => {
     lastModified: item.updated_at,
     changeFrequency: "monthly",
   }));
-}
+};
 
 export const getAllBlogsUrls = async () => {
   const items = await getResources("blog");
@@ -328,3 +328,6 @@ export const getAllBlogsUrls = async () => {
     changeFrequency: "monthly",
   }));
 };
+
+export const getContactSectionContent = async () =>
+  (await getContent("contact-section")) as unknown as ContactSection;

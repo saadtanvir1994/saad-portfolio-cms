@@ -24,7 +24,7 @@ const FaqItem = ({
           variant="h3"
           className="pr-4 !text-xl text-[var(--gray-950)] md:!w-full md:md:!w-full md:pr-8"
         >
-          {question}
+          <span dangerouslySetInnerHTML={{ __html: question }} />
         </Typography>
         <ChevronDown
           className={`text[var(--gray-500)] mt-1 h-5 w-5 flex-shrink-0 transition-transform duration-300 ${
@@ -42,7 +42,7 @@ const FaqItem = ({
             variant="p"
             className="pt-4 !text-base text-[var(--gray-700)]"
           >
-            {answer}
+            <span dangerouslySetInnerHTML={{ __html: answer }} />
           </Typography>
         </div>
       </div>

@@ -74,7 +74,7 @@ const Typography = ({ variant, children, className = "" }: TypographyProps) => {
   return React.createElement(
     Element,
     { className: `${styles} ${className}`.trim() },
-    children
+    children,
   );
 };
 

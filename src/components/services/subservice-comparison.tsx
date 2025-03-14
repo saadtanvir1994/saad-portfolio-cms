@@ -69,12 +69,12 @@ const SubserviceComparison = ({
           <div className="grid grid-cols-12 border-b bg-[var(--gray-50)]">
             <div className="col-span-6 flex items-center px-2 py-6 text-left md:p-6 md:px-6">
               <h3 className="text-sm font-semibold text-[var(--gray-800)] md:text-xl">
-                Features
+                {content["first-column-label"]}
               </h3>
             </div>
             <div className="col-span-3 text-wrap border-l px-2 py-6 text-center md:p-6">
               <h3 className="break-words text-sm font-bold text-[var(--gray-950)] md:text-xl">
-                Other Platforms / Freelancers
+                {content["second-column-label"]}
               </h3>
             </div>
             <div className="col-span-3 border-l px-2 py-6 text-center md:p-6">
@@ -87,7 +87,7 @@ const SubserviceComparison = ({
                 className="mx-auto"
               />
               <h3 className="break-words text-sm font-bold text-[var(--gray-950)] md:text-xl">
-                Saad Tanvir (Me)
+                {content["third-column-label"]}
               </h3>
             </div>
           </div>

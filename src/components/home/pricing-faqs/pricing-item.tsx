@@ -31,9 +31,9 @@ const PricingItem = ({ item }: { item: PricingItemContent }) => {
           </Typography>
 
           <AnimatedCTAButton
-            ariaLabel="Web design pricing"
-            href="/"
-            text="Start Today"
+            ariaLabel={item["button-label"]}
+            text={item["button-label"]}
+            href={item["button-href"]}
             variant={item.primary ? "simple" : "simpleoutlined"}
             className="my-6 w-full"
           />

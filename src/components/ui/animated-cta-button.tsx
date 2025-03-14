@@ -9,6 +9,7 @@ interface AnimatedCTAButtonProps {
   ariaLabel: string;
   align?: "left" | "right";
   variant?: "light" | "dark" | "icon-only" | "simple" | "simpleoutlined";
+  external?: boolean;
 }
 
 const AnimatedCTAButton: React.FC<AnimatedCTAButtonProps> = ({
@@ -18,6 +19,7 @@ const AnimatedCTAButton: React.FC<AnimatedCTAButtonProps> = ({
   ariaLabel,
   align = "right",
   variant = "light",
+  external
 }) => {
   // Simplified base classes using template literals
   const variantClasses = {
@@ -38,6 +40,7 @@ const AnimatedCTAButton: React.FC<AnimatedCTAButtonProps> = ({
         href={href}
         className={`group flex items-center justify-center overflow-hidden transition-all duration-300 ease-in-out ${variantClasses[variant]} ${className}`}
         aria-label={ariaLabel}
+        target={external ? "_blank": undefined}
       >
         <MoveUpRight className="h-5 w-5 text-white transition-all duration-300 ease-in-out group-hover:-translate-x-8 group-hover:-translate-y-8 group-hover:opacity-0" />
         <MoveUpRight className="absolute h-5 w-5 translate-x-8 translate-y-8 text-white opacity-0 transition-all duration-300 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100" />

@@ -155,6 +155,8 @@ export interface ShowcaseContent extends Content {
 export interface PricingItemContent extends Content {
   name: string;
   description: string;
+  href: string;
+  "link-text": string;
   "short-description": string;
   price: string;
   frequency?: string;

@@ -26,14 +26,14 @@ const PricingItem = ({ item }: { item: PricingItemContent }) => {
               <span className="linear-gro !text-md">{item.frequency}</span>
             )}
           </div>
-          <Typography variant="p" className="text-gray-500">
+          <Typography variant="p" className="text-gray-500 min-h-14">
             {item["short-description"]}
           </Typography>
 
           <AnimatedCTAButton
-            ariaLabel="Web design pricing"
-            href="/"
-            text="Start Today"
+            ariaLabel={item["link-text"] }
+            href={item["href"] }
+            text={item["link-text"] }
             variant={item.primary ? "simple" : "simpleoutlined"}
             className="my-6 w-full"
           />

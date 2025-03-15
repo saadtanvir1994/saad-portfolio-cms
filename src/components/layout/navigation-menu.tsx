@@ -65,10 +65,10 @@ const NavigationMenu = ({ menuContent }: { menuContent: MainMenuContent }) => {
                 fill="none"
                 className="animate-pulse"
               >
-                <circle cx="4" cy="4" r="4" fill="#56D556" />
+                <circle cx="4" cy="4" r="4" fill={menuContent["status-color"]} />
               </svg>
               <span className="text-sm font-normal text-[--gray-900]">
-                Available for Project
+                {menuContent["status-text"]}
               </span>
             </div>
             <button

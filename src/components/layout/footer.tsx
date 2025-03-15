@@ -98,7 +98,7 @@ const Footer = async () => {
           </div>
           <div className="mt-16 text-right text-sm text-[var(--gray-500)]">
             <ul className="flex justify-end space-x-3">
-              {footerContent.links.map((link, index) => (
+              {footerContent.links?.map((link, index) => (
                 <li key={index}>
                   <Link href={link.href} aria-label={link.label} target={link.external ? "_blank" : "_self"}>
                     {link.label}

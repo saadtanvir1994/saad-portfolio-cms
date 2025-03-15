@@ -20,7 +20,7 @@ const BlogSection = async () => {
           <p className="md:mb-5 lg:mb-6 lg:max-w-xs">
             {content["description-alt"]}
           </p>
-          <Link href={content.button.label} target={content.button.external ? "_blank" : undefined}>
+          <Link href={content.button.href} target={content.button.external ? "_blank" : "_self"}>
             <Button>{content.button.label}</Button>
           </Link>
         </div>

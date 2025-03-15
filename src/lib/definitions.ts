@@ -35,6 +35,8 @@ export interface MainMenuContent extends Content {
     label: string;
     url: string;
   }[];
+  "status-text": string;
+  "status-color": string;
 }
 
 export interface HeroContent extends Content {

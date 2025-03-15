@@ -21,7 +21,7 @@ const SimpleCta = ({
   const combinedClasses = `${baseClasses} ${className}`.trim();
 
   return (
-    <Link href={href} className={combinedClasses} aria-label={name} target={external ? "_blank" : undefined}>
+    <Link href={href} className={combinedClasses} aria-label={name} target={external ? "_blank" : "_self"}>
       <span>{name}</span>
       {showIcon && <ArrowUpRight className="h-4 w-4" />}
     </Link>

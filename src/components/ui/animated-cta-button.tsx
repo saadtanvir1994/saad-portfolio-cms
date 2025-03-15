@@ -40,7 +40,7 @@ const AnimatedCTAButton: React.FC<AnimatedCTAButtonProps> = ({
         href={href}
         className={`group flex items-center justify-center overflow-hidden transition-all duration-300 ease-in-out ${variantClasses[variant]} ${className}`}
         aria-label={ariaLabel}
-        target={external ? "_blank": undefined}
+        target={external ? "_blank": "_self"}
       >
         <MoveUpRight className="h-5 w-5 text-white transition-all duration-300 ease-in-out group-hover:-translate-x-8 group-hover:-translate-y-8 group-hover:opacity-0" />
         <MoveUpRight className="absolute h-5 w-5 translate-x-8 translate-y-8 text-white opacity-0 transition-all duration-300 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100" />
@@ -57,6 +57,7 @@ const AnimatedCTAButton: React.FC<AnimatedCTAButtonProps> = ({
           variantClasses[variant]
         } ${align === "right" ? "flex-row" : "flex-row-reverse"} ${className}`}
         aria-label={ariaLabel}
+        target={external ? "_blank": "_self"}
       >
         {text && (
           <span className="text-md font-semibold uppercase">{text}</span>
@@ -74,6 +75,7 @@ const AnimatedCTAButton: React.FC<AnimatedCTAButtonProps> = ({
         variantClasses[variant]
       } ${align === "right" ? "flex-row" : "flex-row-reverse"} ${className}`}
       aria-label={ariaLabel}
+      target={external ? "_blank": "_self"}
     >
       {text && <span className="text-md font-semibold uppercase">{text}</span>}
       <span

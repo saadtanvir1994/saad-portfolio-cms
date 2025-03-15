@@ -33,7 +33,7 @@ const PortfolioItems = ({ projects }: { projects: PortfolioItemContent[] }) => {
 
               <Link
                 href={project.href}
-                target="_blank"
+                target={project.external ? "_blank" : "_self"}
                 rel="nofollow noopener noreferrer"
                 className="absolute right-4 top-4 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--gray-50)] duration-200 group-hover:bg-[var(--orange-color)]"
                 aria-label={`Visit ${project.title} project website`}

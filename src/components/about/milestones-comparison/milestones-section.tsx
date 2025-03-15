@@ -27,6 +27,7 @@ const MilestonesSection = ({ content }: { content: MilestonesContent }) => {
                 href={content["action-button"].href}
                 ariaLabel={content["action-button"].label}
                 text={content["action-button"].label}
+                external={content["action-button"].external}
                 variant="light"
               />
             </div>

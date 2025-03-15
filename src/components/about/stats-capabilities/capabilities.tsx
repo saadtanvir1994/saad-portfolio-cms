@@ -37,7 +37,7 @@ const Capabilities = ({ content }: { content: CapabilitiesContent }) => {
               <ul className="flex flex-col gap-2 md:p-4 md:px-0">
                 {service.items.map((item, id) => (
                   <li key={`${index}-${id}`}>
-                    <SimpleCta name={item.label} href={item.url} />
+                    <SimpleCta name={item.label} href={item.url} external={item.external} />
                   </li>
                 ))}
               </ul>

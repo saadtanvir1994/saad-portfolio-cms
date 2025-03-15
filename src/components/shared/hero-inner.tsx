@@ -30,6 +30,7 @@ const HeroSectionInner = async ({ content }: { content: InnerHeroContent }) => {
               href={content["cta-button"].href}
               text={content["cta-button"].label}
               ariaLabel={content["cta-button"].label}
+              external={content["cta-button"].external}
             />
           </div>
           <div className="order-2 flex h-full flex-col items-end justify-end gap-6 px-0 md:px-4">

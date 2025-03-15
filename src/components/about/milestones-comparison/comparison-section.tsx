@@ -113,6 +113,7 @@ const ComparisonSection = ({ content }: { content: ComparisonContent }) => {
             href={content["cta-button"].href}
             text={content["cta-button"].label}
             ariaLabel={content["cta-button"].label}
+            external={content["cta-button"].external}
           />
         </div>
       </div>

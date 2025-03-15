@@ -110,6 +110,7 @@ const CertificatesSection = async () => {
                         ariaLabel="View Course"
                         className="bg-zinc-950"
                         href={cert.url}
+                        external={cert.external}
                       />
                     </div>
                     <div className="relative top-0 mx-auto aspect-square">
@@ -134,6 +135,7 @@ const CertificatesSection = async () => {
             ariaLabel={content["action-button"].label}
             text={content["action-button"].label}
             href={content["action-button"].href}
+            external={content["action-button"].external}
           />
         </div>
       </div>

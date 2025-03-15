@@ -31,6 +31,7 @@ const About = async () => {
               ariaLabel={aboutContent["action-button"].label}
               href={aboutContent["action-button"].href}
               text={aboutContent["action-button"].label}
+              external={aboutContent["action-button"].external}
               variant="light"
               className="mb-0 ml-auto mr-0 md:mb-8"
             />

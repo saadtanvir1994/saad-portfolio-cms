@@ -36,7 +36,7 @@ const PricingItem = ({ item }: { item: PricingItemContent }) => {
             text={item["link-text"] }
             variant={item.primary ? "simple" : "simpleoutlined"}
             className="my-6 w-full"
-            external
+            external={item["link-external"]}
           />
           <h5 className="mt-8 text-xl font-semibold text-gray-950">
             {item["features-heading"] || "What's included"}

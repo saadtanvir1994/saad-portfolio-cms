@@ -61,6 +61,7 @@ const Hero = ({ heroContent }: { heroContent: HeroContent }) => {
                 ariaLabel={heroContent["cta-button"].label}
                 href={heroContent["cta-button"].href}
                 text={heroContent["cta-button"].label}
+                external={heroContent["cta-button"].external}
               />
             </div>
           </div>
@@ -103,6 +104,7 @@ const Hero = ({ heroContent }: { heroContent: HeroContent }) => {
                   ariaLabel={heroContent["services-cta"].label}
                   variant="icon-only"
                   href={heroContent["services-cta"].href}
+                  external={heroContent["services-cta"].external}
                 />
               </div>
               <div className="absolute -bottom-32 left-0 h-52 w-full opacity-60 md:-bottom-24">

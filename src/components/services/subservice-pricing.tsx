@@ -66,6 +66,7 @@ const SubservicePricing = ({ content }: { content: SubservicePricingType }) => {
               href={content["cta-button"].href}
               ariaLabel={content["cta-button"].label}
               text={content["cta-button"].label}
+              external={content["cta-button"].external}
               variant="simple"
               className="mx-auto"
             />

@@ -21,6 +21,7 @@ export interface MediaContent extends Content {
 export interface ActionButton {
   label: string;
   href: string;
+  external: boolean;
 }
 
 export interface MainMenuContent extends Content {
@@ -134,6 +135,7 @@ export interface TestimonialsContent extends Content {
 export interface PortfolioItemContent extends Content {
   title: string;
   href: string;
+  external: boolean;
   "short-description": string;
   "long-description": string;
   "bg-image": MediaContent;
@@ -166,6 +168,7 @@ export interface PricingItemContent extends Content {
   description: string;
   href: string;
   "link-text": string;
+  "link-external": boolean;
   "short-description": string;
   price: string;
   frequency?: string;
@@ -205,6 +208,7 @@ export interface FooterContent extends Content {
   "social-links": {
     label: string;
     url: string;
+    external: boolean;
   }[];
   locations: string[];
   "company-details": string[];
@@ -274,6 +278,7 @@ interface ServiceItemContent extends Content {
   items: {
     label: string;
     url: string;
+    external: boolean;
   }[];
 }
 
@@ -363,6 +368,7 @@ export interface CertificateItem {
   "awarded-by": string;
   image: MediaContent;
   url: string;
+  external: boolean;
 }
 
 export interface CertificatesContent {

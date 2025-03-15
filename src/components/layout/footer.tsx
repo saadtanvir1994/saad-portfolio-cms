@@ -24,6 +24,7 @@ const Footer = async () => {
               ariaLabel={footerContent["action-button"].label}
               variant="simpleoutlined"
               href={footerContent["action-button"].href}
+              external={footerContent["action-button"].external}
             />
           </div>
 
@@ -55,7 +56,7 @@ const Footer = async () => {
             <ul className="max-w-40 space-y-3">
               {footerContent["social-links"].map((link, index) => (
                 <li key={index}>
-                  <SimpleCta href={link.url} name={link.label} />
+                  <SimpleCta href={link.url} name={link.label} external={link.external} />
                 </li>
               ))}
             </ul>

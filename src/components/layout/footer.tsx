@@ -56,7 +56,11 @@ const Footer = async () => {
             <ul className="max-w-40 space-y-3">
               {footerContent["social-links"].map((link, index) => (
                 <li key={index}>
-                  <SimpleCta href={link.url} name={link.label} external={link.external} />
+                  <SimpleCta
+                    href={link.url}
+                    name={link.label}
+                    external={link.external}
+                  />
                 </li>
               ))}
             </ul>
@@ -83,27 +87,24 @@ const Footer = async () => {
         </div>
         <div className="footer-bottom grid grid-cols-3 content-center">
           <div className="mt-16 text-sm text-[var(--gray-500)]">
-            <p></p> © {new Date().getFullYear()} Saad Tanvir . All rights
-            reserved.
+            <p></p> © {new Date().getFullYear()} {footerContent["left-text"]}
           </div>
           <div className="mt-16 text-center text-sm text-[var(--gray-600)]">
-            <p>
-              All payments are processed by <strong>DIGI WEB DESIGN LTD</strong>
-              , a company registered in UK.
-            </p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: footerContent["bottom-text"],
+              }}
+            />
           </div>
           <div className="mt-16 text-right text-sm text-[var(--gray-500)]">
             <ul className="flex justify-end space-x-3">
-              <li>
-                <Link href="/privacy-policy" aria-label="Privacy Policy">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms-conditions" aria-label="Terms & Conditions">
-                  Terms & Conditions
-                </Link>
-              </li>
+              {footerContent.links.map((link, index) => (
+                <li key={index}>
+                  <Link href={link.href} aria-label={link.label} target={link.external ? "_blank" : "_self"}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

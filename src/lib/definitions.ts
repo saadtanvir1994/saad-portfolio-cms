@@ -213,6 +213,9 @@ export interface FooterContent extends Content {
   locations: string[];
   "company-details": string[];
   email: string;
+  "left-text": string;
+  "bottom-text": string;
+  links: ActionButton[];
 }
 
 export interface MetadataContent extends Content {

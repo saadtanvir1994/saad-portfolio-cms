@@ -2,10 +2,29 @@ import AnimatedCTAButton from "@/components/ui/animated-cta-button";
 import Typography from "@/components/ui/typography";
 import { PricingItemContent } from "@/lib/definitions";
 import { Check } from "lucide-react";
+import { redirect } from "next/navigation";
 
 const PricingItem = ({ item }: { item: PricingItemContent }) => {
   return (
-    <div className="w-full p-3 md:w-1/2 lg:w-1/3">
+    <form
+      className="w-full p-3 md:w-1/2 lg:w-1/3"
+      action={async () => {
+        "use server";
+        console.log("button clicked ", item["price-id"]);
+        const response = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/checkout-sessions", {
+          body: JSON.stringify({ priceId: item["price-id"], recurring: item.recurring, }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        });
+
+        const { url } = await response.json();
+        if (url) {
+          redirect(url);
+        }
+      }}
+    >
       <div className="h-full transform rounded-3xl bg-white p-8 py-12 transition duration-500 hover:-translate-y-2">
         <div className="text-left">
           <div className="h-auto md:h-36">
@@ -17,9 +36,7 @@ const PricingItem = ({ item }: { item: PricingItemContent }) => {
             </Typography>
           </div>
           <div className="flex items-baseline gap-2">
-            <h4
-              className="mb-2 mt-4 text-center text-6xl tracking-tighter md:mt-8 md:text-left md:text-7xl"
-            >
+            <h4 className="mb-2 mt-4 text-center text-6xl tracking-tighter md:mt-8 md:text-left md:text-7xl">
               {item.price}
             </h4>
             {item.frequency && (
@@ -31,12 +48,11 @@ const PricingItem = ({ item }: { item: PricingItemContent }) => {
           </Typography>
 
           <AnimatedCTAButton
-            ariaLabel={item["link-text"] }
-            href={item["href"] }
-            text={item["link-text"] }
+            ariaLabel={item["link-text"]}
+            text={item["link-text"]}
             variant={item.primary ? "simple" : "simpleoutlined"}
             className="my-6 w-full"
-            external={item["link-external"]}
+            type="submit"
           />
           <h5 className="mt-8 text-xl font-semibold text-gray-950">
             {item["features-heading"] || "What's included"}
@@ -51,7 +67,8 @@ const PricingItem = ({ item }: { item: PricingItemContent }) => {
           </ul>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
+
 export default PricingItem;

@@ -2,8 +2,9 @@ import AnimatedCTAButton from "@/components/ui/animated-cta-button";
 import TopRightCTA from "@/components/ui/top-cta";
 import Typography from "@/components/ui/typography";
 import { PricingContent } from "@/lib/definitions";
-import PricingItem from "@/components/home/pricing-faqs/pricing-item";
+// import PricingItem from "@/components/home/pricing-faqs/pricing-item";
 import { getContactSectionContent } from "@/lib/actions";
+import DynamicPricingItems from "./dynamic-pricing-items";
 
 const ContactSection = async () => {
   const content = await getContactSectionContent();
@@ -39,7 +40,7 @@ const ContactSection = async () => {
   );
 };
 
-const PricingSection = ({ content }: { content: PricingContent }) => {
+const PricingSection = async ({ content }: { content: PricingContent }) => {
   return (
     <section className="dark overflow-hidden bg-[--gray-25] py-24 lg:py-32">
       <div className="container mx-auto px-4">
@@ -64,11 +65,12 @@ const PricingSection = ({ content }: { content: PricingContent }) => {
           </div>
           <div className="hidden md:col-span-7 md:block" />
         </div>
-        <div className="-m-3 mt-6 flex flex-wrap md:mt-12">
+        {/* <div className="-m-3 mt-6 flex flex-wrap md:mt-12">
           {content.items.map((item, index) => (
             <PricingItem item={item} key={index} />
           ))}
-        </div>
+        </div> */}
+        <DynamicPricingItems itemIds={content["product-items"]} />
         <ContactSection />
       </div>
     </section>

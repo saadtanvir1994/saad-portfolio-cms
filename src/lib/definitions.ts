@@ -172,11 +172,13 @@ export interface PricingItemContent extends Content {
   "link-text": string;
   "link-external": boolean;
   "short-description": string;
-  price: string;
+  price: string | number;
   frequency?: string;
   "features-heading": string;
   features: string[];
   primary: boolean;
+  "price-id": string;
+  recurring: boolean;
 }
 
 export interface PricingContent extends Content {
@@ -184,6 +186,7 @@ export interface PricingContent extends Content {
   text: string;
   description: string;
   items: PricingItemContent[];
+  "product-items": string[];
 }
 
 export interface FaqsContent extends Content {

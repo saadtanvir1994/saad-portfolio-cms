@@ -13,7 +13,7 @@ const HeroSectionInner = async ({ content }: { content: InnerHeroContent }) => {
 
       <div className="container relative z-30">
         <div className="mx-0 grid min-h-[60vh] grid-cols-1 content-center md:mx-6 md:grid-cols-[1fr_288px_288px]">
-          <div className="flex h-full flex-col gap-4 px-4 py-16">
+          <div className="flex h-full flex-col gap-4 px-4 py-16 text-center md:text-left">
             <Typography
               variant="span"
               className="uppercase tracking-wider !text-[#ff7e32]"
@@ -31,15 +31,16 @@ const HeroSectionInner = async ({ content }: { content: InnerHeroContent }) => {
               text={content["cta-button"].label}
               ariaLabel={content["cta-button"].label}
               external={content["cta-button"].external}
+              className="mx-auto md:ml-0"
             />
           </div>
           <div className="order-2 flex h-full flex-col items-end justify-end gap-6 px-0 md:px-4">
             <div className="relative z-30 hidden md:flex">
-              <div className="relative block h-[175px] w-[170px] flex-col gap-4 space-y-4 rounded-lg border-xs border-[var(--gray-100)] bg-[var(--orange-color)] p-4">
+              <div className="relative block h-auto w-[170px] flex-col gap-4 space-y-4 rounded-lg border-xs border-[var(--gray-100)] bg-[var(--orange-color)] p-4">
                 <Wand className="mx-auto h-10 w-10 text-gray-300" />
                 <Typography
                   variant="p"
-                  className="text-center text-lg uppercase !text-gray-100"
+                  className="text-center !text-sm uppercase !text-gray-100"
                 >
                   {content["brandbox-title"]}
                 </Typography>
@@ -60,7 +61,7 @@ const HeroSectionInner = async ({ content }: { content: InnerHeroContent }) => {
             </div>
           </div>
 
-          <div className="order-3 flex h-full max-w-full justify-between gap-4 px-0 py-6 md:order-3 md:flex-col md:gap-0 md:px-4 md:py-0">
+          <div className="hidden order-3 md:flex h-full max-w-full justify-between gap-4 px-0 py-6 md:order-3 md:flex-col md:gap-0 md:px-4 md:py-0">
           <div className="dark relative h-full min-h-56 w-full overflow-hidden rounded-lg border-xs border-[var(--gray-100)] bg-gradient-to-b from-[var(--gray-0)] to-[var(--gray-50)] px-5 py-5 text-left transition duration-700 md:aspect-[1/1.3] md:min-h-52">
               {/* Content */}
               <div className="relative z-10">
@@ -70,7 +71,7 @@ const HeroSectionInner = async ({ content }: { content: InnerHeroContent }) => {
                 >
                   {content.number}
                 </Typography>
-                <p className="text-md w-32 font-light text-gray-200">
+                <p className="text-md md:w-[70%] font-light text-gray-200">
                   {content["number-text"]}
                 </p>
               </div>

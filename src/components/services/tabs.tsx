@@ -30,10 +30,10 @@ const Tabs = ({
             <button
               key={index}
               onClick={() => handleTabChange(index)}
-              className={`rounded-lg px-4 py-3 text-left text-sm transition-all ${
+              className={`rounded-lg px-4 py-3 text-left text-md transition-all ${
                 activeTab === index
                   ? "bg-[var(--gray-100)] font-semibold text-[var(--gray-900)]"
-                  : "text-[var(--gray-600)] hover:bg-[var(--gray-50)]"
+                  : "text-[var(--gray-500)] font-semibold hover:bg-[var(--gray-50)]"
               }`}
             >
               {item.name}

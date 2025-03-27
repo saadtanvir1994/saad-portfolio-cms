@@ -81,12 +81,12 @@ const NavigationMenu = ({ menuContent }: { menuContent: MainMenuContent }) => {
 
           {/* Navigation Links */}
           <nav className="mb-auto">
-            <ul className="space-y-2">
+            <ul className="space-y-0">
               {menuContent.links.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="flex items-center justify-between text-lg transition-colors hover:text-[var(--orange-color)]"
+                    className="flex items-center justify-between text-lg transition-colors hover:text-[var(--orange-color)] py-2"
                     onClick={() => setIsOpen(false)}
                   >
                     <span className="relative">
@@ -99,12 +99,12 @@ const NavigationMenu = ({ menuContent }: { menuContent: MainMenuContent }) => {
                     </span>
                   </Link>
                   {item.children && (
-                    <ul className="mt-2 space-y-2 pl-8">
+                    <ul className="mt-2 space-y-0 pl-8">
                       {item.children.map((subItem) => (
                         <li key={subItem.href}>
                           <Link
                             href={subItem.href}
-                            className="block text-[var(--gray-500)] transition-colors hover:text-[var(--orange-color)]"
+                            className="block text-[var(--gray-500)] transition-colors hover:text-[var(--orange-color)] py-2"
                             onClick={() => setIsOpen(false)}
                           >
                             {subItem.label}
@@ -122,25 +122,25 @@ const NavigationMenu = ({ menuContent }: { menuContent: MainMenuContent }) => {
           <div className="pt-6">
             <a
               href={`mailto:${menuContent.email}`}
-              className="mb-0 inline-flex items-center space-x-2 text-sm transition-colors hover:text-gray-600"
+              className="mb-0 inline-flex items-center space-x-2 text-sm transition-colors hover:text-gray-600 py-2"
             >
               <span>{menuContent.email}</span>
               <ArrowUpRight className="h-4 w-4" />
             </a>
 
             {/* Social Links */}
-            <div className="absolute bottom-6 right-4 grid grid-cols-1 gap-4">
+            <div className="absolute bottom-6 right-4 grid grid-cols-1 gap-1">
               {menuContent["social-links"].map((link) => (
-                <a
+                <Link
                   key={link.label}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between gap-3 text-sm capitalize transition-colors hover:text-gray-600"
+                  className="flex items-center justify-between gap-3 text-sm capitalize transition-colors hover:text-[var(--orange-color)] py-1.5"
                 >
                   <span>{link.label}</span>
                   <ArrowUpRight className="h-4 w-4" />
-                </a>
+                </Link>
               ))}
             </div>
           </div>

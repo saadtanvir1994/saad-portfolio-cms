@@ -3,29 +3,7 @@
 import { MoveRight, MoveUpRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-
-interface BaseProps {
-  text?: string;
-  className?: string;
-  ariaLabel: string;
-  align?: "left" | "right";
-  variant?: "light" | "dark" | "icon-only" | "simple" | "simpleoutlined";
-}
-
-interface LinkProps extends BaseProps {
-  href?: string;
-  external?: boolean;
-  onClick?: never;
-  type?: never;
-}
-
-interface ButtonProps extends BaseProps {
-  type?: "button" | "submit" | "reset";
-  href?: never;
-  external?: never;
-}
-
-type AnimatedCTAButtonProps = LinkProps | ButtonProps;
+import { AnimatedCTAButtonProps } from "@/lib/definitions";
 
 const AnimatedCTAButton: React.FC<AnimatedCTAButtonProps> = (props) => {
   const {

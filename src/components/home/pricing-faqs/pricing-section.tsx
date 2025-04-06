@@ -70,7 +70,7 @@ const PricingSection = async ({ content }: { content: PricingContent }) => {
             <PricingItem item={item} key={index} />
           ))}
         </div> */}
-        <DynamicPricingItems itemIds={content["product-items"]} />
+        <DynamicPricingItems itemIds={content["product-items"]} products={content["packages"]} />
         <ContactSection />
       </div>
     </section>

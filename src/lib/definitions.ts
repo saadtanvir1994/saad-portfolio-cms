@@ -1,4 +1,5 @@
 import { IconName } from "lucide-react/dynamic";
+import Stripe from "stripe";
 
 export interface MenuItem {
   label: string;
@@ -187,6 +188,7 @@ export interface PricingContent extends Content {
   description: string;
   items: PricingItemContent[];
   "product-items": string[];
+  packages: Stripe.Product[];
 }
 
 export interface FaqsContent extends Content {
@@ -563,3 +565,26 @@ export interface ContactSection {
   }[];
   image: MediaContent;
 }
+
+interface BaseProps {
+  text?: string;
+  className?: string;
+  ariaLabel: string;
+  align?: "left" | "right";
+  variant?: "light" | "dark" | "icon-only" | "simple" | "simpleoutlined";
+}
+
+interface LinkProps extends BaseProps {
+  href?: string;
+  external?: boolean;
+  onClick?: never;
+  type?: never;
+}
+
+interface ButtonProps extends BaseProps {
+  type?: "button" | "submit" | "reset";
+  href?: never;
+  external?: never;
+}
+
+export type AnimatedCTAButtonProps = LinkProps | ButtonProps;

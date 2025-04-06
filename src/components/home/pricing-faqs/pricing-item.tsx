@@ -1,30 +1,14 @@
-import AnimatedCTAButton from "@/components/ui/animated-cta-button";
+import CheckoutButton from "@/components/ui/checkout-button";
 import Typography from "@/components/ui/typography";
-import { PricingItemContent } from "@/lib/definitions";
+import { transformPricingItem } from "@/utils/all";
 import { Check } from "lucide-react";
-import { redirect } from "next/navigation";
+import Stripe from "stripe";
 
-const PricingItem = ({ item }: { item: PricingItemContent }) => {
+const PricingItem = ({ product }: { product: Stripe.Product }) => {
+  const item = transformPricingItem(product);
+
   return (
-    <form
-      className="w-full p-3 md:w-1/2 lg:w-1/3"
-      action={async () => {
-        "use server";
-        console.log("button clicked ", item["price-id"]);
-        const response = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/checkout-sessions", {
-          body: JSON.stringify({ priceId: item["price-id"], recurring: item.recurring, }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-          method: "POST",
-        });
-
-        const { url } = await response.json();
-        if (url) {
-          redirect(url);
-        }
-      }}
-    >
+    <div className="w-full p-3 md:w-1/2 lg:w-1/3">
       <div className="h-full transform rounded-3xl bg-white p-8 py-12 transition duration-500 hover:-translate-y-2">
         <div className="text-left">
           <div className="h-auto md:h-36">
@@ -47,13 +31,21 @@ const PricingItem = ({ item }: { item: PricingItemContent }) => {
             {item["short-description"]}
           </Typography>
 
-          <AnimatedCTAButton
+          <CheckoutButton
+            priceItem={product.default_price as Stripe.Price}
+            ariaLabel={item["link-text"]}
+            text={item["link-text"]}
+            variant={item.primary ? "simple" : "simpleoutlined"}
+            className="my-6 w-full"
+          />
+
+          {/* <AnimatedCTAButton
             ariaLabel={item["link-text"]}
             text={item["link-text"]}
             variant={item.primary ? "simple" : "simpleoutlined"}
             className="my-6 w-full"
             type="submit"
-          />
+          /> */}
           <h5 className="mt-8 text-xl font-semibold text-gray-950">
             {item["features-heading"] || "What's included"}
           </h5>
@@ -67,7 +59,7 @@ const PricingItem = ({ item }: { item: PricingItemContent }) => {
           </ul>
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 

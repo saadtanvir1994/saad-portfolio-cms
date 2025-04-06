@@ -1,5 +1,6 @@
-import { MediaContent, MetadataContent } from "@/lib/definitions";
+import { MediaContent, MetadataContent, PricingItemContent } from "@/lib/definitions";
 import type { Metadata } from "next";
+import Stripe from "stripe"
 
 export const getMediaUrl = (media: MediaContent) => {
   if (!media) return "";
@@ -118,3 +119,27 @@ export const populateMetadata = (
 
   return result;
 };
+
+export const transformPricingItem = (product: Stripe.Product) => {
+  const item = {
+      name: product.name!,
+      description: product.description!,
+      "short-description": product.metadata.short_description!,
+      "features-heading": product.metadata.features_heading!,
+      frequency: product.metadata.frequency!,
+      "link-text": product.metadata.button_text!,
+      primary: product.metadata.primary! === "1",
+      "price-id":
+        typeof product.default_price === "string"
+          ? "0"
+          : product.default_price!.id!,
+      price:
+        typeof product.default_price === "string"
+          ? "0"
+          : `$ ${product.default_price!.unit_amount! / 100}`,
+      recurring: typeof product.default_price === "string" ? false : product.default_price!.type === "recurring",
+      features: product.marketing_features.map((feature) => feature.name),
+    };
+  
+  return item as PricingItemContent;
+}

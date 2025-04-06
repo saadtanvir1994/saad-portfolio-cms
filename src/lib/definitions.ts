@@ -486,8 +486,10 @@ export interface SubserviceComparisonItem {
   icon: IconName;
   title: string;
   description: string;
-  others: "true" | "false" | "partial";
-  me: "true" | "false" | "partial";
+  others: "true" | "false" | "partial" | "value";
+  me: "true" | "false" | "partial" | "value";
+  othertextvalue: string;
+  mytextvalue: string;
 }
 
 export interface SubserviceComparison extends SubserviceSection {

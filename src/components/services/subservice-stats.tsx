@@ -58,7 +58,7 @@ const StatsBlock = ({ content }: { content: SubserviceStats }) => {
           </div>
           <div className="hidden md:col-span-3 md:block" />
         </div>
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-12">
+        <div className="mx-auto grid grid-cols-1 gap-6 md:grid-cols-12">
           {content.items.map((stat, index) => (
             <StatItem
               key={index}

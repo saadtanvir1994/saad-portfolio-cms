@@ -134,14 +134,14 @@ const CustomCursor: React.FC<CursorProps> = ({
       } else if (isInteractive) {
         setCursorState((prev) => ({
           ...prev,
-          scale: 1.2,
+          scale: 1.6,
           text: null,
           hasBackground: false,
           isArrow: true,
         }));
 
         gsap.to(follower, {
-          scale: 1.2,
+          scale: 1.6,
           backgroundColor: "transparent",
           rotate: 45,
           duration: 0.3,

@@ -13,7 +13,7 @@ const SubserviceComparison = ({
 }: {
   content: SubserviceComparisonType;
 }) => {
-  const renderStatus = (status: string | boolean) => {
+  const renderStatus = (status: string | boolean, value: string ) => {
     if (status === "true") {
       return (
         <div className="flex justify-center">
@@ -28,7 +28,13 @@ const SubserviceComparison = ({
           </div>
         </div>
       );
-    } else {
+    } else if(status === "value"){
+      return (
+        <div className="flex justify-center">
+          {value}
+        </div>
+      );
+    }else{
       return (
         <div className="flex justify-center">
           <Minus size={24} className="text-gray-400" />
@@ -41,27 +47,27 @@ const SubserviceComparison = ({
     <div className="overflow-hidden bg-white py-16 md:py-24">
       <div className="mx-auto max-w-6xl">
         <div className="mb-6 text-center md:mb-12">
-          <div className="mb-6 grid grid-cols-1 gap-16 md:grid-cols-12">
-            <div className="hidden md:col-span-3 md:block" />
-            <div className="section-header flex flex-col justify-center text-center md:col-span-6">
-              <span className="md:text-md mb-2 text-sm font-light uppercase tracking-widest text-[var(--text-tertiary)]">
-                {content.subtitle}
-              </span>
-              <Typography
-                variant="display-2"
-                className="mx-auto mb-2 !w-full uppercase text-[var(--text-primary)]"
-              >
-                {content.title}
-              </Typography>
-              <Typography
-                variant="p"
-                className="mx-auto max-w-4xl text-center text-[var(--gray-500)]"
-              >
-                {content.description}
-              </Typography>
-            </div>
-            <div className="hidden md:col-span-3 md:block" />
+        <div className="mb-6 grid grid-cols-1 gap-16 md:grid-cols-12">
+          <div className="hidden md:col-span-2 md:block" />
+          <div className="section-header flex flex-col justify-center text-center md:col-span-8">
+            <span className="md:text-md mb-2 text-sm font-light uppercase tracking-widest text-[var(--text-tertiary)]">
+              {content.subtitle}
+            </span>
+            <Typography
+              variant="display-2"
+              className="mx-auto mb-2 !w-full max-w-[80%] uppercase text-[var(--text-primary)]"
+            >
+              {content.title}
+            </Typography>
+            <Typography
+              variant="p"
+              className="text-base md:text-md lg:text-lg mb-4 md:max-w-[80%] text-[--text-tertiary] mx-auto"
+            >
+              {content.description}
+            </Typography>
           </div>
+          <div className="hidden md:col-span-2 md:block" />
+        </div>
         </div>
 
         <div className="overflow-hidden rounded-xl bg-white shadow-md">
@@ -110,10 +116,10 @@ const SubserviceComparison = ({
                 </div>
               </div>
               <div className="col-span-3 flex items-center justify-center border-l px-2 py-3 md:p-6">
-                {renderStatus(feature.others)}
+                {renderStatus(feature.others,feature.othertextvalue)}
               </div>
               <div className="col-span-3 flex items-center justify-center border-l bg-neutral-50 px-2 py-3 md:p-6">
-                {renderStatus(feature.me)}
+                {renderStatus(feature.me,feature.mytextvalue)}
               </div>
             </div>
           ))}

@@ -17,8 +17,8 @@ const SubserviceProblem = ({ content }: { content: SubserviceProblemType }) => {
       <div className={`container mx-auto`}>
         <div className="mb-6 md:mb-8">
           <div className="grid grid-cols-1 gap-16 md:grid-cols-12">
-            <div className="section-header flex flex-col md:col-span-5">
-              <span className="md:text-md mb-2 text-sm font-light uppercase tracking-widest text-[var(--text-tertiary)]">
+            <div className="section-header flex flex-col md:col-span-6">
+              <span className="block md:text-md mb-2 text-sm font-light uppercase tracking-widest text-[var(--text-tertiary)]">
                 {content.subtitle}
               </span>
               <Typography
@@ -27,11 +27,11 @@ const SubserviceProblem = ({ content }: { content: SubserviceProblemType }) => {
               >
                 {content.title}
               </Typography>
-              <Typography variant="p" className="text-[var(--gray-500)]">
+              <Typography variant="p" className="text-base md:text-md lg:text-lg mb-4 md:max-w-[80%] text-[--text-tertiary]">
                 {content.description}
               </Typography>
             </div>
-            <div className="hidden md:col-span-7 md:block" />
+            <div className="hidden md:col-span-6 md:block" />
           </div>
         </div>
 

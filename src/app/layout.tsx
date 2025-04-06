@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import {  Geist } from "next/font/google";
 import "./globals.css";
 import ClientLayoutWrapper from "@/components/layout/client-layout-wrapper";
 import { getMenuContent } from "@/lib/actions";
@@ -10,13 +10,13 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
 
 // Initialize Inter font
-const inter = Inter({
+const inter = Geist({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
 });
 
-const grotesk = Space_Grotesk({
+const grotesk = Geist({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-space-grotesk',

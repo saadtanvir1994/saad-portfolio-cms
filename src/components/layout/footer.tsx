@@ -53,13 +53,14 @@ const Footer = async () => {
           {/* Middle-right column - Social */}
           <div className="md:col-span-2">
             <h3 className="mb-4 font-bold uppercase">Social</h3>
-            <ul className="max-w-40 space-y-3">
+            <ul className="max-w-40 space-y-0">
               {footerContent["social-links"].map((link, index) => (
                 <li key={index}>
                   <SimpleCta
                     href={link.url}
                     name={link.label}
                     external={link.external}
+                    className="py-2"
                   />
                 </li>
               ))}
@@ -73,7 +74,7 @@ const Footer = async () => {
             <SimpleCta
               name={footerContent.email}
               href={`mailto:${footerContent.email}`}
-              className="!text-lg !lowercase"
+              className="!text-lg !lowercase py-2"
             />
 
             <Image
@@ -81,7 +82,7 @@ const Footer = async () => {
               width={240}
               height={30}
               alt="stripe payments accepted"
-              className="mt-6"
+              className="mt-2"
             />
           </div>
         </div>

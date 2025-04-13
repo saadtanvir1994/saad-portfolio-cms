@@ -32,6 +32,7 @@ export const metadata: Metadata = {
   },
   other: {
     seobility: "a266dca5342da97d7f48374d8961496e",
+    "google-site-verification": "JTnZeSi6O3eRqw0FLoHOPIsiTmwdfs6cErpYwowstDA"
   },
 };
 

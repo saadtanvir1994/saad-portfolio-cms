@@ -3,7 +3,8 @@ import AnimatedCTAButton from "@/components/ui/animated-cta-button";
 import { DynamicIcon } from "lucide-react/dynamic";
 import { ServiceItem } from "@/lib/definitions";
 import ServiceCardWrapper from "@/components/home/services/service-card-wrapper";
-
+import { getMediaUrl } from "@/utils/all";
+import Image from "next/image";
 const ServiceCard = ({
   item,
   index,
@@ -15,12 +16,22 @@ const ServiceCard = ({
     <ServiceCardWrapper index={index}>
       {/* Front side */}
       <div className="front-side flex h-full flex-col justify-between">
-        <div className="d-block relative z-20 mb-8 h-16 w-16 scale-100 transition duration-300 ease-in-out group-hover/item:scale-90">
-          <DynamicIcon
+        <div className="d-block relative z-20 mb-8 h-16 w-16 scale-100 transition duration-300 ease-in-out group-hover/item:scale-90 mix-blend-exclusion">
+       {getMediaUrl(item["icon-image"]) ? (
+          <Image
+          src={getMediaUrl(item["icon-image"])}
+          alt={item["icon-image"].caption || ''}
+          width={46}
+          height={46}
+          />
+        ) 
+        :  (
+<DynamicIcon
             size={46}
             name={item.icon}
             style={{ color: item["icon-color"] }}
           />
+        )}          
         </div>
 
         <Typography

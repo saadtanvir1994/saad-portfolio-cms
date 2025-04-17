@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { getBlogsPageContent, getLatestBlogs } from "@/lib/actions";
-import BlogCard1 from "./blog-card1";
+import BlogCard3 from "./blog-card3";
+import Typography from "../ui/typography";
+import AnimatedCTAButton from "../ui/animated-cta-button";
 
 const BlogSection = async () => {
   const content = await getBlogsPageContent();
@@ -9,24 +9,28 @@ const BlogSection = async () => {
 
   return (
     <section className="overflow-hidden py-24 lg:py-32 bg-white">
-      <div className="container flex flex-col gap-8 lg:flex-row lg:gap-16">
-        <div className="mb-8 md:mb-14 lg:min-w-[30%]">
-          <p className="text-wider mb-4 text-sm font-medium text-muted-foreground">
+      <div className="container flex flex-col gap-4 md:gap-8 lg:flex-row lg:gap-16">
+        <div className="mb-0 md:mb-14 lg:min-w-[30%]">
+          <span className="text-md dark mb-2 font-light uppercase tracking-widest text-[--text-tertiary]">
             {content.subtitle}
-          </p>
-          <h2 className="mb-4 w-full text-4xl font-medium md:mb-5 md:text-5xl lg:mb-6 lg:max-w-xs lg:text-6xl">
+          </span>
+          <Typography variant="display-2" className="mb-4">
             {content["title-alt"]}
-          </h2>
-          <p className="md:mb-5 lg:mb-6 lg:max-w-xs">
+          </Typography>
+          <Typography variant="p" className="md:max-w-xs">
             {content["description-alt"]}
-          </p>
-          <Link href={content.button.href} target={content.button.external ? "_blank" : "_self"}>
-            <Button>{content.button.label}</Button>
-          </Link>
+          </Typography>
+          <AnimatedCTAButton 
+            variant="light"
+            href={content.button.href}
+            ariaLabel={content.button.label}
+          text={content.button.label}
+          />
+          
         </div>
-        <div className="grid gap-x-4 gap-y-8 md:grid-cols-2 lg:gap-x-6 lg:gap-y-12">
+        <div className="flex gap-0 flex-col w-full">
           {blogPosts.map((blog, index) => (
-            <BlogCard1 blog={blog} key={index} />
+            <BlogCard3 blog={blog} key={index} />
           ))}
         </div>
       </div>

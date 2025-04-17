@@ -4,7 +4,7 @@ import { FaqsContent } from "@/lib/definitions";
 
 const FaqSection = ({ content }: { content: FaqsContent }) => {
   return (
-    <section className="relative w-full overflow-hidden bg-white py-16 pb-24 md:py-32 md:pb-32">
+    <section className="relative w-full overflow-hidden bg-white py-16 pb-0 md:py-32 md:pb-32">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
           <Typography
@@ -23,7 +23,7 @@ const FaqSection = ({ content }: { content: FaqsContent }) => {
           )}
         </div>
 
-        <div className="mx-auto my-6 max-w-3xl divide-y divide-gray-100 md:my-12">
+        <div className="mx-auto my-6 px-1 max-w-3xl divide-y divide-[var(--gray-200)] md:my-12">
           {content.items.map((faq, id) => (
             <FaqItem key={id} question={faq.ques} answer={faq.ans} />
           ))}

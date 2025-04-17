@@ -39,20 +39,13 @@ const PricingItem = ({ product }: { product: Stripe.Product }) => {
             className="my-6 w-full"
           />
 
-          {/* <AnimatedCTAButton
-            ariaLabel={item["link-text"]}
-            text={item["link-text"]}
-            variant={item.primary ? "simple" : "simpleoutlined"}
-            className="my-6 w-full"
-            type="submit"
-          /> */}
           <h5 className="mt-8 text-xl font-semibold text-gray-950">
             {item["features-heading"] || "What's included"}
           </h5>
           <ul className="text-md pt-6 text-base text-gray-600">
             {item.features.map((feat, index) => (
-              <li className="mb-2.5 flex flex-wrap items-center" key={index}>
-                <Check className="mr-2 h-4 w-5" />
+              <li className="mb-2.5 flex flex-nowrap items-start md:items-center" key={index}>
+                <Check className="mr-2 h-4 w-5 mt-1 md:mt-0 text-[var(--gray-100)]" />
                 <span>{feat}</span>
               </li>
             ))}

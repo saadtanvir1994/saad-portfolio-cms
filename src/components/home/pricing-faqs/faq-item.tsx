@@ -14,7 +14,7 @@ const FaqItem = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-gray-200 py-4">
+    <div className="py-2 px-2 hover:bg-[var(--gray-50)]">
       <button
         className="flex w-full items-start justify-between text-left"
         onClick={() => setIsOpen(!isOpen)}
@@ -22,12 +22,12 @@ const FaqItem = ({
       >
         <Typography
           variant="h3"
-          className="pr-4 !text-xl text-[var(--gray-950)] md:!w-full md:md:!w-full md:pr-8"
+          className="!w-[90%] pr-4 !text-xl text-[var(--gray-950)] md:!w-full md:md:!w-full md:pr-8 py-2"
         >
           <span dangerouslySetInnerHTML={{ __html: question }} />
         </Typography>
         <ChevronDown
-          className={`text[var(--gray-500)] mt-1 h-5 w-5 flex-shrink-0 transition-transform duration-300 ${
+          className={`text-[var(--gray-500)] mt-3 h-5 w-5 flex-shrink-0 transition-transform duration-300  ${
             isOpen ? "rotate-180" : ""
           }`}
         />
@@ -40,7 +40,7 @@ const FaqItem = ({
         <div className="overflow-hidden">
           <Typography
             variant="p"
-            className="pt-4 !text-base text-[var(--gray-700)]"
+            className="pt-4 !text-[17px] text-[var(--gray-700)]"
           >
             <span dangerouslySetInnerHTML={{ __html: answer }} />
           </Typography>

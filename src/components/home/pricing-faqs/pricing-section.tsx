@@ -21,7 +21,7 @@ const ContactSection = async () => {
               {content.description}
             </Typography>
           </div>
-          <div className="flex !max-w-[40%] gap-4 overflow-hidden">
+          <div className="flex flex-col md:flex-row md:!max-w-[40%] gap-4 overflow-hidden">
             {content.buttons.map((item, index) => (
               <AnimatedCTAButton
                 key={index}
@@ -30,7 +30,7 @@ const ContactSection = async () => {
                 text={item.label}
                 variant={item.primary ? "simple" : "simpleoutlined"}
                 external={item.external}
-                className="my-6 w-full"
+                className="md:my-6 w-full"
               />
             ))}
           </div>
@@ -65,11 +65,6 @@ const PricingSection = async ({ content }: { content: PricingContent }) => {
           </div>
           <div className="hidden md:col-span-7 md:block" />
         </div>
-        {/* <div className="-m-3 mt-6 flex flex-wrap md:mt-12">
-          {content.items.map((item, index) => (
-            <PricingItem item={item} key={index} />
-          ))}
-        </div> */}
         <DynamicPricingItems itemIds={content["product-items"]} products={content["packages"]} />
         <ContactSection />
       </div>

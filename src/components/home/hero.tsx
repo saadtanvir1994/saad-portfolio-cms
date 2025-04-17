@@ -12,7 +12,7 @@ const Hero = ({ heroContent }: { heroContent: HeroContent }) => {
     <div className="dark relative mx-4 my-4 flex min-h-[100vh] items-center overflow-hidden rounded-3xl bg-gray-100 bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-[var(--gray-0)] via-[#161616] to-[var(--gray-0)] text-[var(--gray-500)]">
       <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4a49492e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
       <div className="container relative">
-        <div className="mx-0 grid min-h-[60vh] grid-cols-1 items-center justify-center md:mx-6 md:grid-cols-[228px_1fr_228px]">
+        <div className="mx-0 grid min-h-[60vh] grid-cols-1 items-center justify-center md:mx-6 md:grid-cols-[228px_1fr_228px] exact-2xl:grid-cols-[228px_60%_228px]">
           <div className="order-2 flex h-full flex-col justify-between px-0 md:order-1 md:px-4">
             <div className="hidden md:block">
               <Image

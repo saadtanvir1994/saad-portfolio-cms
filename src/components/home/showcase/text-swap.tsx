@@ -1,5 +1,4 @@
 "use client";
-
 import { gsap } from "@/utils/gsap";
 import React, { useEffect, useRef } from "react";
 
@@ -20,17 +19,14 @@ const TextSwap: React.FC<TextSwapProps> = ({
 
   useEffect(() => {
     if (!textRef.current) return;
-
     const ctx = gsap.context(() => {
       // Reset refs array
       wordRefs.current = wordRefs.current.slice(0, words.length);
-
       // Set initial states
       gsap.set(wordRefs.current, {
         yPercent: 100,
         opacity: 0,
       });
-
       // Create timeline
       tl.current = gsap
         .timeline({ repeat: -1 })
@@ -40,7 +36,6 @@ const TextSwap: React.FC<TextSwapProps> = ({
         const nextIndex = (index + 1) % words.length;
         const currentElement = wordRefs.current[index];
         const nextElement = wordRefs.current[nextIndex];
-
         if (currentElement && nextElement) {
           tl.current
             ?.to(currentElement, {
@@ -60,23 +55,22 @@ const TextSwap: React.FC<TextSwapProps> = ({
         }
       });
     }, textRef);
-
     return () => ctx.revert();
   }, [words]);
 
   return (
     <div
-      className={`flex items-center justify-center gap-3 text-3xl font-bold md:text-4xl ${className}`}
+      className={`flex flex-col md:flex-row items-center justify-center gap-3 text-3xl font-bold md:text-4xl ${className} `}
     >
-      <span>{prefix}</span>
-      <div className="relative h-20 min-w-48 overflow-hidden" ref={textRef}>
+      <span className="block md:inline-block bg-[var(--st-green-color)] px-4 py-2 rounded-lg text-center">{prefix}</span>
+      <div className="relative h-20 w-full max-w-lg overflow-hidden text-center" ref={textRef}>
         {words.map((word, index) => (
           <div
             key={word}
             ref={(el) => {
               wordRefs.current[index] = el;
             }}
-            className="absolute inset-0 flex items-center justify-start"
+            className="absolute inset-0 flex w-full items-center justify-center md:justify-start text-nowrap "
           >
             {word}
           </div>

@@ -75,6 +75,7 @@ export interface ServiceItem extends Content {
   title: string;
   description: string;
   icon: IconName;
+  "icon-image": MediaContent;
   "icon-color": string;
   "sub-services": string[];
   href: string;

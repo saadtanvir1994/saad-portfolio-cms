@@ -9,27 +9,38 @@ import { ImageWithDim } from "@/lib/definitions";
 
 const ImageMarquee = ({ images }: { images: ImageWithDim[] }) => {
   const marqueeRef = useRef<HTMLDivElement>(null);
-  const marqueeTrigger = useRef<HTMLDivElement>(null);
+  const marqueeContainerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    if (!marqueeRef.current) return;
+    if (!marqueeRef.current || !marqueeContainerRef.current) return;
 
-    const marqueeItems = marqueeRef.current.children;
-    const totalWidth = Array.from(marqueeItems).reduce(
-      (acc, item) => acc + (item as HTMLElement).offsetWidth - 48,
-      0
-    ); // 48px is the gap
+    // Get the width of one set of images
+    const firstItem = marqueeRef.current.children[0] as HTMLElement;
+    const itemWidth = firstItem.offsetWidth;
+    
+    // Set the duration based on desired speed (smaller number = faster)
+    const duration = 20;
 
-    gsap.to(marqueeItems, {
-      x: -totalWidth / 2,
-      duration: 20,
-      ease: "none",
-      repeat: -1,
+    // Create animation
+    const tl = gsap.timeline({ repeat: -1 });
+    
+    // Animate to the left
+    tl.to(marqueeRef.current, {
+      x: -itemWidth,
+      duration: duration,
+      ease: "none"
     });
-  }, []); // Scope the animation to the trigger ref
+    
+    // Jump back to start (instant) but make it seamless
+    tl.to(marqueeRef.current, {
+      x: 0,
+      duration: 0
+    });
+
+  }, []);
 
   return (
-    <div className="relative w-full" ref={marqueeTrigger}>
+    <div className="relative w-full">
       <div className="absolute -top-16 left-1/3 z-50 h-[160px] w-[160px] rounded-full bg-[var(--gray-50)] mix-blend-difference md:-top-24 md:h-[200px] md:w-[200px]">
         <Image
           fill
@@ -40,9 +51,9 @@ const ImageMarquee = ({ images }: { images: ImageWithDim[] }) => {
         />
       </div>
 
-      <div className="flex overflow-hidden">
-        <div className="flex items-center gap-12 overflow-hidden" ref={marqueeRef}>
-          {Array.from({ length: 2 }).map((_, id) => (
+      <div className="flex" ref={marqueeContainerRef}>
+        <div className="flex items-center flex-nowrap gap-4 w-[300vw]" ref={marqueeRef}>
+          {Array.from({ length: 4 }).map((_, id) => (  // Increased to 4 copies for smoother looping
             <ImageSet key={id} images={images} />
           ))}
         </div>

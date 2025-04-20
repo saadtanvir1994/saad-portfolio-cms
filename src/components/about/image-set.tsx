@@ -4,13 +4,14 @@ import Image from "next/image";
 
 const ImageSet = ({ images }: { images: ImageWithDim[] }) => {
   return (
-    <div className="flex items-center justify-center gap-12">
+    <div className="flex items-center justify-space-between gap-4 w-[100vw]">
       {images.map((item, index) => (
-        <div key={index} className="relative overflow-hidden rounded-3xl" style={{ height: item.height, width: item.width }}>
+        <div key={index} className="relative overflow-hidden rounded-lg" >
           <Image
             src={getMediaUrl(item.image)}
             alt={item.image.caption || "Project Image"}
-            fill
+            width={item.width}
+            height={item.height}
             className="object-cover"
             loading="lazy"
           />

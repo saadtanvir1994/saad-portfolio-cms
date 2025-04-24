@@ -141,7 +141,7 @@
 }
 
 body {
-  font-family: var(--font-inter);
+  font-family: var(--font-main);
   background: var(--gray-900);
   letter-spacing: -0.015;
 }
@@ -152,12 +152,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-main);
   font-weight: 500;
 }
 
 .font-nortica {
-  font-family: var(--font-inter);
+  font-family: var(--font-main);
 }
 
 .transition-timing-function-linear {
@@ -198,11 +198,11 @@ html.lenis {
 }
 
 .font-gothic {
-  font-family: var(--font-mg);
+  font-family: var(--font-main);
 }
 
 .linear-gro {
-  font-family: var(--font-linear-grotesk);
+  font-family: var(--font-main);
 }
 
 .content-block-2 mux-player {

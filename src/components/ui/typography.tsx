@@ -24,42 +24,42 @@ const Typography = ({ variant, children, className = "" }: TypographyProps) => {
     case "display-1":
       Element = "h1";
       styles =
-        "w-[60%] md:w-[80%] text-3xl lg:text-5xl text-[--text-primary] font-semibold tracking-tight";
+        "w-[60%] md:w-[80%] text-3xl lg:text-5xl text-[--text-primary] font-medium tracking-tight";
       break;
     case "display-2":
       Element = "h2";
       styles =
-        "w-[60%] md:w-[80%] text-3xl lg:text-5xl text-[--text-primary] font-semibold tracking-tight";
+        "w-[60%] md:w-[80%] text-3xl lg:text-5xl text-[--text-primary] font-medium tracking-tight";
       break;
     case "h1":
       Element = "h1";
       styles =
-        "w-[60%] md:w-[80%] text-3xl lg:text-5xl text-[--text-primary] font-semibold tracking-tight";
+        "w-[60%] md:w-[80%] text-3xl lg:text-5xl text-[--text-primary] font-medium tracking-tight";
       break;
     case "h2":
       Element = "h2";
       styles =
-        "w-[60%] md:w-[80%] text-2xl lg:text-4xl text-[--text-primary] font-semibold tracking-tight";
+        "w-[60%] md:w-[80%] text-2xl lg:text-4xl text-[--text-primary] font-medium tracking-tight";
       break;
     case "h3":
       Element = "h3";
       styles =
-        "w-[60%] md:w-[80%] text-xl lg:text-3xl text-[--text-primary] font-semibold tracking-tight";
+        "w-[60%] md:w-[80%] text-xl lg:text-3xl text-[--text-primary] font-medium tracking-tight";
       break;
     case "h4":
       Element = "h4";
       styles =
-        "text-lg lg:text-2xl text-[--text-primary] font-semibold tracking-tight";
+        "text-lg lg:text-2xl text-[--text-primary] font-medium tracking-tight";
       break;
     case "h5":
       Element = "h5";
       styles =
-        "text-base lg:text-xl text-[--text-primary] font-semibold tracking-tight";
+        "text-base lg:text-xl text-[--text-primary] font-medium tracking-tight";
       break;
     case "h6":
       Element = "h6";
       styles =
-        "text-sm lg:text-lg text-[--text-primary] font-semibold tracking-tight";
+        "text-sm lg:text-lg text-[--text-primary] font-medium tracking-tight";
       break;
     case "span":
       Element = "span";

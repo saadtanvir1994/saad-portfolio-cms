@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import {  Geist } from "next/font/google";
+import localFont from 'next/font/local'
+
 import "./globals.css";
 import ClientLayoutWrapper from "@/components/layout/client-layout-wrapper";
 import { getMenuContent } from "@/lib/actions";
@@ -10,17 +11,120 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
 
 // Initialize Inter font
-const inter = Geist({
-  subsets: ['latin'],
+// fonts.js
+
+const fkGroteskNeue = localFont({
+  variable: '--font-main',
+  preload: true,
   display: 'swap',
-  variable: '--font-inter',
+  fallback: ['system-ui', 'sans-serif'],
+  adjustFontFallback: 'Arial',
+  src: [
+    {
+      path: './fonts/FKGroteskNeue-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './fonts/FKGroteskNeue-Regular.woff',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './fonts/FKGroteskNeue-MediumItalic.woff2',
+      weight: '500',
+      style: 'italic',
+    },
+    {
+      path: './fonts/FKGroteskNeue-MediumItalic.woff',
+      weight: '500',
+      style: 'italic',
+    },
+    {
+      path: './fonts/FKGroteskNeue-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './fonts/FKGroteskNeue-Medium.woff',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './fonts/FKGroteskNeue-LightItalic.woff2',
+      weight: '300',
+      style: 'italic',
+    },
+    {
+      path: './fonts/FKGroteskNeue-LightItalic.woff',
+      weight: '300',
+      style: 'italic',
+    },
+    {
+      path: './fonts/FKGroteskNeue-Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: './fonts/FKGroteskNeue-Light.woff',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: './fonts/FKGroteskNeue-Italic.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: './fonts/FKGroteskNeue-Italic.woff',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: './fonts/FKGroteskNeue-BoldItalic.woff2',
+      weight: '700',
+      style: 'italic',
+    },
+    {
+      path: './fonts/FKGroteskNeue-BoldItalic.woff',
+      weight: '700',
+      style: 'italic',
+    },
+    {
+      path: './fonts/FKGroteskNeue-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: './fonts/FKGroteskNeue-Bold.woff',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: './fonts/FKGroteskNeue-BlackItalic.woff2',
+      weight: '800',
+      style: 'italic',
+    },
+    {
+      path: './fonts/FKGroteskNeue-BlackItalic.woff',
+      weight: '800',
+      style: 'italic',
+    },
+    {
+      path: './fonts/FKGroteskNeue-Black.woff2',
+      weight: '800',
+      style: 'normal',
+    },
+    {
+      path: './fonts/FKGroteskNeue-Black.woff',
+      weight: '800',
+      style: 'normal',
+    },
+  ],
+  
 });
 
-const grotesk = Geist({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-space-grotesk',
-});
+
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://saadtanvir.com"),
@@ -48,7 +152,7 @@ export default async function RootLayout({
       <head>
         <HrefLangTag />
       </head>
-      <body className={`${inter.variable} ${grotesk.variable} antialiased`}>
+      <body className={`${fkGroteskNeue.variable} antialiased`}>
         <ClientLayoutWrapper>
           <div>
             {/* <MainMenu menuContent={menuContent} /> */}
@@ -62,3 +166,4 @@ export default async function RootLayout({
     </html>
   );
 }
+

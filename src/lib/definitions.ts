@@ -591,3 +591,31 @@ interface ButtonProps extends BaseProps {
 }
 
 export type AnimatedCTAButtonProps = LinkProps | ButtonProps;
+
+export interface GeneralPageSection {
+  included: boolean;
+}
+
+export interface ContentSectionType extends GeneralPageSection {
+  title: string;
+  content: string;
+}
+
+export interface HeroSectionType extends GeneralPageSection {
+  subtitle: string;
+  title: string;
+  description: string;
+}
+
+export interface FeaturesSectionType extends GeneralPageSection {
+  subtitle: string;
+  title: string;
+  list: string[];
+}
+
+export interface GeneralPageContent {
+  slug: string;
+  contentSection: ContentSectionType;
+  heroSection: HeroSectionType;
+  featuresSection: FeaturesSectionType;
+}

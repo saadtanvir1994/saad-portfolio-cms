@@ -55,8 +55,8 @@ const getContent = async (slug: string, setMetadata: boolean = false) => {
   return content as Content;
 };
 
-const getMetadata = async (slug: string) => {
-  let metadata = (await getResource(slug)).metadata as any;
+const getMetadata = async (slug: string, ...params: string[]) => {
+  let metadata = (await getResource(slug, ...params)).metadata as any;
 
   if (typeof metadata.structuredData === "string") {
     try {
@@ -331,3 +331,13 @@ export const getAllBlogsUrls = async () => {
 
 export const getContactSectionContent = async () =>
   (await getContent("contact-section")) as unknown as ContactSection;
+
+export const getGeneralPageMetadata = async (slug: string) =>
+  await getMetadata("general-page", `where[slug]=${slug}`);
+
+export const getGeneralPageContent = async (slug: string) => {
+  const content = await getResource("general-page", `where[slug]=${slug}`);
+  const contentValues = content.values;
+
+  return contentValues;
+};

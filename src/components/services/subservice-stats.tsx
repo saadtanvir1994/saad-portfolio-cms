@@ -45,7 +45,7 @@ const StatsBlock = ({ content }: { content: SubserviceStats }) => {
             </span>
             <Typography
               variant="display-2"
-              className="mx-auto mb-2 !w-full uppercase text-[var(--text-primary)] md:max-w-[60%]"
+              className="mx-auto mb-2 !w-full max-w-[80%] uppercase text-[var(--text-primary)]"
             >
               {content.title}
             </Typography>

@@ -64,8 +64,10 @@ const toCanonicalUrl = (url: string) => {
 
 export const populateMetadata = (
   metadata: MetadataContent,
+  slug: string,
   type?: "article" | "website" | "book" | "profile"
 ): Metadata => {
+  const url = process.env.NEXT_PUBLIC_SITE_URL + slug;
   const result: Metadata = {};
 
   if (metadata.metaTitle) {
@@ -81,6 +83,11 @@ export const populateMetadata = (
     result.metadataBase = toMetadatabaseUrl(metadata.canonicalUrl);
     result.alternates = {
       canonical: toCanonicalUrl(metadata.canonicalUrl),
+    };
+  } else {
+    result.metadataBase = toMetadatabaseUrl(url);
+    result.alternates = {
+      canonical: toCanonicalUrl(url),
     };
   }
 

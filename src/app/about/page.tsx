@@ -14,7 +14,7 @@ import ContactBlock from "@/components/shared/contact-block";
 export const generateMetadata = async (): Promise<Metadata> => {
   const metadata = await getAboutPageMetadata();
 
-  return populateMetadata(metadata);
+  return populateMetadata(metadata, "/about");
 };
 
 const AboutPage = () => {

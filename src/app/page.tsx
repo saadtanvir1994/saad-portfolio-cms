@@ -15,7 +15,7 @@ import { populateMetadata } from "@/utils/all";
 export const generateMetadata = async (): Promise<Metadata> => {
   const metadata = await getHomepageMetadata();
 
-  return populateMetadata(metadata);
+  return populateMetadata(metadata, "/");
 };
 
 const Home = () => {

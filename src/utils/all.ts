@@ -136,15 +136,10 @@ export const transformPricingItem = (product: Stripe.Product) => {
       frequency: product.metadata.frequency!,
       "link-text": product.metadata.button_text!,
       primary: product.metadata.primary! === "1",
-      "price-id":
-        typeof product.default_price === "string"
-          ? "0"
-          : product.default_price!.id!,
       price:
         typeof product.default_price === "string"
           ? "0"
           : `$ ${product.default_price!.unit_amount! / 100}`,
-      recurring: typeof product.default_price === "string" ? false : product.default_price!.type === "recurring",
       features: product.marketing_features.map((feature) => feature.name),
     };
   

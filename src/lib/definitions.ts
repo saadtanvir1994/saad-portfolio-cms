@@ -167,6 +167,25 @@ export interface ShowcaseContent extends Content {
   };
 }
 
+export interface ProductContent {
+  name: string;
+  description: string;
+  unit_amount: number;
+  recurring: boolean;
+  interval: "week" | "month" | "year";
+}
+
+export type CurrencyType = "usd" | "eur" | "gbp";
+
+export interface CheckoutPriceItem {
+  name: string;
+  description?: string;
+  unit_amount: number;
+  currency: string;
+  recurring?: boolean;
+  interval: "week" | "month" | "year";
+};
+
 export interface PricingItemContent extends Content {
   name: string;
   description: string;
@@ -175,12 +194,11 @@ export interface PricingItemContent extends Content {
   "link-external": boolean;
   "short-description": string;
   price: string | number;
+  product: ProductContent;
   frequency?: string;
   "features-heading": string;
   features: string[];
   primary: boolean;
-  "price-id": string;
-  recurring: boolean;
 }
 
 export interface PricingContent extends Content {

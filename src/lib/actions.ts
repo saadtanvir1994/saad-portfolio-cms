@@ -28,8 +28,31 @@ import {
 } from "@/lib/definitions";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
+import { redirect } from "next/navigation";
 
 const apiUrl = process.env.NEXT_PUBLIC_CMS_URL + "/api";
+
+export const checkoutToStripe = async (formData: FormData) => {
+  const name = formData.get("name") as string;
+  const description = formData.get("description") as string;
+  const unit_amount = Number(formData.get("unit_amount"));
+  const currency = formData.get("currency") as string;
+  const recurring = formData.get("recurring") === "true";
+  const interval = formData.get("interval") as string;
+
+  const response = await fetch(process.env.NEXT_PUBLIC_SITE_URL + "/api/checkout-sessions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, description, unit_amount, currency, recurring, interval, }),
+  });
+
+  const { url } = await response.json();
+  if (url) {
+    redirect(url);
+  }
+}
 
 const getResources = async (slug: string, ...params: string[]) => {
   const url = `${apiUrl}/collections/${slug}/content${

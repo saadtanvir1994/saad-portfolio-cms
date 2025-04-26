@@ -2,7 +2,6 @@ import AnimatedCTAButton from "@/components/ui/animated-cta-button";
 import TopRightCTA from "@/components/ui/top-cta";
 import Typography from "@/components/ui/typography";
 import { PricingContent } from "@/lib/definitions";
-// import PricingItem from "@/components/home/pricing-faqs/pricing-item";
 import { getContactSectionContent } from "@/lib/actions";
 import DynamicPricingItems from "./dynamic-pricing-items";
 
@@ -65,7 +64,7 @@ const PricingSection = async ({ content }: { content: PricingContent }) => {
           </div>
           <div className="hidden md:col-span-7 md:block" />
         </div>
-        <DynamicPricingItems itemIds={content["product-items"]} products={content["packages"]} />
+        <DynamicPricingItems products={content.items} />
         <ContactSection />
       </div>
     </section>

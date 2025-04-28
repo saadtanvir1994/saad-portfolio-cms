@@ -245,6 +245,16 @@ export const getServiceContent = async (slug: string) => {
   return content as ServiceContent;
 };
 
+export const getPageUrls = async (pageSlug: string) => {
+  const items = await getResources(pageSlug);
+
+  return items.map((item: any) => ({
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}${item.values.slug}`,
+    lastModified: item.updated_at,
+    changeFrequency: "monthly",
+  }));
+};
+
 export const getAllServicesUrls = async () => {
   const items = await getResources("service-page");
 

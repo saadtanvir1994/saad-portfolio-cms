@@ -10,7 +10,7 @@ const componentMapping: Record<string, any> = {
 
 const DynamicZoneManager = ({ content }: { content: GeneralPageContent }) => {
   return (
-    <div className="my-20 bg-white">
+    <div className="py-10 bg-white">
       {Object.keys(content).map((key) => {
         const Component = componentMapping[key];
 

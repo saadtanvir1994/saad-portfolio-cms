@@ -38,7 +38,7 @@ const SubservicePricing = ({ content }: { content: SubservicePricingType }) => {
             </Typography>
             <Typography
               variant="p"
-              className="text-base md:text-md lg:text-lg mb-4 md:max-w-[80%] text-[--text-tertiary]"
+              className="text-base md:text-md lg:text-lg mb-4 md:max-w-[80%] text-[--text-tertiary] text-center"
             >
               {content.description}
             </Typography>

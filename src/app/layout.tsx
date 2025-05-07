@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from 'next/font/local'
+import Clarity from '@microsoft/clarity';
 
 import "./globals.css";
 import ClientLayoutWrapper from "@/components/layout/client-layout-wrapper";
@@ -10,8 +11,8 @@ import HrefLangTag from "@/components/shared/href-lang-tag";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
 
-// Initialize Inter font
-// fonts.js
+
+Clarity.init("rfx92t1jwg");
 
 const fkGroteskNeue = localFont({
   variable: '--font-main',

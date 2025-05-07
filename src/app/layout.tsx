@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from 'next/font/local'
-import Clarity from '@microsoft/clarity';
 
 import "./globals.css";
 import ClientLayoutWrapper from "@/components/layout/client-layout-wrapper";
@@ -10,9 +9,8 @@ import NavigationMenu from "@/components/layout/navigation-menu";
 import HrefLangTag from "@/components/shared/href-lang-tag";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
+import Script from "next/script";
 
-
-Clarity.init("rfx92t1jwg");
 
 const fkGroteskNeue = localFont({
   variable: '--font-main',
@@ -152,6 +150,17 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         <HrefLangTag />
+        <Script id="clarity-script" strategy="beforeInteractive">
+          {`
+            <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "rfx92t1jwg");
+</script>
+          `}
+        </Script>
       </head>
       <body className={`${fkGroteskNeue.variable} antialiased`}>
         <ClientLayoutWrapper>

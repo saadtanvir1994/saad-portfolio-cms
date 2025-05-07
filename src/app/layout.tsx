@@ -9,7 +9,6 @@ import NavigationMenu from "@/components/layout/navigation-menu";
 import HrefLangTag from "@/components/shared/href-lang-tag";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
-import Script from "next/script";
 
 
 const fkGroteskNeue = localFont({

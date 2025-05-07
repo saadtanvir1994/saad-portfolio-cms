@@ -1,32 +1,23 @@
-import { AnimatedCTAButtonProps } from "@/lib/definitions"
+import { AnimatedCTAButtonProps, CheckoutPriceItem } from "@/lib/definitions"
 import AnimatedCTAButton from "./animated-cta-button"
-import { redirect } from "next/navigation";
-import Stripe from "stripe";
+import { checkoutToStripe } from "@/lib/actions";
 
 type CheckoutButtonProps = AnimatedCTAButtonProps & {
-  priceItem: Stripe.Price;
-}
+  priceItem: CheckoutPriceItem
+};
 
 const CheckoutButton = ({ priceItem, ariaLabel, text, variant, className }: CheckoutButtonProps) => {
   return (
     <form
-      action={async () => {
-        "use server";
-        // console.log("button clicked ", priceItem.id);
-        const response = await fetch(process.env.NEXT_PUBLIC_SITE_URL+"/api/checkout-sessions", {
-          body: JSON.stringify({ priceId: priceItem.id, recurring: priceItem.type === "recurring", }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-          method: "POST",
-        });
-
-        const { url } = await response.json();
-        if (url) {
-          redirect(url);
-        }
-      }}
+      action={checkoutToStripe}
     >
+      <input type="hidden" name="name" value={priceItem.name} />
+      <input type="hidden" name="description" value={priceItem.description ?? ""} />
+      <input type="hidden" name="unit_amount" value={(priceItem.unit_amount * 100).toString()} />
+      <input type="hidden" name="currency" value={priceItem.currency} />
+      <input type="hidden" name="recurring" value={priceItem.recurring ? "true" : "false"} />
+      <input type="hidden" name="interval" value={priceItem.interval} />
+
       <AnimatedCTAButton
         ariaLabel={ariaLabel}
         text={text}
@@ -35,7 +26,7 @@ const CheckoutButton = ({ priceItem, ariaLabel, text, variant, className }: Chec
         type="submit"
       />
     </form>
-  )
-}
+  );
+};
 
 export default CheckoutButton;

@@ -23,9 +23,10 @@ export const generateMetadata = async ({
   params:  Promise<{ slug: string[] }>
 }): Promise<Metadata> => {
   const slug = (await params).slug;
-  const metadata = await getServiceMetadata(`/services/${slug.join("/")}`);
+  const url = `/services/${slug.join("/")}`;
+  const metadata = await getServiceMetadata(url);
 
-  return populateMetadata(metadata, "website");
+  return populateMetadata(metadata, url, "website");
 };
 
 const ServicePage = async ({

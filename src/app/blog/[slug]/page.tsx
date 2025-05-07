@@ -27,7 +27,7 @@ export const generateMetadata = async ({
   const slug = (await params).slug;
   const metadata = (await getBlogBySlug(slug)).metadata;
 
-  return populateMetadata(metadata, "article");
+  return populateMetadata(metadata, `/blogs/${slug}`, "article");
 };
 
 const BlogInnerPage = async ({ params }: { params: Promise<PageProps> }) => {

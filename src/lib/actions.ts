@@ -28,8 +28,31 @@ import {
 } from "@/lib/definitions";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
+import { redirect } from "next/navigation";
 
 const apiUrl = process.env.NEXT_PUBLIC_CMS_URL + "/api";
+
+export const checkoutToStripe = async (formData: FormData) => {
+  const name = formData.get("name") as string;
+  const description = formData.get("description") as string;
+  const unit_amount = Number(formData.get("unit_amount"));
+  const currency = formData.get("currency") as string;
+  const recurring = formData.get("recurring") === "true";
+  const interval = formData.get("interval") as string;
+
+  const response = await fetch(process.env.NEXT_PUBLIC_SITE_URL + "/api/checkout-sessions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, description, unit_amount, currency, recurring, interval, }),
+  });
+
+  const { url } = await response.json();
+  if (url) {
+    redirect(url);
+  }
+}
 
 const getResources = async (slug: string, ...params: string[]) => {
   const url = `${apiUrl}/collections/${slug}/content${
@@ -55,8 +78,8 @@ const getContent = async (slug: string, setMetadata: boolean = false) => {
   return content as Content;
 };
 
-const getMetadata = async (slug: string) => {
-  let metadata = (await getResource(slug)).metadata as any;
+const getMetadata = async (slug: string, ...params: string[]) => {
+  let metadata = (await getResource(slug, ...params)).metadata as any;
 
   if (typeof metadata.structuredData === "string") {
     try {
@@ -222,6 +245,16 @@ export const getServiceContent = async (slug: string) => {
   return content as ServiceContent;
 };
 
+export const getPageUrls = async (pageSlug: string) => {
+  const items = await getResources(pageSlug);
+
+  return items.map((item: any) => ({
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}${item.values.slug}`,
+    lastModified: item.updated_at,
+    changeFrequency: "monthly",
+  }));
+};
+
 export const getAllServicesUrls = async () => {
   const items = await getResources("service-page");
 
@@ -331,3 +364,13 @@ export const getAllBlogsUrls = async () => {
 
 export const getContactSectionContent = async () =>
   (await getContent("contact-section")) as unknown as ContactSection;
+
+export const getGeneralPageMetadata = async (slug: string) =>
+  await getMetadata("general-page", `where[slug]=${slug}`);
+
+export const getGeneralPageContent = async (slug: string) => {
+  const content = await getResource("general-page", `where[slug]=${slug}`);
+  const contentValues = content.values;
+
+  return contentValues;
+};

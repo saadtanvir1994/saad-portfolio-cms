@@ -64,8 +64,10 @@ const toCanonicalUrl = (url: string) => {
 
 export const populateMetadata = (
   metadata: MetadataContent,
+  slug: string,
   type?: "article" | "website" | "book" | "profile"
 ): Metadata => {
+  const url = process.env.NEXT_PUBLIC_SITE_URL + slug;
   const result: Metadata = {};
 
   if (metadata.metaTitle) {
@@ -81,6 +83,11 @@ export const populateMetadata = (
     result.metadataBase = toMetadatabaseUrl(metadata.canonicalUrl);
     result.alternates = {
       canonical: toCanonicalUrl(metadata.canonicalUrl),
+    };
+  } else {
+    result.metadataBase = toMetadatabaseUrl(url);
+    result.alternates = {
+      canonical: toCanonicalUrl(url),
     };
   }
 
@@ -129,15 +136,10 @@ export const transformPricingItem = (product: Stripe.Product) => {
       frequency: product.metadata.frequency!,
       "link-text": product.metadata.button_text!,
       primary: product.metadata.primary! === "1",
-      "price-id":
-        typeof product.default_price === "string"
-          ? "0"
-          : product.default_price!.id!,
       price:
         typeof product.default_price === "string"
           ? "0"
           : `$ ${product.default_price!.unit_amount! / 100}`,
-      recurring: typeof product.default_price === "string" ? false : product.default_price!.type === "recurring",
       features: product.marketing_features.map((feature) => feature.name),
     };
   

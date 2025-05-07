@@ -8,7 +8,7 @@ import React from "react";
 export const generateMetadata = async (): Promise<Metadata> => {
   const metadata = await getBlogsPageMetadata();
 
-  return populateMetadata(metadata);
+  return populateMetadata(metadata, "/blogs");
 }
 
 const BlogListLayout = async ({ children }: { children: React.ReactNode }) => {
